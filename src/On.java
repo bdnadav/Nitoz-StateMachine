@@ -17,10 +17,10 @@ public class On implements OnState {
     public On(System system) {
         this.system = system;
         watchRegion = new WatchRegion();
-        diskRegion = new DiskRegion();
+        diskRegion = new DiskRegion(100);
         userRegion = new UserRegion();
         networkRegion = new NetworkRegion();
-        downloadRegion = new DownloadRegion(this);
+        downloadRegion = new DownloadRegion();
         startRegions();
     }
 
@@ -56,7 +56,11 @@ public class On implements OnState {
 
     @Override
     public void turnOn() {
-
+        watchRegion.turnOn();
+        diskRegion.turnOn();
+        userRegion.turnOn();
+        networkRegion.turnOn();
+        downloadRegion.turnOn();
     }
 
     @Override
@@ -103,16 +107,24 @@ public class On implements OnState {
 
     @Override
     public void downRank() {
-
     }
 
     @Override
     public void internetOn() {
-
+         watchRegion.internetOn();
+         diskRegion.internetOn();
+         userRegion.internetOn();
+         networkRegion.internetOn();
+         downloadRegion.internetOn();
     }
 
     @Override
     public void internetOff() {
+        watchRegion.internetOff();
+        diskRegion.internetOff();
+        userRegion.internetOff();
+        networkRegion.internetOff();
+        downloadRegion.internetOff();
 
     }
 

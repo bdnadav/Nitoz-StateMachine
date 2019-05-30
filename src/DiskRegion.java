@@ -1,4 +1,9 @@
 public class DiskRegion implements OnState, Runnable {
+    public int _diskSize ;
+    public DiskRegion(int diskSize) {
+        _diskSize = diskSize ;
+
+    }
 
     @Override
     public void movieOff() {

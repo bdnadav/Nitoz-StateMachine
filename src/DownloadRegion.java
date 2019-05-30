@@ -1,38 +1,26 @@
 public class DownloadRegion implements OnState, Runnable {
 
     protected static int downSize;
-    protected Thread download_region_thread;
-    protected boolean download_thread_running = true;
-
-    protected DownloadIdle downloadIdleState;
-    protected Downloading downloadingState;
-    protected ErrorFix errorFixState;
-    protected WaitingToConnect waitingToConnectState;
-    protected NoSpace noSpaceState;
+    //protected Thread download_region_thread;
+    //protected boolean download_thread_running = true;
 
 
-
+    protected OnState curDownloadState;
+    protected OnState downloadIdle;
+    protected OnState downloading;
+    protected OnState errorFix;
+    protected OnState waitingToConnect;
+    protected OnState noSpace;
     protected On onState;
-    protected DownloadRegion currentState;
+
 
     public DownloadRegion() {
-    }
-
-    public DownloadRegion(DownloadRegion regionState, On onState) {
-        this.downloadIdleState = new DownloadIdle(this);
-        this.downloadingState = new Downloading(this);
-        this.errorFixState = new ErrorFix();
-        this.waitingToConnectState = new WaitingToConnect();
-        this.noSpaceState = new NoSpace();
-
-        this.currentState = downloadingState;
-        this.onState = onState;
-        download_region_thread = new Thread(new DownloadIdle(this)) ;
-        download_region_thread.start();
-    }
-
-    public DownloadRegion(DownloadRegion downloadRegion) {
-        this.do = onState;
+        waitingToConnect= new WaitingToConnect(this);
+        downloading= new Downloading(this);
+        downloadIdle= new DownloadIdle(this);
+        errorFix= new ErrorFix();
+        noSpace= new noSpace();
+        curDownloadState= waitingToConnect;
     }
 
     @Override
@@ -73,6 +61,11 @@ public class DownloadRegion implements OnState, Runnable {
 
     @Override
     public void internetOn() {
+        curDownloadState.internetOn();// cur= down
+
+        while(curDownloadState instanceof Downloading){
+           // curDownloadState.do();
+        }
 
     }
 
@@ -108,6 +101,7 @@ public class DownloadRegion implements OnState, Runnable {
 
     @Override
     public void fileRequest() {
+        curDownloadState.fileRequest();// cur= noSpace
 
     }
 
@@ -118,7 +112,7 @@ public class DownloadRegion implements OnState, Runnable {
 
     @Override
     public void download() {
-        currentState.download();
+        curDownloadState.download();
     }
 
     @Override
@@ -135,9 +129,6 @@ public class DownloadRegion implements OnState, Runnable {
 
     @Override
     public void run() {
-        while(){
-            currentState.update();
-        }
 
     }
 
@@ -151,8 +142,74 @@ public class DownloadRegion implements OnState, Runnable {
 
     }
 
-    protected void moveState() {
+/*    protected void moveState() {
         download_thread_running = true;
         download_region_thread.start();
+    }*/
+
+    public OnState getCurDownloadState() {
+        return curDownloadState;
     }
+
+    public void setCurDownloadState(OnState curDownloadState) {
+        this.curDownloadState = curDownloadState;
+    }
+
+    public static int getDownSize() {
+        return downSize;
+    }
+
+    public static void setDownSize(int downSize) {
+        DownloadRegion.downSize = downSize;
+    }
+
+    public OnState getDownloadIdle() {
+        return downloadIdle;
+    }
+
+    public void setDownloadIdle(OnState downloadIdle) {
+        this.downloadIdle = downloadIdle;
+    }
+
+    public OnState getDownloading() {
+        return downloading;
+    }
+
+    public void setDownloading(OnState downloading) {
+        this.downloading = downloading;
+    }
+
+    public OnState getErrorFix() {
+        return errorFix;
+    }
+
+    public void setErrorFix(OnState errorFix) {
+        this.errorFix = errorFix;
+    }
+
+    public OnState getWaitingToConnect() {
+        return waitingToConnect;
+    }
+
+    public void setWaitingToConnect(OnState waitingToConnect) {
+        this.waitingToConnect = waitingToConnect;
+    }
+
+    public OnState getNoSpace() {
+        return noSpace;
+    }
+
+    public void setNoSpace(OnState noSpace) {
+        this.noSpace = noSpace;
+    }
+
+    public On getOnState() {
+        return onState;
+    }
+
+    public void setOnState(On onState) {
+        this.onState = onState;
+    }
+
+
 }
