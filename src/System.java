@@ -1,0 +1,15 @@
+public class System {
+    State currentState;
+
+    public System() {
+        this.currentState = new Off(this);
+    }
+
+    public State getCurrentState() {
+        return currentState;
+    }
+
+    public void setCurrentState(State currentState) {
+        this.currentState = currentState;
+    }
+}
