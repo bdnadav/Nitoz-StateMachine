@@ -84,6 +84,26 @@ public class Connected implements OnState{
     }
 
     @Override
+    public void addFile() {
+
+    }
+
+    @Override
+    public void download() {
+
+    }
+
+    @Override
+    public OnState getState() {
+        return null;
+    }
+
+    @Override
+    public void setState(OnState onState) {
+
+    }
+
+    @Override
     public void turnOn() {
 
     }
