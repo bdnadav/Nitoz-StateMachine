@@ -1,4 +1,25 @@
 public class UserRegion implements OnState, Runnable {
+
+
+
+    protected OnState beginner;
+    protected OnState progressive;
+    protected OnState pro;
+
+    protected OnState onState;
+    protected UserRegion currentState;
+
+    public UserRegion(On onState, UserRegion currentState) {
+        this.onState = onState;
+        this.currentState = currentState;
+        beginner = new Beginner(this);
+        progressive = new Progressive(this);
+        pro = new Pro(this);
+    }
+
+    public UserRegion() {
+    }
+
     @Override
     public void movieOff() {
 
@@ -71,6 +92,26 @@ public class UserRegion implements OnState, Runnable {
 
     @Override
     public void fileRequest() {
+
+    }
+
+    @Override
+    public void addFile() {
+
+    }
+
+    @Override
+    public void download() {
+
+    }
+
+    @Override
+    public OnState getState() {
+        return null;
+    }
+
+    @Override
+    public void setState(OnState onState) {
 
     }
 

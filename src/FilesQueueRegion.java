@@ -1,5 +1,8 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class FilesQueueRegion implements OnState, Runnable {
-    private int files;
+    LinkedList<Integer> files = new LinkedList<>();
 
     @Override
     public void movieOff() {
@@ -92,6 +95,10 @@ public class FilesQueueRegion implements OnState, Runnable {
     }
 
     public int getNumOfFiles() {
-        return files;
+        return files.size();
+    }
+
+    public int popFile() {
+        return files.poll();
     }
 }

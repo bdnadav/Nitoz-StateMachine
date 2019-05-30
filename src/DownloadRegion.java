@@ -1,8 +1,8 @@
 public class DownloadRegion implements OnState, Runnable {
 
     protected static int downSize;
-    protected Thread super_thread;
-    protected static boolean super_thread_exit = false;
+    protected Thread download_region_thread;
+    protected boolean download_thread_running = true;
 
     protected DownloadIdle downloadIdleState;
     protected Downloading downloadingState;
@@ -12,25 +12,27 @@ public class DownloadRegion implements OnState, Runnable {
 
 
 
-    private On on;
+    protected On onState;
     protected DownloadRegion currentState;
 
+    public DownloadRegion() {
+    }
 
-    public DownloadRegion(DownloadRegion regionState, On on) {
-        this.downloadIdleState = new DownloadIdle();
+    public DownloadRegion(DownloadRegion regionState, On onState) {
+        this.downloadIdleState = new DownloadIdle(this);
         this.downloadingState = new Downloading(this);
         this.errorFixState = new ErrorFix();
         this.waitingToConnectState = new WaitingToConnect();
         this.noSpaceState = new NoSpace();
 
         this.currentState = downloadingState;
-        this.on = on;
-        super_thread = new Thread(new DownloadIdle()) ;
-        super_thread.start();
+        this.onState = onState;
+        download_region_thread = new Thread(new DownloadIdle(this)) ;
+        download_region_thread.start();
     }
 
     public DownloadRegion(DownloadRegion downloadRegion) {
-        this.do = on;
+        this.do = onState;
     }
 
     @Override
@@ -127,7 +129,7 @@ public class DownloadRegion implements OnState, Runnable {
     @Override
     public void setState(OnState onState) {
 
-        super_thread = new Thread(onState) ;
+
 
     }
 
@@ -147,5 +149,10 @@ public class DownloadRegion implements OnState, Runnable {
     @Override
     public void turnOff() {
 
+    }
+
+    protected void moveState() {
+        download_thread_running = true;
+        download_region_thread.start();
     }
 }
