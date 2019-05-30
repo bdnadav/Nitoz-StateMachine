@@ -1,8 +1,9 @@
 public class System {
     State currentState;
 
-    public System() {
+    public System(int diskSize) {
         this.currentState = new Off(this);
+
     }
 
     public State getCurrentState() {

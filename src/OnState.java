@@ -14,5 +14,11 @@ public interface OnState extends State {
     void errorFixed();
     void downloadError();
     void fileRequest();
+    void addFile();
+    void download();
+    OnState getState();
+    void setState(OnState onState);
+
+
 
 }

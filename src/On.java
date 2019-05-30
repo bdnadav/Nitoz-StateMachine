@@ -1,11 +1,17 @@
 public class On implements OnState {
+    public static int freeSpace;
+    public static int points;
+    public static int speed;
+    public static int status;
+
     private System system;
 
-    private WatchRegion watchRegion;
-    private DiskRegion diskRegion;
-    private UserRegion userRegion;
-    private NetworkRegion networkRegion;
-    private DownloadRegion downloadRegion;
+    public WatchRegion watchRegion;
+    public DiskRegion diskRegion;
+    public UserRegion userRegion;
+    public NetworkRegion networkRegion;
+    public DownloadRegion downloadRegion;
+    public FilesQueueRegion filesQueueRegion;
 
 
     public On(System system) {
@@ -44,6 +50,8 @@ public class On implements OnState {
 
     @Override
     public void movieOff() {
+        downloadRegion.movieOff();
+        diskRegion.movieOff();
 
     }
 
@@ -114,6 +122,11 @@ public class On implements OnState {
 
     @Override
     public void fileRequest() {
+
+    }
+
+    @Override
+    public void addFile() {
 
     }
 }

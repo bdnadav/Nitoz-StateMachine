@@ -1,9 +1,36 @@
 public class DownloadRegion implements OnState, Runnable {
-    OnState system;
-    DownloadRegion currentState;
 
-    public DownloadRegion(OnState system) {
-        this.system = system;
+    protected static int downSize;
+    protected Thread super_thread;
+    protected static boolean super_thread_exit = false;
+
+    protected DownloadIdle downloadIdleState;
+    protected Downloading downloadingState;
+    protected ErrorFix errorFixState;
+    protected WaitingToConnect waitingToConnectState;
+    protected NoSpace noSpaceState;
+
+
+
+    private On on;
+    protected DownloadRegion currentState;
+
+
+    public DownloadRegion(DownloadRegion regionState, On on) {
+        this.downloadIdleState = new DownloadIdle();
+        this.downloadingState = new Downloading(this);
+        this.errorFixState = new ErrorFix();
+        this.waitingToConnectState = new WaitingToConnect();
+        this.noSpaceState = new NoSpace();
+
+        this.currentState = downloadingState;
+        this.on = on;
+        super_thread = new Thread(new DownloadIdle()) ;
+        super_thread.start();
+    }
+
+    public DownloadRegion(DownloadRegion downloadRegion) {
+        this.do = on;
     }
 
     @Override
@@ -83,7 +110,32 @@ public class DownloadRegion implements OnState, Runnable {
     }
 
     @Override
+    public void addFile() {
+
+    }
+
+    @Override
+    public void download() {
+        currentState.download();
+    }
+
+    @Override
+    public OnState getState() {
+        return null;
+    }
+
+    @Override
+    public void setState(OnState onState) {
+
+        super_thread = new Thread(onState) ;
+
+    }
+
+    @Override
     public void run() {
+        while(){
+            currentState.update();
+        }
 
     }
 
