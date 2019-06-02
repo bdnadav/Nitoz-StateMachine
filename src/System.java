@@ -1,10 +1,18 @@
-public class System {
+public class System implements State {
     State currentState;
 
+    State onState;
+    State offState;
     public System(int diskSize) {
-        this.currentState = new Off(this);
+        onState= new On();
+        offState= new Off();
+        this.currentState = offState;
+
 
     }
+
+
+
 
     public State getCurrentState() {
         return currentState;

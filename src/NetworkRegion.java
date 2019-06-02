@@ -1,9 +1,9 @@
 public class NetworkRegion implements OnState, Runnable {
 
-    public  OnState curNetState;
+    private  OnState curNetState;
 
-    public  OnState Connected;
-    public  OnState offline;
+    private  OnState Connected;
+    private OnState offline;
 
 
     public NetworkRegion(){
