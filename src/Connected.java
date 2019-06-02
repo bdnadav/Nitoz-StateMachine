@@ -6,7 +6,6 @@ public class Connected implements OnState{
         this.networkRegion= networkRegion;
     }
 
-
     @Override
     public void movieOff() {
 
