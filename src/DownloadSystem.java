@@ -1,4 +1,6 @@
-public class DownloadSystem implements State, Runnable {
+import java.util.Scanner;
+
+public class DownloadSystem implements State {
     State currentState;
     State onState;
     State offState;

@@ -13,6 +13,10 @@ public class On implements State {
     public NetworkRegion networkRegion;
     public DownloadRegion downloadRegion;
     public FilesQueueRegion filesQueueRegion;
+    private long lastTimeDownload; //last time download updated
+    private long lastTimeError; //
+    private long lastTimeSpace; //
+
 
 
     public On(DownloadSystem context) {
@@ -57,7 +61,17 @@ public class On implements State {
 
     @Override
     public void turnOn() {
-        //not implement.
+        while(true){
+
+            if ( System.currentTimeMillis() - lastTimeDownload >=1000){
+                downloadRegion.download();
+            }
+
+
+        }
+
+        //handle status change if needed !!!
+
     }
 
 

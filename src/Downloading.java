@@ -1,6 +1,6 @@
 import static java.lang.Thread.sleep;
 
-public class Downloading extends DownloadRegion {
+public class Downloading implements State {
 
     private DownloadRegion downloadRegion;
 
@@ -10,7 +10,7 @@ public class Downloading extends DownloadRegion {
     }
 
     public void update() {
-
+        downloadRegion.download();
     }
 
     public void idle () {
@@ -25,7 +25,72 @@ public class Downloading extends DownloadRegion {
 
     }
 
+    @Override
+    public void fileRequest() {
+
+    }
+
+    @Override
+    public void addFile() {
+
+    }
+
+    @Override
+    public void download() {
+
+    }
+
+    @Override
+    public State getState() {
+        return null;
+    }
+
+    @Override
+    public void restartMovie() {
+
+    }
+
+    @Override
+    public void setCurrentState(State state) {
+
+    }
+
     public void downloadAborted(){
+
+    }
+
+    @Override
+    public void movieOn() {
+
+    }
+
+    @Override
+    public void holdMovie() {
+
+    }
+
+    @Override
+    public void checkSpeed() {
+
+    }
+
+    @Override
+    public void upRank() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void downRank() {
+
+    }
+
+    @Override
+    public void internetOn() {
 
     }
 
@@ -33,9 +98,18 @@ public class Downloading extends DownloadRegion {
 
     }
 
+    @Override
+    public void hold() {
+
+    }
+
+    @Override
+    public void errorFixed() {
+
+    }
 
 
-        public void run () {
+    public void run () {
 //            while (downloadRegion.download_thread_running) {
 //                try {
 //                    sleep(1000);
@@ -45,7 +119,22 @@ public class Downloading extends DownloadRegion {
 //                DownloadRegion.downSize += downloadRegion.State.speed;
 //            }
         }
+
+    @Override
+    public void turnOn() {
+
     }
+
+    @Override
+    public void turnOff() {
+
+    }
+
+    @Override
+    public void movieOff() {
+
+    }
+}
 
 
 

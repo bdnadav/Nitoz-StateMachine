@@ -1,6 +1,8 @@
 public class DownloadRegion implements State, Runnable {
 
     protected static int downSize;
+    protected int status ;
+    private double fileSize = 0 ;
     //protected Thread download_region_thread;
     //protected boolean download_thread_running = true;
 
@@ -110,7 +112,7 @@ public class DownloadRegion implements State, Runnable {
 
     @Override
     public void fileRequest() {
-        curDownloadState.fileRequest();// cur= NoSpace
+        curDownloadState.fileRequest();// cur= noSpace
 
     }
 
@@ -121,13 +123,23 @@ public class DownloadRegion implements State, Runnable {
 
     @Override
     public void download() {
-        curDownloadState.download();
+
     }
 
-    @Override
-    public State getState() {
-        return null;
+    public void addFile(double size) {
+        fileSize = size ;
+
     }
+
+
+    public void download(double size) {
+        downSize+=size ;
+        status = (int)((downSize / fileSize) * 100) ;
+
+        //curDownloadState.download();
+    }
+
+
 
     @Override
     public void restartMovie() {
