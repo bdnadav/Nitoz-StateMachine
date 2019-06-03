@@ -41,13 +41,34 @@ public class Main {
                     sys.internetOn();
                     break;
                 case "4":
-                    sys.turnOff();
+                    sys.internetOff();
                     break;
                 case "5":
-                    sys.turnOff();
+                    sys.fileRequest();
                     break;
                 case "6":
-                    sys.turnOff();
+                    sys.downloadAborted();
+                    break;
+                case "7":
+                    sys.downloadError();
+                    break;
+                case "8":
+                    sys.errorFixed();
+                    break;
+                case "9":
+                    sys.movieOn();
+                    break;
+                case "10":
+                    sys.restartMovie();
+                    break;
+                case "11":
+                    sys.holdMovie();
+                    break;
+                case "12":
+                    sys.movieOn();
+                    break;
+                case "13":
+                    sys.resume();
                     break;
             }
 
