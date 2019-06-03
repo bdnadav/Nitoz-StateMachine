@@ -7,7 +7,7 @@ public interface State {
     void downloadAborted();
     void movieOn();
     void holdMovie();
-    void checkSpeed();
+    double checkSpeed();
     void upRank();
     void resume();
     void downRank();

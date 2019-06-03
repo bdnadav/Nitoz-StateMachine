@@ -27,8 +27,8 @@ public class Offline implements State {
     }
 
     @Override
-    public void checkSpeed() {
-
+    public double checkSpeed() {
+        return 0;
     }
 
     @Override

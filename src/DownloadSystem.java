@@ -45,77 +45,77 @@ public class DownloadSystem implements State {
 
     @Override
     public void movieOn() {
-
+        currentState.movieOn();
     }
 
     @Override
     public void holdMovie() {
-
+        currentState.holdMovie();
     }
 
     @Override
-    public void checkSpeed() {
-
+    public double checkSpeed() {
+        return currentState.checkSpeed();
     }
 
     @Override
     public void upRank() {
-
+        currentState.upRank();
     }
 
     @Override
     public void resume() {
-
+        currentState.resume();
     }
 
     @Override
     public void downRank() {
-
+        currentState.downRank();
     }
 
     @Override
     public void internetOn() {
-
+        currentState.internetOn();
     }
 
     @Override
     public void internetOff() {
-
+        currentState.internetOff();
     }
 
     @Override
     public void finished() {
-
+        currentState.finished();
     }
 
     @Override
     public void hold() {
-
+        currentState.hold();
     }
 
     @Override
     public void errorFixed() {
-
+        currentState.errorFixed();
     }
 
     @Override
     public void downloadError() {
-
+        currentState.downloadError();
     }
 
     @Override
     public void fileRequest(int fileSize) {
-
+        currentState.fileRequest(fileSize);
     }
 
     @Override
     public void addFile() {
-
+        currentState.addFile();
     }
 
     @Override
     public void download() {
-
+        currentState.download();
     }
 
     @Override
@@ -125,7 +125,7 @@ public class DownloadSystem implements State {
 
     @Override
     public void restartMovie() {
-
+        currentState.restartMovie();
     }
 
 

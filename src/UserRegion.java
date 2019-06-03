@@ -1,15 +1,13 @@
-public class UserRegion implements State, Runnable {
+public class UserRegion implements State {
 
+    private On context_on;
 
+    private State beginner;
+    private State progressive;
+    private State pro;
+    private State currentState;
 
-    protected State beginner;
-    protected State progressive;
-    protected State pro;
-
-    protected State currentState;
-
-    On context_on;
-
+    public int points;
 
     public UserRegion(On on) {
         context_on = on;
@@ -19,8 +17,33 @@ public class UserRegion implements State, Runnable {
         this.currentState = beginner;
     }
 
-    public UserRegion() {
 
+    @Override
+    public void upRank() {
+        currentState.upRank();
+    }
+
+
+    @Override
+    public void downRank() {
+        currentState.downRank();
+    }
+
+    @Override
+    public double checkSpeed() {
+        return currentState.checkSpeed();
+    }
+
+    public On getContext_on() {
+        return context_on;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 
     @Override
@@ -39,24 +62,11 @@ public class UserRegion implements State, Runnable {
     }
 
     @Override
-    public void checkSpeed() {
-
-    }
-
-    @Override
-    public void upRank() {
-
-    }
-
-    @Override
     public void resume() {
 
     }
 
-    @Override
-    public void downRank() {
 
-    }
 
     @Override
     public void internetOn() {
@@ -110,7 +120,7 @@ public class UserRegion implements State, Runnable {
 
     @Override
     public State getState() {
-        return null;
+        return currentState;
     }
 
     @Override
@@ -119,22 +129,46 @@ public class UserRegion implements State, Runnable {
     }
 
     @Override
-    public void setCurrentState(State State) {
-
+    public void setCurrentState(State state) {
+        this.currentState= state;
     }
 
-    @Override
-    public void run() {
-
-    }
 
     @Override
     public void turnOn() {
-
+        // no implementation
     }
 
     @Override
     public void turnOff() {
+        context_on.turnOff();
+    }
 
+    public State getBeginner() {
+        return beginner;
+    }
+
+    public void setBeginner(State beginner) {
+        this.beginner = beginner;
+    }
+
+    public State getProgressive() {
+        return progressive;
+    }
+
+    public void setProgressive(State progressive) {
+        this.progressive = progressive;
+    }
+
+    public State getPro() {
+        return pro;
+    }
+
+    public void setPro(State pro) {
+        this.pro = pro;
+    }
+
+    public State getCurrentState() {
+        return currentState;
     }
 }

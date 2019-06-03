@@ -1,7 +1,6 @@
 public class On implements State {
     public int freeSpace;
-    public int points;
-    public int speed;
+
     public int status;
 
 
@@ -26,21 +25,9 @@ public class On implements State {
         userRegion = new UserRegion(this);
         networkRegion = new NetworkRegion(this);
         downloadRegion = new DownloadRegion(this);
-        startRegions();
+
     }
 
-    private void startRegions() {
-        Thread watchThread = new Thread(watchRegion);
-        Thread diskThread = new Thread(diskRegion);
-        Thread userThread = new Thread(userRegion);
-        Thread networkThread = new Thread(networkRegion);
-        Thread downloadThread = new Thread(downloadRegion);
-        watchThread.start();
-        diskThread.start();
-        userThread.start();
-        networkThread.start();
-        downloadThread.start();
-    }
 
     public State getDownloadRegiState(){
         return downloadRegion.getState();
@@ -94,6 +81,14 @@ public class On implements State {
     @Override
     public void movieOn() {
         watchRegion.movieOn();
+
+//        while(){
+//            watchRegion.movieOn();
+//
+//
+//
+//
+//        }
     }
 
     @Override
@@ -102,8 +97,8 @@ public class On implements State {
     }
 
     @Override
-    public void checkSpeed() {
-
+    public double checkSpeed() {
+        return userRegion.checkSpeed();
     }
 
     @Override

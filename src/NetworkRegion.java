@@ -120,12 +120,12 @@ public class NetworkRegion implements State {
 
     @Override
     public void turnOn() {
-
+        //no implementation
     }
 
     @Override
     public void turnOff() {
-
+        context_on.turnOff();
     }
 
     public State getCurrentState() {
