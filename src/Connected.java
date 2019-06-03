@@ -53,7 +53,7 @@ public class Connected implements OnState{
 
     @Override
     public void internetOff() {
-        networkRegion.setCurNetState(networkRegion.getOffline());
+        networkRegion.setCurrentState(networkRegion.getOffline());
 
     }
 
@@ -98,7 +98,7 @@ public class Connected implements OnState{
     }
 
     @Override
-    public void setState(OnState onState) {
+    public void setCurrentState(OnState onState) {
 
     }
 

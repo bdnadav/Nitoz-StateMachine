@@ -11,16 +11,17 @@ public class DownloadRegion implements OnState, Runnable {
     protected OnState errorFix;
     protected OnState waitingToConnect;
     protected OnState noSpace;
-    protected On onState;
+    protected On context_on;
 
 
-    public DownloadRegion() {
+    public DownloadRegion(On on) {
         waitingToConnect= new WaitingToConnect(this);
         downloading= new Downloading(this);
         downloadIdle= new DownloadIdle(this);
         errorFix= new ErrorFix();
         noSpace= new noSpace();
-        curDownloadState= waitingToConnect;
+        context_on = on;
+        curDownloadState = waitingToConnect;
     }
 
     @Override
@@ -121,7 +122,7 @@ public class DownloadRegion implements OnState, Runnable {
     }
 
     @Override
-    public void setState(OnState onState) {
+    public void setCurrentState(OnState onState) {
 
 
 
@@ -204,11 +205,11 @@ public class DownloadRegion implements OnState, Runnable {
     }
 
     public On getOnState() {
-        return onState;
+        return context_on;
     }
 
     public void setOnState(On onState) {
-        this.onState = onState;
+        this.context_on = onState;
     }
 
 

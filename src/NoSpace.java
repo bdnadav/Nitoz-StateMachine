@@ -102,7 +102,7 @@ class noSpace implements OnState{
     }
 
     @Override
-    public void setState(OnState onState) {
+    public void setCurrentState(OnState onState) {
 
     }
 

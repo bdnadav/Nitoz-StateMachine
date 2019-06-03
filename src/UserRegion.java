@@ -6,18 +6,17 @@ public class UserRegion implements OnState, Runnable {
     protected OnState progressive;
     protected OnState pro;
 
-    protected OnState onState;
-    protected UserRegion currentState;
+    protected OnState currentState;
 
-    public UserRegion(On onState, UserRegion currentState) {
-        this.onState = onState;
-        this.currentState = currentState;
+    On context_on;
+
+
+    public UserRegion(On on) {
+        context_on = on;
         beginner = new Beginner(this);
         progressive = new Progressive(this);
         pro = new Pro(this);
-    }
-
-    public UserRegion() {
+        this.currentState = beginner;
     }
 
     @Override
@@ -111,7 +110,7 @@ public class UserRegion implements OnState, Runnable {
     }
 
     @Override
-    public void setState(OnState onState) {
+    public void setCurrentState(OnState onState) {
 
     }
 

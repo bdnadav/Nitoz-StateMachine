@@ -48,7 +48,7 @@ public class Offline implements OnState {
 
     @Override
     public void internetOn() {
-        networkRegion.setCurNetState(networkRegion.getConnected());
+        networkRegion.setCurrentState(networkRegion.getConnected());
     }
 
     @Override

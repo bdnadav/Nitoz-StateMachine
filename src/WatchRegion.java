@@ -1,8 +1,42 @@
 public class WatchRegion implements OnState, Runnable {
-    WatchRegion currentState;
+    private OnState currentState;
+    private OnState idle_state;
+    private OnState watch_state;
+    private OnState pause_state;
 
-    public WatchRegion() {
-        this.currentState = new WatchIdle();
+    On context_on;
+    int time;
+
+    public OnState getCurrentState() {
+        return currentState;
+    }
+
+    public OnState getIdle_state() {
+        return idle_state;
+    }
+
+    public OnState getWatch_state() {
+        return watch_state;
+    }
+
+    public OnState getPause_state() {
+        return pause_state;
+    }
+
+    public On getContext_on() {
+        return context_on;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public WatchRegion(On on) {
+        context_on = on;
+        idle_state = new WatchIdle(this);
+        watch_state= new Watch(this);
+        pause_state= new Pause(this);
+        this.currentState = idle_state;
     }
 
 
@@ -18,7 +52,7 @@ public class WatchRegion implements OnState, Runnable {
 
     @Override
     public void movieOn() {
-
+        currentState.movieOn();
     }
 
 
@@ -84,6 +118,26 @@ public class WatchRegion implements OnState, Runnable {
     }
 
     @Override
+    public void addFile() {
+
+    }
+
+    @Override
+    public void download() {
+
+    }
+
+    @Override
+    public OnState getState() {
+        return null;
+    }
+
+    @Override
+    public void setCurrentState(OnState onState) {
+
+    }
+
+    @Override
     public void run() {
 
     }
@@ -96,5 +150,9 @@ public class WatchRegion implements OnState, Runnable {
     @Override
     public void turnOff() {
 
+    }
+
+    public OnState getWatchState() {
+        return watch_state;
     }
 }

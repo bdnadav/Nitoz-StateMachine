@@ -5,7 +5,7 @@ public class On implements OnState {
     public int status;
 
 
-    private System system;
+    private System context;
 
     public WatchRegion watchRegion;
     public DiskRegion diskRegion;
@@ -15,13 +15,13 @@ public class On implements OnState {
     public FilesQueueRegion filesQueueRegion;
 
 
-    public On(System system) {
-        this.system = system;
-        watchRegion = new WatchRegion();
+    public On(System context) {
+        this.context = context;
+        watchRegion = new WatchRegion(this);
         diskRegion = new DiskRegion(100);
-        userRegion = new UserRegion();
-        networkRegion = new NetworkRegion();
-        downloadRegion = new DownloadRegion();
+        userRegion = new UserRegion(this);
+        networkRegion = new NetworkRegion(this);
+        downloadRegion = new DownloadRegion(this);
         startRegions();
     }
 
@@ -57,23 +57,19 @@ public class On implements OnState {
 
     @Override
     public void turnOn() {
-        watchRegion.turnOn();
-        diskRegion.turnOn();
-        userRegion.turnOn();
-        networkRegion.turnOn();
-        downloadRegion.turnOn();
+        //not implement.
     }
+
 
     @Override
     public void turnOff() {
-
+        context.setCurrentState(context.getOffState());
     }
 
     @Override
     public void movieOff() {
         downloadRegion.movieOff();
         diskRegion.movieOff();
-
     }
 
     @Override
@@ -83,6 +79,15 @@ public class On implements OnState {
 
     @Override
     public void movieOn() {
+        watchRegion.movieOn();
+
+        while(){
+            watchRegion.movieOn();
+
+
+
+
+        }
 
     }
 
@@ -126,7 +131,6 @@ public class On implements OnState {
         userRegion.internetOff();
         networkRegion.internetOff();
         downloadRegion.internetOff();
-
     }
 
     @Override
@@ -170,7 +174,7 @@ public class On implements OnState {
     }
 
     @Override
-    public void setState(OnState onState) {
+    public void setCurrentState(OnState onState) {
 
     }
 }

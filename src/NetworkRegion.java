@@ -1,16 +1,16 @@
 public class NetworkRegion implements OnState, Runnable {
 
-    private  OnState curNetState;
+    private On context_on;
+    private  OnState currentState;
 
     private  OnState Connected;
     private OnState offline;
 
-
-    public NetworkRegion(){
+    public NetworkRegion(On on) {
+        context_on = on;
         Connected= new Connected(this);
         offline= new Offline(this);
-
-        curNetState= offline;
+        currentState = offline;
     }
 
     @Override
@@ -55,12 +55,12 @@ public class NetworkRegion implements OnState, Runnable {
 
     @Override
     public void internetOn() {
-        curNetState.internetOn();
+        currentState.internetOn();
     }
 
     @Override
     public void internetOff() {
-        curNetState.internetOff();
+        currentState.internetOff();
     }
 
     @Override
@@ -89,6 +89,26 @@ public class NetworkRegion implements OnState, Runnable {
     }
 
     @Override
+    public void addFile() {
+
+    }
+
+    @Override
+    public void download() {
+
+    }
+
+    @Override
+    public OnState getState() {
+        return null;
+    }
+
+    @Override
+    public void setCurrentState(OnState onState) {
+
+    }
+
+    @Override
     public void run() {
 
     }
@@ -103,12 +123,12 @@ public class NetworkRegion implements OnState, Runnable {
 
     }
 
-    public OnState getCurNetState() {
-        return curNetState;
+    public OnState getCurrentState() {
+        return currentState;
     }
 
-    public void setCurNetState(OnState curNetState) {
-        this.curNetState = curNetState;
+    public void setCurrentState(OnState currentState) {
+        this.currentState = currentState;
     }
 
     public OnState getConnected() {

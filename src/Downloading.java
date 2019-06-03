@@ -36,14 +36,14 @@ public class Downloading extends DownloadRegion {
 
 
         public void run () {
-            while (downloadRegion.download_thread_running) {
-                try {
-                    sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                DownloadRegion.downSize += downloadRegion.onState.speed;
-            }
+//            while (downloadRegion.download_thread_running) {
+//                try {
+//                    sleep(1000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                DownloadRegion.downSize += downloadRegion.onState.speed;
+//            }
         }
     }
 

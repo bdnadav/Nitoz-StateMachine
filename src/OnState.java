@@ -17,7 +17,8 @@ public interface OnState extends State {
     void addFile();
     void download();
     OnState getState();
-    void setState(OnState onState);
+    void restartMovie();
+    void setCurrentState(OnState onState);
 
 
 
