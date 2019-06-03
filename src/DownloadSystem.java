@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 public class DownloadSystem implements State {
     State currentState;
@@ -22,11 +21,6 @@ public class DownloadSystem implements State {
 
     public State getOffState() {
         return offState;
-    }
-
-    @Override
-    public void run() {
-        turnOn();
     }
 
     @Override
@@ -110,7 +104,7 @@ public class DownloadSystem implements State {
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(int fileSize) {
 
     }
 

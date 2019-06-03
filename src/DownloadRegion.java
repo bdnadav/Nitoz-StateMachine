@@ -1,10 +1,8 @@
-public class DownloadRegion implements State, Runnable {
+public class DownloadRegion implements State {
 
     protected static int downSize;
     protected int status ;
-    private double fileSize = 0 ;
-    //protected Thread download_region_thread;
-    //protected boolean download_thread_running = true;
+    private int fileSize = 0 ;
 
 
     protected State curDownloadState;
@@ -16,22 +14,15 @@ public class DownloadRegion implements State, Runnable {
     protected On context_on;
     protected On State;
     protected boolean download_thread_running;
-    protected Thread download_region_thread;
-    protected Runnable downloadingState;
-
 
     public DownloadRegion(On on) {
         waitingToConnect= new WaitingToConnect(this);
         downloading= new Downloading(this);
         downloadIdle= new DownloadIdle(this);
-        errorFix= new ErrorFix();
+        errorFix= new ErrorFix(this);
         noSpace= new NoSpace();
         context_on = on;
         curDownloadState = waitingToConnect;
-    }
-
-    public DownloadRegion() {
-
     }
 
     @Override
@@ -111,8 +102,7 @@ public class DownloadRegion implements State, Runnable {
     }
 
     @Override
-    public void fileRequest() {
-        curDownloadState.fileRequest();// cur= noSpace
+    public void fileRequest(int fileSize) {
 
     }
 
@@ -126,7 +116,7 @@ public class DownloadRegion implements State, Runnable {
 
     }
 
-    public void addFile(double size) {
+    public void addFile(int size) {
         fileSize = size ;
 
     }
@@ -148,13 +138,6 @@ public class DownloadRegion implements State, Runnable {
 
     @Override
     public void setCurrentState(State State) {
-
-
-
-    }
-
-    @Override
-    public void run() {
 
     }
 
@@ -239,5 +222,9 @@ public class DownloadRegion implements State, Runnable {
 
 
     protected void moveState() {
+    }
+
+    public int getFileSize() {
+        return fileSize;
     }
 }

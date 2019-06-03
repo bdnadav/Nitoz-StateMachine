@@ -94,15 +94,6 @@ public class On implements State {
     @Override
     public void movieOn() {
         watchRegion.movieOn();
-
-//        while(){
-//            watchRegion.movieOn();
-//
-//
-//
-//
-//        }
-
     }
 
     @Override

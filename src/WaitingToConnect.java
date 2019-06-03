@@ -7,6 +7,11 @@ public class WaitingToConnect implements State  {
     }
 
     @Override
+    public void internetOn() {
+        downloadRegion.setCurDownloadState(downloadRegion.getDownloading());
+    }
+
+    @Override
     public void movieOff() {
 
     }
@@ -46,10 +51,7 @@ public class WaitingToConnect implements State  {
 
     }
 
-    @Override
-    public void internetOn() {
-        downloadRegion.setCurDownloadState(downloadRegion.getDownloading());
-    }
+
 
     @Override
     public void internetOff() {
@@ -77,7 +79,7 @@ public class WaitingToConnect implements State  {
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(int fileSize) {
 
     }
 

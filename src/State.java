@@ -17,7 +17,7 @@ public interface State {
     void hold();
     void errorFixed();
     void downloadError();
-    void fileRequest();
+    void fileRequest(int fileSize);
     void addFile();
     void download();
     State getState();

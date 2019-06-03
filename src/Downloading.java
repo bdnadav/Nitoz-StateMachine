@@ -1,4 +1,3 @@
-import static java.lang.Thread.sleep;
 
 public class Downloading implements State {
 
@@ -9,6 +8,26 @@ public class Downloading implements State {
         this.downloadRegion = downloadRegion;
     }
 
+    public void downloadAborted(){
+        downloadRegion.context_on.points -= 1;
+        downloadRegion.context_on.freeSpace += downloadRegion.getFileSize();
+        downloadRegion.setCurDownloadState(downloadRegion.getDownloadIdle());
+    }
+
+    public void finished(){
+
+    }
+
+    public void downloadError(){
+        downloadRegion.setCurDownloadState(downloadRegion.getErrorFix());
+    }
+
+    public void internetOff(){
+        downloadRegion.setCurDownloadState(downloadRegion.getWaitingToConnect());
+    }
+
+
+
     public void update() {
         downloadRegion.download();
     }
@@ -17,16 +36,11 @@ public class Downloading implements State {
 
     }
 
-    public void internetOff(){
 
-    }
 
-    public void downloadError(){
-
-    }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(int fileSize) {
 
     }
 
@@ -55,9 +69,6 @@ public class Downloading implements State {
 
     }
 
-    public void downloadAborted(){
-
-    }
 
     @Override
     public void movieOn() {
@@ -94,9 +105,7 @@ public class Downloading implements State {
 
     }
 
-    public void finished(){
 
-    }
 
     @Override
     public void hold() {
