@@ -62,7 +62,7 @@ public class WatchRegion implements State, Runnable {
     }
 
     @Override
-    public void checkSpeed() {
+    public double checkSpeed() {return 0.0;
 
     }
 
@@ -113,7 +113,7 @@ public class WatchRegion implements State, Runnable {
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(int fileSize) {
 
     }
 

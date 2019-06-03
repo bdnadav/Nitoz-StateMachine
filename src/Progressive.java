@@ -101,7 +101,7 @@ public class Progressive implements State{
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(int fileSize) {
 
     }
 

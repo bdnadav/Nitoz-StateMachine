@@ -24,7 +24,7 @@ public class FilesQueueRegion implements State, Runnable {
     }
 
     @Override
-    public void checkSpeed() {
+    public double checkSpeed() {return 0.0;
 
     }
 
@@ -74,7 +74,7 @@ public class FilesQueueRegion implements State, Runnable {
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(int fileSize) {
 
     }
 

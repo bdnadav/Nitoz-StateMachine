@@ -25,7 +25,7 @@ public class Pause implements State {
     }
 
     @Override
-    public void checkSpeed() {
+    public double checkSpeed() {return 0.0;
 
     }
 
@@ -75,7 +75,7 @@ public class Pause implements State {
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(int fileSize) {
 
     }
 

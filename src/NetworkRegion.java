@@ -2,12 +2,14 @@ public class NetworkRegion implements State {
 
     protected NetworkRegion networkRegion;
     private State currentState;
+    private On context_on;
+
 
     private State Connected;
     private State offline;
 
-    public NetworkRegion(NetworkRegion networkRegion) {
-        this.networkRegion = networkRegion;
+    public NetworkRegion(On on) {
+        this.context_on = on;
         Connected = new Connected(this);
         offline = new Offline(this);
         currentState = offline;
@@ -45,8 +47,8 @@ public class NetworkRegion implements State {
     }
 
     @Override
-    public void checkSpeed() {
-
+    public double checkSpeed() {
+        return 0.0;
     }
 
     @Override
@@ -110,14 +112,6 @@ public class NetworkRegion implements State {
 
     }
 
-
-
-
-    @Override
-    public void run() {
-
-    }
-
     @Override
     public void turnOn() {
         //no implementation
@@ -125,7 +119,7 @@ public class NetworkRegion implements State {
 
     @Override
     public void turnOff() {
-        context_on.turnOff();
+        networkRegion.turnOff();
     }
 
     public State getCurrentState() {

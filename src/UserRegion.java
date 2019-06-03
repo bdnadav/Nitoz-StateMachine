@@ -104,7 +104,7 @@ public class UserRegion implements State {
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(int fileSize) {
 
     }
 

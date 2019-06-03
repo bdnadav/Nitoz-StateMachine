@@ -56,7 +56,7 @@ public class DownloadIdle implements State {
     }
 
     @Override
-    public void checkSpeed() {
+    public double checkSpeed() {return 0.0;
 
     }
 

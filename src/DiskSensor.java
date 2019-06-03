@@ -26,7 +26,7 @@ public class DiskSensor extends DiskRegion {
     }
 
     @Override
-    public void checkSpeed() {
+    public double checkSpeed() {
         super.checkSpeed();
     }
 
@@ -76,8 +76,8 @@ public class DiskSensor extends DiskRegion {
     }
 
     @Override
-    public void fileRequest() {
-        super.fileRequest();
+    public void fileRequest(int fileSize) {
+        super.fileRequest(int fileSize);
     }
 
     @Override

@@ -32,7 +32,7 @@ public class WaitingToConnect implements State  {
     }
 
     @Override
-    public void checkSpeed() {
+    public double checkSpeed() {return 0.0;
 
     }
 

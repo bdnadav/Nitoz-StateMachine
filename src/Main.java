@@ -44,7 +44,7 @@ public class Main {
                     sys.internetOff();
                     break;
                 case "5":
-                    sys.fileRequest();
+                    sys.fileRequest(int fileSize);
                     break;
                 case "6":
                     sys.downloadAborted();
