@@ -133,6 +133,11 @@ public class WatchRegion implements OnState, Runnable {
     }
 
     @Override
+    public void restartMovie() {
+
+    }
+
+    @Override
     public void setCurrentState(OnState onState) {
 
     }

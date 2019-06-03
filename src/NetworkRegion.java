@@ -104,9 +104,12 @@ public class NetworkRegion implements OnState, Runnable {
     }
 
     @Override
-    public void setCurrentState(OnState onState) {
+    public void restartMovie() {
 
     }
+
+
+
 
     @Override
     public void run() {

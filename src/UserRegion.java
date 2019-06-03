@@ -19,6 +19,10 @@ public class UserRegion implements OnState, Runnable {
         this.currentState = beginner;
     }
 
+    public UserRegion() {
+
+    }
+
     @Override
     public void movieOff() {
 
@@ -107,6 +111,11 @@ public class UserRegion implements OnState, Runnable {
     @Override
     public OnState getState() {
         return null;
+    }
+
+    @Override
+    public void restartMovie() {
+
     }
 
     @Override

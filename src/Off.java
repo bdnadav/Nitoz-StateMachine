@@ -1,8 +1,8 @@
 public class Off implements State {
 
-    System context;
+    DownloadSystem context;
 
-    public Off(System system) {
+    public Off(DownloadSystem system) {
         this.context = system;
     }
 

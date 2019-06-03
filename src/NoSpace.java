@@ -102,6 +102,11 @@ class noSpace implements OnState{
     }
 
     @Override
+    public void restartMovie() {
+
+    }
+
+    @Override
     public void setCurrentState(OnState onState) {
 
     }

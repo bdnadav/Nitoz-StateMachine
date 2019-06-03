@@ -12,6 +12,10 @@ public class DownloadRegion implements OnState, Runnable {
     protected OnState waitingToConnect;
     protected OnState noSpace;
     protected On context_on;
+    protected On onState;
+    protected boolean download_thread_running;
+    protected Thread download_region_thread;
+    protected Runnable downloadingState;
 
 
     public DownloadRegion(On on) {
@@ -22,6 +26,10 @@ public class DownloadRegion implements OnState, Runnable {
         noSpace= new noSpace();
         context_on = on;
         curDownloadState = waitingToConnect;
+    }
+
+    public DownloadRegion() {
+
     }
 
     @Override
@@ -122,6 +130,11 @@ public class DownloadRegion implements OnState, Runnable {
     }
 
     @Override
+    public void restartMovie() {
+
+    }
+
+    @Override
     public void setCurrentState(OnState onState) {
 
 
@@ -213,4 +226,6 @@ public class DownloadRegion implements OnState, Runnable {
     }
 
 
+    protected void moveState() {
+    }
 }

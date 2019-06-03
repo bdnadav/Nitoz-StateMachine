@@ -5,7 +5,7 @@ public class On implements OnState {
     public int status;
 
 
-    private System context;
+    private DownloadSystem context;
 
     public WatchRegion watchRegion;
     public DiskRegion diskRegion;
@@ -15,7 +15,7 @@ public class On implements OnState {
     public FilesQueueRegion filesQueueRegion;
 
 
-    public On(System context) {
+    public On(DownloadSystem context) {
         this.context = context;
         watchRegion = new WatchRegion(this);
         diskRegion = new DiskRegion(100);
@@ -81,13 +81,13 @@ public class On implements OnState {
     public void movieOn() {
         watchRegion.movieOn();
 
-        while(){
-            watchRegion.movieOn();
-
-
-
-
-        }
+//        while(){
+//            watchRegion.movieOn();
+//
+//
+//
+//
+//        }
 
     }
 
@@ -171,6 +171,11 @@ public class On implements OnState {
     @Override
     public OnState getState() {
         return null;
+    }
+
+    @Override
+    public void restartMovie() {
+
     }
 
     @Override

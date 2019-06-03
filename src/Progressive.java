@@ -4,11 +4,12 @@ public class Progressive extends UserRegion {
 
     public Progressive(UserRegion userRegion) {
         super();
+        //super();
         this.userRegion = userRegion;
     }
 
     public void upRank(){
 
     }
-    }
 }
+

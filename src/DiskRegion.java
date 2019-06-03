@@ -81,6 +81,31 @@ public class DiskRegion implements OnState, Runnable {
     }
 
     @Override
+    public void addFile() {
+
+    }
+
+    @Override
+    public void download() {
+
+    }
+
+    @Override
+    public OnState getState() {
+        return null;
+    }
+
+    @Override
+    public void restartMovie() {
+
+    }
+
+    @Override
+    public void setCurrentState(OnState onState) {
+
+    }
+
+    @Override
     public void run() {
 
     }
