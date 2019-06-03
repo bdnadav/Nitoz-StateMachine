@@ -118,12 +118,12 @@ public class NetworkRegion implements State, Runnable {
 
     @Override
     public void turnOn() {
-
+        //no implementation
     }
 
     @Override
     public void turnOff() {
-
+        context_on.turnOff();
     }
 
     public State getCurrentState() {

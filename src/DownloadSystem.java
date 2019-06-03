@@ -60,8 +60,8 @@ public class DownloadSystem implements State, Runnable {
     }
 
     @Override
-    public void checkSpeed() {
-        currentState.checkSpeed();
+    public double checkSpeed() {
+        return currentState.checkSpeed();
     }
 
     @Override
