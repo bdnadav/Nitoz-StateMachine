@@ -1,18 +1,18 @@
-public class DownloadRegion implements OnState, Runnable {
+public class DownloadRegion implements State, Runnable {
 
     protected static int downSize;
     //protected Thread download_region_thread;
     //protected boolean download_thread_running = true;
 
 
-    protected OnState curDownloadState;
-    protected OnState downloadIdle;
-    protected OnState downloading;
-    protected OnState errorFix;
-    protected OnState waitingToConnect;
-    protected OnState noSpace;
+    protected State curDownloadState;
+    protected State downloadIdle;
+    protected State downloading;
+    protected State errorFix;
+    protected State waitingToConnect;
+    protected State noSpace;
     protected On context_on;
-    protected On onState;
+    protected On State;
     protected boolean download_thread_running;
     protected Thread download_region_thread;
     protected Runnable downloadingState;
@@ -23,7 +23,7 @@ public class DownloadRegion implements OnState, Runnable {
         downloading= new Downloading(this);
         downloadIdle= new DownloadIdle(this);
         errorFix= new ErrorFix();
-        noSpace= new noSpace();
+        noSpace= new NoSpace();
         context_on = on;
         curDownloadState = waitingToConnect;
     }
@@ -110,7 +110,7 @@ public class DownloadRegion implements OnState, Runnable {
 
     @Override
     public void fileRequest() {
-        curDownloadState.fileRequest();// cur= noSpace
+        curDownloadState.fileRequest();// cur= NoSpace
 
     }
 
@@ -125,7 +125,7 @@ public class DownloadRegion implements OnState, Runnable {
     }
 
     @Override
-    public OnState getState() {
+    public State getState() {
         return null;
     }
 
@@ -135,7 +135,7 @@ public class DownloadRegion implements OnState, Runnable {
     }
 
     @Override
-    public void setCurrentState(OnState onState) {
+    public void setCurrentState(State State) {
 
 
 
@@ -161,11 +161,11 @@ public class DownloadRegion implements OnState, Runnable {
         download_region_thread.start();
     }*/
 
-    public OnState getCurDownloadState() {
+    public State getCurDownloadState() {
         return curDownloadState;
     }
 
-    public void setCurDownloadState(OnState curDownloadState) {
+    public void setCurDownloadState(State curDownloadState) {
         this.curDownloadState = curDownloadState;
     }
 
@@ -177,52 +177,52 @@ public class DownloadRegion implements OnState, Runnable {
         DownloadRegion.downSize = downSize;
     }
 
-    public OnState getDownloadIdle() {
+    public State getDownloadIdle() {
         return downloadIdle;
     }
 
-    public void setDownloadIdle(OnState downloadIdle) {
+    public void setDownloadIdle(State downloadIdle) {
         this.downloadIdle = downloadIdle;
     }
 
-    public OnState getDownloading() {
+    public State getDownloading() {
         return downloading;
     }
 
-    public void setDownloading(OnState downloading) {
+    public void setDownloading(State downloading) {
         this.downloading = downloading;
     }
 
-    public OnState getErrorFix() {
+    public State getErrorFix() {
         return errorFix;
     }
 
-    public void setErrorFix(OnState errorFix) {
+    public void setErrorFix(State errorFix) {
         this.errorFix = errorFix;
     }
 
-    public OnState getWaitingToConnect() {
+    public State getWaitingToConnect() {
         return waitingToConnect;
     }
 
-    public void setWaitingToConnect(OnState waitingToConnect) {
+    public void setWaitingToConnect(State waitingToConnect) {
         this.waitingToConnect = waitingToConnect;
     }
 
-    public OnState getNoSpace() {
+    public State getNoSpace() {
         return noSpace;
     }
 
-    public void setNoSpace(OnState noSpace) {
+    public void setNoSpace(State noSpace) {
         this.noSpace = noSpace;
     }
 
-    public On getOnState() {
+    public On getState() {
         return context_on;
     }
 
-    public void setOnState(On onState) {
-        this.context_on = onState;
+    public void setState(On State) {
+        this.context_on = State;
     }
 
 

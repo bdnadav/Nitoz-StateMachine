@@ -1,6 +1,6 @@
 import static java.lang.Thread.sleep;
 
-class noSpace implements OnState{
+class NoSpace implements State{
 
     DownloadRegion downloadRegion;
 
@@ -10,10 +10,10 @@ class noSpace implements OnState{
 
     }
 
-  //  public void do() {
-       // sleep(4000);
+    //  public void do() {
+    // sleep(4000);
     //    downloadRegion.setCurDownloadState(downloadRegion.getDownloadIdle());
-   // }
+    // }
 
 
     @Override
@@ -97,7 +97,7 @@ class noSpace implements OnState{
     }
 
     @Override
-    public OnState getState() {
+    public State getState() {
         return null;
     }
 
@@ -107,7 +107,7 @@ class noSpace implements OnState{
     }
 
     @Override
-    public void setCurrentState(OnState onState) {
+    public void setCurrentState(State State) {
 
     }
 

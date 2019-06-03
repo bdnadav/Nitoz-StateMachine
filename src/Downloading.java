@@ -42,7 +42,7 @@ public class Downloading extends DownloadRegion {
 //                } catch (InterruptedException e) {
 //                    e.printStackTrace();
 //                }
-//                DownloadRegion.downSize += downloadRegion.onState.speed;
+//                DownloadRegion.downSize += downloadRegion.State.speed;
 //            }
         }
     }

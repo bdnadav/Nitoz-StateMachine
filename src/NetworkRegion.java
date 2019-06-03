@@ -1,10 +1,10 @@
-public class NetworkRegion implements OnState, Runnable {
+public class NetworkRegion implements State, Runnable {
 
     private On context_on;
-    private  OnState currentState;
+    private  State currentState;
 
-    private  OnState Connected;
-    private OnState offline;
+    private  State Connected;
+    private State offline;
 
     public NetworkRegion(On on) {
         context_on = on;
@@ -99,7 +99,7 @@ public class NetworkRegion implements OnState, Runnable {
     }
 
     @Override
-    public OnState getState() {
+    public State getState() {
         return null;
     }
 
@@ -126,27 +126,27 @@ public class NetworkRegion implements OnState, Runnable {
 
     }
 
-    public OnState getCurrentState() {
+    public State getCurrentState() {
         return currentState;
     }
 
-    public void setCurrentState(OnState currentState) {
+    public void setCurrentState(State currentState) {
         this.currentState = currentState;
     }
 
-    public OnState getConnected() {
+    public State getConnected() {
         return Connected;
     }
 
-    public void setConnected(OnState connected) {
+    public void setConnected(State connected) {
         Connected = connected;
     }
 
-    public OnState getOffline() {
+    public State getOffline() {
         return offline;
     }
 
-    public void setOffline(OnState offline) {
+    public void setOffline(State offline) {
         this.offline = offline;
     }
 

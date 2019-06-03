@@ -1,4 +1,4 @@
-public class Offline implements OnState {
+public class Offline implements State {
 
     NetworkRegion networkRegion;
 
@@ -92,7 +92,7 @@ public class Offline implements OnState {
     }
 
     @Override
-    public OnState getState() {
+    public State getState() {
         return null;
     }
 
@@ -102,7 +102,7 @@ public class Offline implements OnState {
     }
 
     @Override
-    public void setCurrentState(OnState onState) {
+    public void setCurrentState(State State) {
 
     }
 

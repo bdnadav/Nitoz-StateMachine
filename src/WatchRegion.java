@@ -1,25 +1,25 @@
-public class WatchRegion implements OnState, Runnable {
-    private OnState currentState;
-    private OnState idle_state;
-    private OnState watch_state;
-    private OnState pause_state;
+public class WatchRegion implements State, Runnable {
+    private State currentState;
+    private State idle_state;
+    private State watch_state;
+    private State pause_state;
 
     On context_on;
     int time;
 
-    public OnState getCurrentState() {
+    public State getCurrentState() {
         return currentState;
     }
 
-    public OnState getIdle_state() {
+    public State getIdle_state() {
         return idle_state;
     }
 
-    public OnState getWatch_state() {
+    public State getWatch_state() {
         return watch_state;
     }
 
-    public OnState getPause_state() {
+    public State getPause_state() {
         return pause_state;
     }
 
@@ -128,7 +128,7 @@ public class WatchRegion implements OnState, Runnable {
     }
 
     @Override
-    public OnState getState() {
+    public State getState() {
         return null;
     }
 
@@ -138,7 +138,7 @@ public class WatchRegion implements OnState, Runnable {
     }
 
     @Override
-    public void setCurrentState(OnState onState) {
+    public void setCurrentState(State State) {
 
     }
 
@@ -157,7 +157,7 @@ public class WatchRegion implements OnState, Runnable {
 
     }
 
-    public OnState getWatchState() {
+    public State getWatchState() {
         return watch_state;
     }
 }

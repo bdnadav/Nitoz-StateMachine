@@ -1,12 +1,12 @@
-public class UserRegion implements OnState, Runnable {
+public class UserRegion implements State, Runnable {
 
 
 
-    protected OnState beginner;
-    protected OnState progressive;
-    protected OnState pro;
+    protected State beginner;
+    protected State progressive;
+    protected State pro;
 
-    protected OnState currentState;
+    protected State currentState;
 
     On context_on;
 
@@ -109,7 +109,7 @@ public class UserRegion implements OnState, Runnable {
     }
 
     @Override
-    public OnState getState() {
+    public State getState() {
         return null;
     }
 
@@ -119,7 +119,7 @@ public class UserRegion implements OnState, Runnable {
     }
 
     @Override
-    public void setCurrentState(OnState onState) {
+    public void setCurrentState(State State) {
 
     }
 

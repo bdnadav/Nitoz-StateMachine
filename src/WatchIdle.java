@@ -1,4 +1,4 @@
-public class WatchIdle implements OnState{
+public class WatchIdle implements State{
     WatchRegion context_watch_region;
 
     public WatchIdle(WatchRegion watchRegion) {
@@ -97,7 +97,7 @@ public class WatchIdle implements OnState{
     }
 
     @Override
-    public OnState getState() {
+    public State getState() {
         return null;
     }
 
@@ -107,7 +107,7 @@ public class WatchIdle implements OnState{
     }
 
     @Override
-    public void setCurrentState(OnState onState) {
+    public void setCurrentState(State State) {
 
     }
 

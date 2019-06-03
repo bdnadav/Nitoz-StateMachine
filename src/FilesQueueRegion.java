@@ -1,7 +1,6 @@
 import java.util.LinkedList;
-import java.util.Queue;
 
-public class FilesQueueRegion implements OnState, Runnable {
+public class FilesQueueRegion implements State, Runnable {
     LinkedList<Integer> files = new LinkedList<>();
 
     @Override
@@ -90,7 +89,7 @@ public class FilesQueueRegion implements OnState, Runnable {
     }
 
     @Override
-    public OnState getState() {
+    public State getState() {
         return null;
     }
 
@@ -100,7 +99,7 @@ public class FilesQueueRegion implements OnState, Runnable {
     }
 
     @Override
-    public void setCurrentState(OnState onState) {
+    public void setCurrentState(State State) {
 
     }
 

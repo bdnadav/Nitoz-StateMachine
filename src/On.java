@@ -1,4 +1,4 @@
-public class On implements OnState {
+public class On implements State {
     public int freeSpace;
     public int points;
     public int speed;
@@ -38,19 +38,19 @@ public class On implements OnState {
         downloadThread.start();
     }
 
-    public OnState getDownloadRegionState(){
+    public State getDownloadRegiState(){
         return downloadRegion.getState();
     }
-    public OnState getNetworkRegionState(){
+    public State getNetworkRegiState(){
         return networkRegion.getState();
     }
-    public OnState getUserRegionState(){
+    public State getUserRegiState(){
         return userRegion.getState();
     }
-    public OnState getDiskRegionState(){
+    public State getDiskRegiState(){
         return diskRegion.getState();
     }
-    public OnState getWatchRegionState(){
+    public State getWatchRegiState(){
         return watchRegion.getState();
     }
 
@@ -169,7 +169,7 @@ public class On implements OnState {
     }
 
     @Override
-    public OnState getState() {
+    public State getState() {
         return null;
     }
 
@@ -179,7 +179,7 @@ public class On implements OnState {
     }
 
     @Override
-    public void setCurrentState(OnState onState) {
+    public void setCurrentState(State State) {
 
     }
 }

@@ -1,4 +1,4 @@
-public class Pause implements OnState {
+public class Pause implements State {
     WatchRegion context;
     public Pause(WatchRegion watchRegion) {
         context = watchRegion;
@@ -90,7 +90,7 @@ public class Pause implements OnState {
     }
 
     @Override
-    public OnState getState() {
+    public State getState() {
         return null;
     }
 
@@ -100,7 +100,7 @@ public class Pause implements OnState {
     }
 
     @Override
-    public void setCurrentState(OnState onState) {
+    public void setCurrentState(State State) {
 
     }
 

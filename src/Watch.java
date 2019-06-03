@@ -1,4 +1,4 @@
-public class Watch implements OnState {
+public class Watch implements State {
     WatchRegion context;
     boolean play;
 
@@ -111,13 +111,13 @@ public class Watch implements OnState {
     }
 
     @Override
-    public OnState getState() {
+    public State getState() {
         return null;
     }
 
 
     @Override
-    public void setCurrentState(OnState onState) {
+    public void setCurrentState(State State) {
 
     }
 

@@ -1,4 +1,4 @@
-public class DiskRegion implements OnState, Runnable {
+public class DiskRegion implements State, Runnable {
     public int _diskSize ;
     public DiskRegion(int diskSize) {
         _diskSize = diskSize ;
@@ -91,7 +91,7 @@ public class DiskRegion implements OnState, Runnable {
     }
 
     @Override
-    public OnState getState() {
+    public State getState() {
         return null;
     }
 
@@ -101,7 +101,7 @@ public class DiskRegion implements OnState, Runnable {
     }
 
     @Override
-    public void setCurrentState(OnState onState) {
+    public void setCurrentState(State state) {
 
     }
 

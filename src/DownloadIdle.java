@@ -9,10 +9,10 @@ public class DownloadIdle extends DownloadRegion {
 
     @Override
     public void download() {
-        if (downloadRegion.onState.getNetworkRegionState() instanceof Connected && downloadRegion.onState.filesQueueRegion.getNumOfFiles() > 0) {
+        if (downloadRegion.State.getNetworkRegiState() instanceof Connected && downloadRegion.State.filesQueueRegion.getNumOfFiles() > 0) {
             downloadRegion.download_thread_running = false;
             downloadRegion.download_region_thread = new Thread(downloadRegion.downloadingState);
-            downloadRegion.onState.freeSpace -= downloadRegion.onState.filesQueueRegion.popFile();
+            downloadRegion.State.freeSpace -= downloadRegion.State.filesQueueRegion.popFile();
             downloadRegion.moveState();
         }
     }

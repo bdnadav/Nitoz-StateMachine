@@ -1,4 +1,4 @@
-public class Connected implements OnState{
+public class Connected implements State{
 
     NetworkRegion networkRegion;
 
@@ -93,7 +93,7 @@ public class Connected implements OnState{
     }
 
     @Override
-    public OnState getState() {
+    public State getState() {
         return null;
     }
 
@@ -103,7 +103,7 @@ public class Connected implements OnState{
     }
 
     @Override
-    public void setCurrentState(OnState onState) {
+    public void setCurrentState(State state) {
 
     }
 

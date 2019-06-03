@@ -1,6 +1,4 @@
-import java.util.Scanner;
-
-public class DownloadSystem implements State {
+public class DownloadSystem implements State, Runnable {
     State currentState;
     State onState;
     State offState;
@@ -19,6 +17,16 @@ public class DownloadSystem implements State {
         this.currentState = state;
     }
 
+
+    public State getOffState() {
+        return offState;
+    }
+
+    @Override
+    public void run() {
+        turnOn();
+    }
+
     @Override
     public void turnOn() {
         currentState.turnOn();
@@ -29,13 +37,101 @@ public class DownloadSystem implements State {
         currentState.turnOff();
     }
 
-    public State getOnState() {
-        return onState;
+    @Override
+    public void movieOff() {
+        currentState.movieOff();
     }
 
-    public State getOffState() {
-        return offState;
+    @Override
+    public void downloadAborted() {
+        currentState.downloadAborted();
     }
+
+    @Override
+    public void movieOn() {
+
+    }
+
+    @Override
+    public void holdMovie() {
+
+    }
+
+    @Override
+    public void checkSpeed() {
+
+    }
+
+    @Override
+    public void upRank() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void downRank() {
+
+    }
+
+    @Override
+    public void internetOn() {
+
+    }
+
+    @Override
+    public void internetOff() {
+
+    }
+
+    @Override
+    public void finished() {
+
+    }
+
+    @Override
+    public void hold() {
+
+    }
+
+    @Override
+    public void errorFixed() {
+
+    }
+
+    @Override
+    public void downloadError() {
+
+    }
+
+    @Override
+    public void fileRequest() {
+
+    }
+
+    @Override
+    public void addFile() {
+
+    }
+
+    @Override
+    public void download() {
+
+    }
+
+    @Override
+    public State getState() {
+        return currentState;
+    }
+
+    @Override
+    public void restartMovie() {
+
+    }
+
 
 //End of main
 }
