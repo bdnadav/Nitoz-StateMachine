@@ -8,7 +8,9 @@ public class Off implements State {
 
     @Override
     public void turnOn() {
-        context.setCurrentState(context.getState());
+
+        context.setCurrentState(context.getOnState());
+        context.getCurrentState().turnOn();
     }
 
     @Override

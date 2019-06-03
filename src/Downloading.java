@@ -1,5 +1,5 @@
 
-public class Downloading implements State {
+public class Downloading implements DownloadState {
 
     private DownloadRegion downloadRegion;
 
@@ -141,6 +141,16 @@ public class Downloading implements State {
 
     @Override
     public void movieOff() {
+
+    }
+
+    @Override
+    public void updateDownload(double speed) {
+        downloadRegion.updateDownload(speed);
+    }
+
+    @Override
+    public void errorNotFixed() {
 
     }
 }

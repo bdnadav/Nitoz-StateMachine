@@ -1,4 +1,6 @@
-public class WaitingToConnect implements State  {
+import com.sun.corba.se.spi.orbutil.fsm.FSM;
+
+public class WaitingToConnect implements DownloadState {
 
     DownloadRegion downloadRegion;
 
@@ -115,6 +117,16 @@ public class WaitingToConnect implements State  {
 
     @Override
     public void turnOff() {
+
+    }
+
+    @Override
+    public void preAction(FSM fsm) {
+
+    }
+
+    @Override
+    public void postAction(FSM fsm) {
 
     }
 }

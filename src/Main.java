@@ -29,7 +29,6 @@ public class Main {
             String input = "";
             if (userInput.hasNext())
                 input = userInput.nextLine();
-
             switch(input) {
                 case "1":
                     mainRun.start();

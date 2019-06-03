@@ -127,7 +127,17 @@ public class DownloadSystem implements State {
     public void restartMovie() {
         currentState.restartMovie();
     }
+    public State getOnState() {
+        return onState;
+    }
 
+    public void setOnState(State onState) {
+        this.onState = onState;
+    }
+
+    public void setOffState(State offState) {
+        this.offState = offState;
+    }
 
 //End of main
 }

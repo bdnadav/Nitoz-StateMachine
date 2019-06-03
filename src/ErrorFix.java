@@ -16,7 +16,7 @@ public class ErrorFix implements State {
     public void downloadAborted() {
         downloadRegion.context_on.points -= 1;
         downloadRegion.context_on.freeSpace += downloadRegion.getFileSize();
-
+        downloadRegion.setCurDownloadState(downloadRegion.getDownloadIdle());
     }
 
     @Override
@@ -47,8 +47,8 @@ public class ErrorFix implements State {
     }
 
     @Override
-    public double checkSpeed() {return 0.0;
-
+    public double checkSpeed() {
+        return 0.0;
     }
 
     @Override

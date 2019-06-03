@@ -1,4 +1,4 @@
-public class DownloadIdle implements State {
+public class DownloadIdle implements DownloadState {
 
     private DownloadRegion downloadRegion;
 
@@ -130,6 +130,21 @@ public class DownloadIdle implements State {
     public void run() {
         while (!downloadRegion.download_thread_running) {
         }
+    }
+
+    @Override
+    public void updateDownload(double speed) {
+
+    }
+
+    @Override
+    public void errorNotFixed() {
+
+    }
+
+    @Override
+    public void cancelReq() {
+
     }
 }
 

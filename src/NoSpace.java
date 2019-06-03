@@ -1,8 +1,12 @@
 import static java.lang.Thread.sleep;
 
-class NoSpace implements State{
+class NoSpace implements DownloadState{
 
     DownloadRegion downloadRegion;
+
+    public NoSpace(DownloadRegion downloadRegion) {
+        this.downloadRegion = downloadRegion;
+    }
 
 
     @Override
@@ -120,4 +124,21 @@ class NoSpace implements State{
     public void turnOff() {
 
     }
+
+    @Override
+    public void updateDownload(double speed) {
+
+    }
+
+    @Override
+    public void errorNotFixed() {
+
+    }
+
+    @Override
+    public void cancelReq() {
+            downloadRegion.cancelReq() ;
+    }
+
+
 }

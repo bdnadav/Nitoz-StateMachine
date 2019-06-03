@@ -3,27 +3,35 @@ public class DownloadRegion implements State {
     protected static int downSize;
     protected int status ;
     private int fileSize = 0 ;
+    private double fileSize = 0 ;
+    private boolean fileReq ; // tells if there is a file reqested in the system
+    //protected Thread download_region_thread;
+    //protected boolean download_thread_running = true;
 
 
-    protected State curDownloadState;
-    protected State downloadIdle;
-    protected State downloading;
-    protected State errorFix;
-    protected State waitingToConnect;
-    protected State noSpace;
+    protected DownloadState curDownloadState;
+    protected DownloadState downloadIdle;
+    protected DownloadState downloading;
+    protected DownloadState errorFix;
+    protected DownloadState waitingToConnect;
+    protected DownloadState noSpace;
     protected On context_on;
     protected On State;
-    protected boolean download_thread_running;
 
     public DownloadRegion(On on) {
+        fileReq = false ;
+        downSize = 0 ;
+        fileSize = 0 ;
+        status = 0 ;
         waitingToConnect= new WaitingToConnect(this);
         downloading= new Downloading(this);
         downloadIdle= new DownloadIdle(this);
         errorFix= new ErrorFix(this);
-        noSpace= new NoSpace();
+        noSpace= new NoSpace(this);
         context_on = on;
         curDownloadState = waitingToConnect;
     }
+
 
     @Override
     public void movieOff() {
@@ -42,8 +50,8 @@ public class DownloadRegion implements State {
     }
 
     @Override
-    public double checkSpeed() {return 0.0;
-
+    public double checkSpeed() {
+        return 0.0;
     }
 
     @Override
@@ -102,7 +110,8 @@ public class DownloadRegion implements State {
     }
 
     @Override
-    public void fileRequest(int fileSize) {
+    public void fileRequest(double fileSize) {
+        curDownloadState.fileRequest(fileSize);// cur= noSpace
 
     }
 
@@ -116,13 +125,13 @@ public class DownloadRegion implements State {
 
     }
 
-    public void addFile(int size) {
-        fileSize = size ;
-
+    public void addFile(double size) {
+        fileReq = true;
+        fileSize = size
     }
 
 
-    public void download(double size) {
+    public void updateDownload(double size) {
         downSize+=size ;
         status = (int)((downSize / fileSize) * 100) ;
 
@@ -160,10 +169,10 @@ public class DownloadRegion implements State {
         return curDownloadState;
     }
 
+
     public void setCurDownloadState(State curDownloadState) {
         this.curDownloadState = curDownloadState;
     }
-
     public static int getDownSize() {
         return downSize;
     }
@@ -176,44 +185,19 @@ public class DownloadRegion implements State {
         return downloadIdle;
     }
 
-    public void setDownloadIdle(State downloadIdle) {
-        this.downloadIdle = downloadIdle;
-    }
+
 
     public State getDownloading() {
         return downloading;
     }
 
-    public void setDownloading(State downloading) {
-        this.downloading = downloading;
-    }
 
     public State getErrorFix() {
         return errorFix;
     }
 
-    public void setErrorFix(State errorFix) {
-        this.errorFix = errorFix;
-    }
-
-    public State getWaitingToConnect() {
-        return waitingToConnect;
-    }
-
-    public void setWaitingToConnect(State waitingToConnect) {
-        this.waitingToConnect = waitingToConnect;
-    }
-
-    public State getNoSpace() {
-        return noSpace;
-    }
-
-    public void setNoSpace(State noSpace) {
-        this.noSpace = noSpace;
-    }
-
-    public On getState() {
-        return context_on;
+    public DownloadState getState() {
+        return curDownloadState;
     }
 
     public void setState(On State) {
@@ -222,6 +206,16 @@ public class DownloadRegion implements State {
 
 
     protected void moveState() {
+    }
+
+    public void cancelReq() {
+        //delete file and retrun to Idle
+        //reset all
+        downSize = 0 ;
+        fileReq = false ;
+        fileSize = 0 ;
+        status = 0 ;
+        curDownloadState = downloadIdle ;
     }
 
     public int getFileSize() {

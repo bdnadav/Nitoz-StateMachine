@@ -171,4 +171,8 @@ public class UserRegion implements State {
     public State getCurrentState() {
         return currentState;
     }
+
+    public double getSpeed() {
+        return currentState.getState().checkSpeed();
+    }
 }
