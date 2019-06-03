@@ -16,7 +16,7 @@ public class DownloadIdle implements DownloadState {
     }
 
     @Override
-    public void fileRequest(int fileSize) {
+    public void fileRequest(double fileSize) {
         if (fileSize > downloadRegion.context_on.freeSpace){
             downloadRegion.setCurDownloadState(downloadRegion.getNoSpace());
         }
@@ -126,11 +126,6 @@ public class DownloadIdle implements DownloadState {
 
     }
 
-
-    public void run() {
-        while (!downloadRegion.download_thread_running) {
-        }
-    }
 
     @Override
     public void updateDownload(double speed) {

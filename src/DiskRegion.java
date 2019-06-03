@@ -1,4 +1,4 @@
-public class DiskRegion implements State, Runnable {
+public class DiskRegion implements State {
     public int _diskSize ;
     public DiskRegion(int diskSize) {
         _diskSize = diskSize ;
@@ -76,7 +76,7 @@ public class DiskRegion implements State, Runnable {
     }
 
     @Override
-    public void fileRequest(int fileSize) {
+    public void fileRequest(double fileSize) {
 
     }
 
@@ -105,10 +105,6 @@ public class DiskRegion implements State, Runnable {
 
     }
 
-    @Override
-    public void run() {
-
-    }
 
     @Override
     public void turnOn() {

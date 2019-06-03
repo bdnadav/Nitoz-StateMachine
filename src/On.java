@@ -1,7 +1,7 @@
 public class On implements State {
     public int freeSpace;
-
     public int status;
+    public int points;
 
 
     private DownloadSystem context;
@@ -165,7 +165,7 @@ public class On implements State {
     }
 
     @Override
-    public void fileRequest(int fileSize) {
+    public void fileRequest(double fileSize) {
 
     }
 

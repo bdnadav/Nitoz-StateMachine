@@ -1,4 +1,4 @@
-public class WatchRegion implements State, Runnable {
+public class WatchRegion implements State {
     private State currentState;
     private State idle_state;
     private State watch_state;
@@ -113,7 +113,7 @@ public class WatchRegion implements State, Runnable {
     }
 
     @Override
-    public void fileRequest(int fileSize) {
+    public void fileRequest(double fileSize) {
 
     }
 
@@ -128,7 +128,7 @@ public class WatchRegion implements State, Runnable {
     }
 
     @Override
-    public State getState() {
+    public DownloadState getState() {
         return null;
     }
 
@@ -142,10 +142,6 @@ public class WatchRegion implements State, Runnable {
 
     }
 
-    @Override
-    public void run() {
-
-    }
 
     @Override
     public void turnOn() {

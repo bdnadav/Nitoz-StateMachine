@@ -2,7 +2,6 @@ public class DownloadRegion implements State {
 
     protected static int downSize;
     protected int status ;
-    private int fileSize = 0 ;
     private double fileSize = 0 ;
     private boolean fileReq ; // tells if there is a file reqested in the system
     //protected Thread download_region_thread;
@@ -31,7 +30,6 @@ public class DownloadRegion implements State {
         context_on = on;
         curDownloadState = waitingToConnect;
     }
-
 
     @Override
     public void movieOff() {
@@ -127,7 +125,7 @@ public class DownloadRegion implements State {
 
     public void addFile(double size) {
         fileReq = true;
-        fileSize = size
+        fileSize = size;
     }
 
 
@@ -170,9 +168,11 @@ public class DownloadRegion implements State {
     }
 
 
-    public void setCurDownloadState(State curDownloadState) {
+    public void setCurDownloadState(DownloadState curDownloadState) {
         this.curDownloadState = curDownloadState;
     }
+
+
     public static int getDownSize() {
         return downSize;
     }
@@ -181,18 +181,18 @@ public class DownloadRegion implements State {
         DownloadRegion.downSize = downSize;
     }
 
-    public State getDownloadIdle() {
+    public DownloadState getDownloadIdle() {
         return downloadIdle;
     }
 
 
 
-    public State getDownloading() {
+    public DownloadState getDownloading() {
         return downloading;
     }
 
 
-    public State getErrorFix() {
+    public DownloadState getErrorFix() {
         return errorFix;
     }
 
@@ -218,7 +218,15 @@ public class DownloadRegion implements State {
         curDownloadState = downloadIdle ;
     }
 
-    public int getFileSize() {
+    public double getFileSize() {
         return fileSize;
+    }
+
+    public DownloadState getNoSpace() {
+        return noSpace;
+    }
+
+    public DownloadState getWaitingToConnect() {
+        return  waitingToConnect ;
     }
 }

@@ -86,7 +86,7 @@ class NoSpace implements DownloadState{
     }
 
     @Override
-    public void fileRequest(int fileSize) {
+    public void fileRequest(double fileSize) {
 
     }
 

@@ -98,7 +98,7 @@ public class Pro implements State {
     }
 
     @Override
-    public void fileRequest(int fileSize) {
+    public void fileRequest(double fileSize) {
 
     }
 

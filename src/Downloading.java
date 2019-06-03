@@ -40,7 +40,7 @@ public class Downloading implements DownloadState {
 
 
     @Override
-    public void fileRequest(int fileSize) {
+    public void fileRequest(double fileSize) {
 
     }
 
@@ -118,17 +118,6 @@ public class Downloading implements DownloadState {
     }
 
 
-    public void run () {
-//            while (downloadRegion.download_thread_running) {
-//                try {
-//                    sleep(1000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//                DownloadRegion.downSize += downloadRegion.State.speed;
-//            }
-        }
-
     @Override
     public void turnOn() {
 
@@ -151,6 +140,11 @@ public class Downloading implements DownloadState {
 
     @Override
     public void errorNotFixed() {
+
+    }
+
+    @Override
+    public void cancelReq() {
 
     }
 }

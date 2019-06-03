@@ -1,5 +1,5 @@
 
-public class DownloadSystem implements State {
+public class DownloadSystem implements State,Runnable {
     State currentState;
     State onState;
     State offState;
@@ -104,7 +104,7 @@ public class DownloadSystem implements State {
     }
 
     @Override
-    public void fileRequest(int fileSize) {
+    public void fileRequest(double fileSize) {
         currentState.fileRequest(fileSize);
     }
 
@@ -137,6 +137,11 @@ public class DownloadSystem implements State {
 
     public void setOffState(State offState) {
         this.offState = offState;
+    }
+
+    @Override
+    public void run() {
+        turnOn();
     }
 
 //End of main

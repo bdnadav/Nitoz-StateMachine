@@ -1,4 +1,4 @@
-public class ErrorFix implements State {
+public class ErrorFix implements State, DownloadState {
 
     private DownloadRegion downloadRegion;
 
@@ -94,7 +94,7 @@ public class ErrorFix implements State {
     }
 
     @Override
-    public void fileRequest(int fileSize) {
+    public void fileRequest(double fileSize) {
 
     }
 
@@ -120,6 +120,21 @@ public class ErrorFix implements State {
 
     @Override
     public void setCurrentState(State state) {
+
+    }
+
+    @Override
+    public void updateDownload(double speed) {
+
+    }
+
+    @Override
+    public void errorNotFixed() {
+
+    }
+
+    @Override
+    public void cancelReq() {
 
     }
 }

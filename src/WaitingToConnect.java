@@ -81,7 +81,7 @@ public class WaitingToConnect implements DownloadState {
     }
 
     @Override
-    public void fileRequest(int fileSize) {
+    public void fileRequest(double fileSize) {
 
     }
 
@@ -120,13 +120,20 @@ public class WaitingToConnect implements DownloadState {
 
     }
 
+
+
     @Override
-    public void preAction(FSM fsm) {
+    public void updateDownload(double speed) {
 
     }
 
     @Override
-    public void postAction(FSM fsm) {
+    public void errorNotFixed() {
+
+    }
+
+    @Override
+    public void cancelReq() {
 
     }
 }

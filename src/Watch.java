@@ -54,6 +54,7 @@ public class Watch implements State {
     public double checkSpeed() {
         if(play)
             context.time++;
+        return  0 ;
     }
 
     @Override
@@ -96,7 +97,7 @@ public class Watch implements State {
 
 
     @Override
-    public void fileRequest(int fileSize) {
+    public void fileRequest(double fileSize) {
 
     }
 
