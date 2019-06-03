@@ -3,6 +3,9 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        DownloadSystem sys = new DownloadSystem(100) ;
+
+
         while(true) {
             System.out.println("Tell the system what to do :");
             Scanner userInput = new Scanner(System.in);
