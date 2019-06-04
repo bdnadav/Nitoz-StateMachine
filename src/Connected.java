@@ -3,7 +3,7 @@ public class Connected implements State{
     NetworkRegion networkRegion;
 
     public Connected(NetworkRegion networkRegion){
-        this.networkRegion= networkRegion;
+        this.networkRegion = networkRegion;
     }
 
     @Override
