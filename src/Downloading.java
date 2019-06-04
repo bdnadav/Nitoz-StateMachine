@@ -20,6 +20,7 @@ public class Downloading implements DownloadState {
             downloadRegion.setFileReq(false);
             downloadRegion.setFileSize(0);
             downloadRegion.status = 0;
+            downloadRegion.context_on.resetTimers();
             downloadRegion.setCurDownloadState(downloadRegion.downloadIdle);
         }
     }

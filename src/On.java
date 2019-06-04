@@ -13,7 +13,11 @@ public class On implements State {
     private long lastTimeSpace; //
 
 
-
+    public void resetTimers(){
+        lastTimeDownload = 0;
+        lastTimeError = 0;
+        lastTimeSpace = 0;
+    }
     public On(DownloadSystem context, double diskSize) {
         this.context = context;
         watchRegion = new WatchRegion(this);
