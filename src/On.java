@@ -60,8 +60,11 @@ public class On implements State {
             }
             if ( currTime - lastTimeSpace >= 4000){
                     downloadRegion.getState().cancelReq() ;
+                    lastTimeSpace = currTime ;
 
             }
+
+
 
 
 

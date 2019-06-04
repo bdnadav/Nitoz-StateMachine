@@ -1,9 +1,17 @@
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
-        DownloadSystem sys = new DownloadSystem(100) ;
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
+        PrintWriter writer = new PrintWriter("readMe.txt", "UTF-8");
+        writer.println("Download System Event Log : ");
+        writer.flush();
+
+
+        DownloadSystem sys = new DownloadSystem(100 , writer) ;
         int fileSize = 100 ;
         Thread mainRun = new Thread(sys);
 
@@ -22,7 +30,7 @@ public class Main {
                     "11. holdMovie\n"+
                     "12. movieOff\n"+
                     "13. resume\n");
-
+            System.out.println("Enter your choice :" ) ;
             Scanner userInput = new Scanner(System.in);
 
             while(!userInput.hasNext());
@@ -32,30 +40,39 @@ public class Main {
                 input = userInput.nextLine();
             switch(input) {
                 case "1":
+                    writer.println("turnOn");
                     mainRun.start();
                     break;
                 case "2":
+                    writer.println("turnOff");
                     sys.turnOff();
                     break;
                 case "3":
+                    writer.println("internetOn");
                     sys.internetOn();
                     break;
                 case "4":
+                    writer.println("internetOff");
                     sys.internetOff();
                     break;
                 case "5":
+                    writer.println("fileRequest");
                     sys.fileRequest(fileSize);
                     break;
                 case "6":
+                    writer.println("downloadAborted");
                     sys.downloadAborted();
                     break;
                 case "7":
+                    writer.println("downloadError");
                     sys.downloadError();
                     break;
                 case "8":
+                    writer.println("errorFixed");
                     sys.errorFixed();
                     break;
                 case "9":
+
                     sys.movieOn();
                     break;
                 case "10":
@@ -77,7 +94,9 @@ public class Main {
             }
             userInput.close();
             //Thread.sleep(1000);
+            writer.flush();
         }
+        //writer.close();
 
     }
 }

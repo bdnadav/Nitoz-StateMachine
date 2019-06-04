@@ -1,10 +1,13 @@
+import java.io.PrintWriter;
 
 public class DownloadSystem implements State,Runnable {
     State currentState;
     State onState;
     State offState;
+    PrintWriter _writer ;
 
-    public DownloadSystem(int diskSize) {
+    public DownloadSystem(int diskSize, PrintWriter writer) {
+        _writer = writer ;
         offState = new Off(this);
         onState = new On(this);
         this.currentState = offState;
@@ -12,6 +15,11 @@ public class DownloadSystem implements State,Runnable {
 
     public State getCurrentState() {
         return currentState;
+    }
+     public synchronized void  writeToLog(String event){
+
+        _writer.println(event);
+
     }
 
     public void setCurrentState(State state) {
