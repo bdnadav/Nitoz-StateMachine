@@ -49,8 +49,11 @@ public class Main {
                 input = userInput.nextLine();
             switch(input) {
                 case "1":
-                    writer.println("turnOn");
-                    mainRun.start();
+                    if (!mainRun.isAlive()){
+                        mainRun = new Thread(sys);
+                        writer.println("turnOn");
+                        mainRun.start();
+                    }
                     break;
                 case "2":
                     writer.println("turnOff");

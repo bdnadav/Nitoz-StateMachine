@@ -13,6 +13,7 @@ public class Pause implements State {
 
     @Override
     public void resume() {
+        context.pauseChoosed = false;
         context.setCurrentState(context.getWatchState());
     }
     @Override
@@ -56,7 +57,8 @@ public class Pause implements State {
 
     @Override
     public void internetOn() {
-
+        if (!context.pauseChoosed)
+            resume();
     }
 
     @Override

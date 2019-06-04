@@ -3,6 +3,8 @@ public class WatchRegion implements State {
     private State idle_state;
     private State watch_state;
     private State pause_state;
+    boolean pauseChoosed = false;
+
 
     On context_on;
     int time;
@@ -75,6 +77,7 @@ public class WatchRegion implements State {
 
     @Override
     public void internetOn() {
+        currentState.internetOn();
 
     }
 
@@ -85,7 +88,7 @@ public class WatchRegion implements State {
 
     @Override
     public void finished() {
-        currentState.movieOn();
+        setCurrentState(idle_state);
     }
 
 

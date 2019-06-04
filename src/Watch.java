@@ -20,6 +20,7 @@ public class Watch implements State {
 
     @Override
     public void holdMovie() {
+        context.pauseChoosed = true;
         context.setCurrentState(context.getPause_state());
     }
 

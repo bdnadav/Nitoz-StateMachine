@@ -7,30 +7,34 @@ public class Downloading implements DownloadState {
     }
 
     public void downloadAborted(){
-        downloadRegion.context_on.points -= 1;
+        downloadRegion.context_on.points--;
         downloadRegion.setFileReq(false);
+        DownloadRegion.setDownSize(0);
         downloadRegion.setFileSize(0);
         downloadRegion.status = 0;
-        downloadRegion.resetDownSize();
+        downloadRegion.context_on.resetTimers();
         downloadRegion.context_on.getDiskRegiState().freeSpace(downloadRegion.getFileSize());
         downloadRegion.setCurDownloadState(downloadRegion.getDownloadIdle());
     }
 
     public void finished(){
         if (DownloadRegion.downSize >= downloadRegion.getFileSize()){
+            downloadRegion.context_on.points++;
             downloadRegion.setFileReq(false);
             downloadRegion.setFileSize(0);
             downloadRegion.resetDownSize();
             downloadRegion.status = 0;
             downloadRegion.context_on.resetTimers();
             downloadRegion.setCurDownloadState(downloadRegion.downloadIdle);
+            DownloadRegion.setDownSize(0);
+
         }
     }
 
     @Override
     public void updateDownload(double speed) {
         if (downloadRegion.getDownloadStatus() >= 100){
-            finished();
+            downloadRegion.context_on.finished();
         }
 
         downloadRegion.updateDownload(speed);

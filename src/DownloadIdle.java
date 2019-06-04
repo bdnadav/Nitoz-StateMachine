@@ -12,7 +12,6 @@ public class DownloadIdle implements DownloadState {
         if (downloadRegion.context_on.getNetworkRegiState() instanceof Connected && downloadRegion.isFileReq()) {
             downloadRegion.context_on.getDiskRegiState().reduceFreeSpace(downloadRegion.getFileSize());
             downloadRegion.setCurDownloadState(downloadRegion.getDownloading());
-            downloadRegion.context_on.points++;
         }
     }
 

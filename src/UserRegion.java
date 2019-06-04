@@ -82,12 +82,13 @@ public class UserRegion implements State {
 
     @Override
     public void finished() {
-
+        upRank();
     }
 
 
     @Override
     public void downloadAborted() {
+        downRank();
 
     }
 
