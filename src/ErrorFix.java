@@ -15,7 +15,7 @@ public class ErrorFix implements State, DownloadState {
     @Override
     public void downloadAborted() {
         downloadRegion.context_on.points -= 1;
-        downloadRegion.context_on.freeSpace += downloadRegion.getFileSize();
+        downloadRegion.context_on.getDiskRegiState().freeSpace(downloadRegion.getFileSize());
         downloadRegion.setCurDownloadState(downloadRegion.getDownloadIdle());
     }
 
@@ -121,6 +121,26 @@ public class ErrorFix implements State, DownloadState {
     @Override
     public void setCurrentState(State state) {
 
+    }
+
+    @Override
+    public void checkSpace() {
+
+    }
+
+    @Override
+    public void freeSpace(double fileSize) {
+
+    }
+
+    @Override
+    public void reduceFreeSpace(double fileSize) {
+
+    }
+
+    @Override
+    public double getFreeSpace() {
+        return 0;
     }
 
     @Override

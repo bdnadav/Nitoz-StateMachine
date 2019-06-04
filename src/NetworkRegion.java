@@ -130,6 +130,26 @@ public class NetworkRegion implements State {
         this.currentState = currentState;
     }
 
+    @Override
+    public void checkSpace() {
+
+    }
+
+    @Override
+    public void freeSpace(double fileSize) {
+
+    }
+
+    @Override
+    public void reduceFreeSpace(double fileSize) {
+
+    }
+
+    @Override
+    public double getFreeSpace() {
+        return 0;
+    }
+
     public State getConnected() {
         return Connected;
     }

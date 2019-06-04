@@ -1,117 +1,145 @@
-public class DiskSensor extends DiskRegion {
+public class DiskSensor implements State {
+    private DiskRegion diskRegion;
 
 
-    public DiskSensor(int diskSize) {
-        super(diskSize);
+
+    public DiskSensor(DiskRegion diskRegion) {
+
+        this.diskRegion = diskRegion;
     }
 
     @Override
-    public void movieOff() {
-        super.movieOff();
+    public void checkSpace() {
+
     }
 
     @Override
-    public void downloadAborted() {
-        super.downloadAborted();
+    public void freeSpace(double fileSize) {
+
     }
 
     @Override
-    public void movieOn() {
-        super.movieOn();
+    public void reduceFreeSpace(double fileSize) {
+
     }
 
     @Override
-    public void holdMovie() {
-        super.holdMovie();
+    public double getFreeSpace() {
+        return 0;
     }
+
+
 
     @Override
     public double checkSpeed() {
-        return super.checkSpeed();
+        return 0;
     }
 
-    @Override
-    public void upRank() {
-        super.upRank();
-    }
 
-    @Override
-    public void resume() {
-        super.resume();
-    }
-
-    @Override
-    public void downRank() {
-        super.downRank();
-    }
-
-    @Override
-    public void internetOn() {
-        super.internetOn();
-    }
-
-    @Override
-    public void internetOff() {
-        super.internetOff();
-    }
-
-    @Override
-    public void finished() {
-        super.finished();
-    }
-
-    @Override
-    public void hold() {
-        super.hold();
-    }
-
-    @Override
-    public void errorFixed() {
-        super.errorFixed();
-    }
-
-    @Override
-    public void downloadError() {
-        super.downloadError();
-    }
-
-    @Override
-    public void fileRequest(double fileSize) {
-        super.fileRequest(fileSize);
-    }
 
     @Override
     public void turnOn() {
-        super.turnOn();
+
     }
 
     @Override
     public void turnOff() {
-        super.turnOff();
+
     }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public void movieOff() {
+
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public void downloadAborted() {
+
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public void movieOn() {
+
     }
 
     @Override
-    public String toString() {
-        return super.toString();
+    public void holdMovie() {
+
     }
 
     @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
+    public void upRank() {
+
     }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void downRank() {
+
+    }
+
+    @Override
+    public void internetOn() {
+
+    }
+
+    @Override
+    public void internetOff() {
+
+    }
+
+    @Override
+    public void finished() {
+
+    }
+
+    @Override
+    public void hold() {
+
+    }
+
+    @Override
+    public void errorFixed() {
+
+    }
+
+    @Override
+    public void downloadError() {
+
+    }
+
+    @Override
+    public void fileRequest(double fileSize) {
+
+    }
+
+    @Override
+    public void addFile() {
+
+    }
+
+    @Override
+    public void download() {
+
+    }
+
+    @Override
+    public State getState() {
+        return null;
+    }
+
+    @Override
+    public void restartMovie() {
+
+    }
+
+    @Override
+    public void setCurrentState(State state) {
+
+    }
+
 }

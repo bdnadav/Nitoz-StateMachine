@@ -4,9 +4,14 @@ public class DownloadRegion implements State {
     protected int status ;
     private double fileSize = 0 ;
     private boolean fileReq ; // tells if there is a file reqested in the system
-    //protected Thread download_region_thread;
-    //protected boolean download_thread_running = true;
 
+    public boolean isFileReq() {
+        return fileReq;
+    }
+
+    public void setFileReq(boolean fileReq) {
+        this.fileReq = fileReq;
+    }
 
     protected DownloadState curDownloadState;
     protected DownloadState downloadIdle;
@@ -149,6 +154,26 @@ public class DownloadRegion implements State {
     }
 
     @Override
+    public void checkSpace() {
+
+    }
+
+    @Override
+    public void freeSpace(double fileSize) {
+
+    }
+
+    @Override
+    public void reduceFreeSpace(double fileSize) {
+
+    }
+
+    @Override
+    public double getFreeSpace() {
+        return 0;
+    }
+
+    @Override
     public void turnOn() {
 
     }
@@ -157,11 +182,6 @@ public class DownloadRegion implements State {
     public void turnOff() {
 
     }
-
-/*    protected void moveState() {
-        download_thread_running = true;
-        download_region_thread.start();
-    }*/
 
     public State getCurDownloadState() {
         return curDownloadState;
@@ -228,5 +248,9 @@ public class DownloadRegion implements State {
 
     public DownloadState getWaitingToConnect() {
         return  waitingToConnect ;
+    }
+
+    public void setFileSize(double fileSize) {
+        this.fileSize = fileSize;
     }
 }

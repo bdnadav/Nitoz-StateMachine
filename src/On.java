@@ -1,5 +1,4 @@
 public class On implements State {
-    public int freeSpace;
     public int status;
     public int points;
 
@@ -18,14 +17,13 @@ public class On implements State {
 
 
 
-    public On(DownloadSystem context) {
+    public On(DownloadSystem context, double diskSize) {
         this.context = context;
         watchRegion = new WatchRegion(this);
-        diskRegion = new DiskRegion(100);
+        diskRegion = new DiskRegion(this, diskSize);
         userRegion = new UserRegion(this);
         networkRegion = new NetworkRegion(this);
         downloadRegion = new DownloadRegion(this);
-
     }
 
 
@@ -192,5 +190,25 @@ public class On implements State {
     @Override
     public void setCurrentState(State State) {
 
+    }
+
+    @Override
+    public void checkSpace() {
+
+    }
+
+    @Override
+    public void freeSpace(double fileSize) {
+
+    }
+
+    @Override
+    public void reduceFreeSpace(double fileSize) {
+
+    }
+
+    @Override
+    public double getFreeSpace() {
+        return 0;
     }
 }

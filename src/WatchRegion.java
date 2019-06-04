@@ -142,6 +142,26 @@ public class WatchRegion implements State {
 
     }
 
+    @Override
+    public void checkSpace() {
+
+    }
+
+    @Override
+    public void freeSpace(double fileSize) {
+
+    }
+
+    @Override
+    public void reduceFreeSpace(double fileSize) {
+
+    }
+
+    @Override
+    public double getFreeSpace() {
+        return 0;
+    }
+
 
     @Override
     public void turnOn() {
