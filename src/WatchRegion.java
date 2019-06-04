@@ -1,23 +1,23 @@
-public class WatchRegion implements State {
-    private State currentState;
-    private State idle_state;
-    private State watch_state;
-    private State pause_state;
+public class WatchRegion implements WatchState {
+    private WatchState currentState;
+    private WatchState idle_state;
+    private WatchState watch_state;
+    private WatchState pause_state;
     boolean pauseChoosed = false;
 
 
     On context_on;
     int time;
 
-    public State getCurrentState() {
+    public WatchState getCurrentState() {
         return currentState;
     }
 
-    public State getIdle_state() {
+    public WatchState getIdle_state() {
         return idle_state;
     }
 
-    public State getPause_state() {
+    public WatchState getPause_state() {
         return pause_state;
     }
 
@@ -115,8 +115,8 @@ public class WatchRegion implements State {
     }
 
     @Override
-    public DownloadState getState() {
-        return null;
+    public WatchState getState() {
+        return this.currentState;
     }
 
     @Override
@@ -126,7 +126,7 @@ public class WatchRegion implements State {
 
     @Override
     public void restartMovie() {
-        currentState.restartMovie();
+        time = 0;
     }
 
     @Override
@@ -137,7 +137,7 @@ public class WatchRegion implements State {
             context_on.getContext().writeToLog("exit " + currentState.toString() + " state");
             context_on.getContext().writeToLog("enter " + state.toString() + " state");
         }
-        this.currentState= state;
+        this.currentState= (WatchState)state;
     }
 
     @Override
@@ -165,6 +165,12 @@ public class WatchRegion implements State {
         return 0;
     }
 
+    @Override
+    public void watch() {
+        time += 1 ;
+        System.out.println("Playing Movie time (sec): " + time );
+    }
+
 
     @Override
     public void turnOn() {
@@ -183,7 +189,7 @@ public class WatchRegion implements State {
         System.out.println("exit "+ currentState.toString() +" state");
     }
 
-    public State getWatchState() {
+    public WatchState getWatchState() {
         return watch_state;
     }
 }

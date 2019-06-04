@@ -1,4 +1,4 @@
-public class Pause implements State {
+public class Pause implements WatchState {
 
     WatchRegion context;
 
@@ -146,5 +146,10 @@ public class Pause implements State {
     @Override
     public String toString() {
         return "Pause";
+    }
+
+    @Override
+    public void watch() {
+
     }
 }

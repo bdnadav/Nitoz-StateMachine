@@ -1,4 +1,4 @@
-public class Watch implements State {
+public class Watch implements WatchState {
 
     WatchRegion context;
     boolean play;
@@ -138,6 +138,11 @@ public class Watch implements State {
     @Override
     public int getDownloadStatus() {
         return 0;
+    }
+
+    @Override
+    public void watch() {
+        context.watch();
     }
 
     @Override

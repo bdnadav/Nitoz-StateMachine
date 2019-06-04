@@ -157,7 +157,8 @@ public class DownloadRegion implements State {
 
     @Override
     public void downloadError() {
-        curDownloadState.errorFixed();
+        curDownloadState.downloadError();
+
     }
 
 

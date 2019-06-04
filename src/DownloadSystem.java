@@ -18,6 +18,7 @@ public class DownloadSystem implements State,Runnable {
     }
      public synchronized void  writeToLog(String event){
         _writer.println(event);
+        _writer.flush();
     }
 
     public void setCurrentState(State state) {
@@ -53,6 +54,7 @@ public class DownloadSystem implements State,Runnable {
     public int getDownloadStatus() {
         return currentState.getDownloadStatus();
     }
+
 
 
     public State getOffState() {

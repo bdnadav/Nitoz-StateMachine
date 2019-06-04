@@ -1,4 +1,4 @@
-public class WatchIdle implements State{
+public class WatchIdle implements WatchState{
     WatchRegion context_watch_region;
 
     public WatchIdle(WatchRegion watchRegion) {
@@ -8,6 +8,7 @@ public class WatchIdle implements State{
     @Override
     public void movieOn() {
         if (context_watch_region.context_on.downloadRegion.getDownloadStatus() > 20 && context_watch_region.context_on.getNetworkRegiState() instanceof Connected){
+            context_watch_region.restartMovie();
             context_watch_region.setCurrentState(context_watch_region.getWatchState());
             context_watch_region.getCurrentState().movieOn();
         }
@@ -98,7 +99,7 @@ public class WatchIdle implements State{
 
     @Override
     public void restartMovie() {
-
+        context_watch_region.restartMovie();
     }
 
     @Override
@@ -144,5 +145,10 @@ public class WatchIdle implements State{
     @Override
     public String toString() {
         return "WatchIdle";
+    }
+
+    @Override
+    public void watch() {
+
     }
 }

@@ -28,4 +28,6 @@ public interface State {
     String toString() ;
     double getFreeSpace();
     int getDownloadStatus();
+
+
 }

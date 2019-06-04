@@ -15,8 +15,14 @@ public class ErrorFix implements State, DownloadState {
     @Override
     public void downloadAborted() {
         downloadRegion.context_on.points -= 1;
+        downloadRegion.setFileReq(false);
+        downloadRegion.setDownSize(0);
+        downloadRegion.setFileSize(0);
+        downloadRegion.status = 0;
+        downloadRegion.context_on.resetTimers();
         downloadRegion.context_on.getDiskRegiState().freeSpace(downloadRegion.getFileSize());
         downloadRegion.setCurDownloadState(downloadRegion.getDownloadIdle());
+
     }
 
     @Override
@@ -30,7 +36,7 @@ public class ErrorFix implements State, DownloadState {
 
     @Override
     public String toString() {
-        return "errorFixed";
+        return "errorFix";
     }
 
 
@@ -152,6 +158,8 @@ public class ErrorFix implements State, DownloadState {
     public int getDownloadStatus() {
         return 0;
     }
+
+
 
     @Override
     public void updateDownload(double speed) {

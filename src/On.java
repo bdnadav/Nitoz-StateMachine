@@ -11,6 +11,7 @@ public class On implements State {
     private long lastTimeDownload; //last time download updated
     private long lastTimeError; //
     private long lastTimeSpace; //
+    private long lastTimeWatch;
 
 
     public On(DownloadSystem context, double diskSize) {
@@ -23,9 +24,10 @@ public class On implements State {
     }
 
     public void resetTimers(){
-         lastTimeDownload = 0; //last time download updated
-         lastTimeError = 0;
-         lastTimeSpace = 0;
+        long currTime = System.currentTimeMillis();
+         lastTimeDownload = currTime; //last time download updated
+         lastTimeError = currTime;
+         lastTimeSpace = currTime;
     }
 
 
@@ -66,6 +68,10 @@ public class On implements State {
             if ( currTime - lastTimeSpace >= 4000){
                     downloadRegion.getState().cancelReq() ;
                     lastTimeSpace = currTime ;
+            }
+            if ( currTime - lastTimeWatch >= 1000){
+                watchRegion.getState().watch() ;
+                lastTimeWatch = currTime ;
             }
 
         }
@@ -175,6 +181,7 @@ public class On implements State {
     @Override
     public void downloadError() {
         downloadRegion.downloadError();
+        lastTimeError = System.currentTimeMillis(); ; // reset counter from entering error state
     }
 
     @Override
@@ -237,6 +244,7 @@ public class On implements State {
     public int getDownloadStatus() {
         return downloadRegion.getDownloadStatus();
     }
+
 
     @Override
     public String toString() {
