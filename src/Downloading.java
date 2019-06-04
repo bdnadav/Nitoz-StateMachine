@@ -9,8 +9,10 @@ public class Downloading implements DownloadState {
     public void downloadAborted(){
         downloadRegion.context_on.points -= 1;
         downloadRegion.setFileReq(false);
+        downloadRegion.setDownSize(0);
         downloadRegion.setFileSize(0);
         downloadRegion.status = 0;
+        downloadRegion.context_on.resetTimers();
         downloadRegion.context_on.getDiskRegiState().freeSpace(downloadRegion.getFileSize());
         downloadRegion.setCurDownloadState(downloadRegion.getDownloadIdle());
     }
@@ -22,6 +24,8 @@ public class Downloading implements DownloadState {
             downloadRegion.status = 0;
             downloadRegion.context_on.resetTimers();
             downloadRegion.setCurDownloadState(downloadRegion.downloadIdle);
+            downloadRegion.setDownSize(0);
+
         }
     }
 

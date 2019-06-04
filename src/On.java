@@ -13,11 +13,6 @@ public class On implements State {
     private long lastTimeSpace; //
 
 
-    public void resetTimers(){
-        lastTimeDownload = 0;
-        lastTimeError = 0;
-        lastTimeSpace = 0;
-    }
     public On(DownloadSystem context, double diskSize) {
         this.context = context;
         watchRegion = new WatchRegion(this);
@@ -25,6 +20,12 @@ public class On implements State {
         userRegion = new UserRegion(this);
         networkRegion = new NetworkRegion(this);
         downloadRegion = new DownloadRegion(this);
+    }
+
+    public void resetTimers(){
+         lastTimeDownload = 0; //last time download updated
+         lastTimeError = 0;
+         lastTimeSpace = 0;
     }
 
 
@@ -54,7 +55,7 @@ public class On implements State {
         downloadRegion.turnOn();
         while(!(context.getCurrentState() instanceof Off)){ // Add playMove() (time++) operation?
                 long currTime = System.currentTimeMillis();
-            if ( currTime - lastTimeDownload >=1000){
+            if ( currTime - lastTimeDownload >= 1000){
                 downloadRegion.getState().updateDownload(userRegion.getSpeed());
                 lastTimeDownload = currTime ;
             }

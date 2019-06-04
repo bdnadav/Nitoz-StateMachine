@@ -1,6 +1,6 @@
 public class DownloadRegion implements State {
 
-    protected static int downSize;
+    protected static double downSize;
     protected int status ;
     private double fileSize = 0 ;
     private boolean fileReq ; // tells if there is a file reqested in the system
@@ -176,6 +176,9 @@ public class DownloadRegion implements State {
     public void updateDownload(double size) {
         downSize+=size;
         status = (int)((downSize / fileSize) * 100);
+        if (downSize != downSize+ size && status <=100)
+        System.out.println("File Downloaded :" + status + " %");
+
 
         //curDownloadState.download();
     }
@@ -231,7 +234,7 @@ public class DownloadRegion implements State {
 
 
 
-    public static int getDownSize() {
+    public static double getDownSize() {
         return downSize;
     }
 
