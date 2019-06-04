@@ -11,6 +11,7 @@ public class Downloading implements DownloadState {
         downloadRegion.setFileReq(false);
         downloadRegion.setFileSize(0);
         downloadRegion.status = 0;
+        downloadRegion.resetDownSize();
         downloadRegion.context_on.getDiskRegiState().freeSpace(downloadRegion.getFileSize());
         downloadRegion.setCurDownloadState(downloadRegion.getDownloadIdle());
     }
@@ -19,6 +20,7 @@ public class Downloading implements DownloadState {
         if (DownloadRegion.downSize >= downloadRegion.getFileSize()){
             downloadRegion.setFileReq(false);
             downloadRegion.setFileSize(0);
+            downloadRegion.resetDownSize();
             downloadRegion.status = 0;
             downloadRegion.context_on.resetTimers();
             downloadRegion.setCurDownloadState(downloadRegion.downloadIdle);

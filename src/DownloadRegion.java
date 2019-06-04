@@ -282,4 +282,8 @@ public class DownloadRegion implements State {
     public void setFileSize(double fileSize) {
         this.fileSize = fileSize;
     }
+
+    public void resetDownSize() {
+        downSize = 0;
+    }
 }
