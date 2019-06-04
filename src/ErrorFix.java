@@ -21,7 +21,6 @@ public class ErrorFix implements State, DownloadState {
 
     @Override
     public void turnOff() {
-        System.out.println("Exit from " + this.toString() + " state");
     }
 
     @Override

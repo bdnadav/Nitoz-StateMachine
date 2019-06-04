@@ -209,8 +209,8 @@ public class DownloadRegion implements State {
 
     @Override
     public void turnOff() {
-        System.out.println("exit"+ curDownloadState.toString() +"state");
-    }
+        System.out.println("Exit from " + this.toString() + " state");
+        context_on.getContext().writeToLog("Exit from " + this.toString() + " state");    }
 
     public State getCurDownloadState() {
         return curDownloadState;

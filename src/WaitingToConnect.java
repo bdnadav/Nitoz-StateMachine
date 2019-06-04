@@ -15,7 +15,6 @@ public class WaitingToConnect implements DownloadState {
 
     @Override
     public void movieOff() {
-        System.out.println("Exit from " + this.toString() + " state");
     }
 
     @Override

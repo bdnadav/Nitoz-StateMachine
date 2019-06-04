@@ -1,10 +1,5 @@
 
 public class Downloading implements DownloadState {
-    @Override
-    public String toString() {
-        return "Downloading";
-    }
-
     private DownloadRegion downloadRegion;
 
     public Downloading(DownloadRegion downloadRegion) {
@@ -27,7 +22,6 @@ public class Downloading implements DownloadState {
 
     @Override
     public void turnOff() {
-        System.out.println("Exit from " + this.toString() + " state");
     }
 
 
@@ -53,6 +47,10 @@ public class Downloading implements DownloadState {
 
     }
 
+    @Override
+    public String toString() {
+        return "Downloading";
+    }
 
 
 
