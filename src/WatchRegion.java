@@ -104,10 +104,6 @@ public class WatchRegion implements State {
 
     }
 
-    @Override
-    public void addFile() {
-
-    }
 
     @Override
     public void download() {
@@ -117,6 +113,11 @@ public class WatchRegion implements State {
     @Override
     public DownloadState getState() {
         return null;
+    }
+
+    @Override
+    public void addFile(double size) {
+
     }
 
     @Override
