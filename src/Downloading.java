@@ -8,16 +8,29 @@ public class Downloading implements DownloadState {
 
     public void downloadAborted(){
         downloadRegion.context_on.points -= 1;
+        downloadRegion.setFileReq(false);
+        downloadRegion.setFileSize(0);
+        downloadRegion.status = 0;
         downloadRegion.context_on.getDiskRegiState().freeSpace(downloadRegion.getFileSize());
         downloadRegion.setCurDownloadState(downloadRegion.getDownloadIdle());
     }
 
     public void finished(){
-        if (DownloadRegion.downSize == downloadRegion.getFileSize()){
+        if (DownloadRegion.downSize >= downloadRegion.getFileSize()){
             downloadRegion.setFileReq(false);
             downloadRegion.setFileSize(0);
+            downloadRegion.status = 0;
             downloadRegion.setCurDownloadState(downloadRegion.downloadIdle);
         }
+    }
+
+    @Override
+    public void updateDownload(double speed) {
+        if (downloadRegion.getDownloadStatus() >= 100){
+            finished();
+        }
+
+        downloadRegion.updateDownload(speed);
     }
 
     @Override
@@ -35,7 +48,8 @@ public class Downloading implements DownloadState {
 
     @Override
     public void errorFixed() {
-        downloadRegion.setCurDownloadState(downloadRegion.errorFix);
+
+//        downloadRegion.setCurDownloadState(downloadRegion.errorFix);
     }
 
 
@@ -106,6 +120,11 @@ public class Downloading implements DownloadState {
         return 0;
     }
 
+    @Override
+    public int getDownloadStatus() {
+        return 0;
+    }
+
 
     @Override
     public void movieOn() {
@@ -155,12 +174,6 @@ public class Downloading implements DownloadState {
     @Override
     public void movieOff() {
 
-    }
-
-    @Override
-    public void updateDownload(double speed) {
-
-        downloadRegion.updateDownload(speed);
     }
 
     @Override

@@ -129,10 +129,10 @@ public class WatchRegion implements State {
     @Override
     public void setCurrentState(State state) {
         if (state != this.currentState) {
-            System.out.println("enter " + currentState.toString() + " state");
-            System.out.println("exit " + state.toString() + " state");
-            context_on.getContext().writeToLog("enter " + currentState.toString() + " state");
-            context_on.getContext().writeToLog("exit " + state.toString() + " state");
+            System.out.println("exit " + currentState.toString() + " state");
+            System.out.println("enter " + state.toString() + " state");
+            context_on.getContext().writeToLog("exit " + currentState.toString() + " state");
+            context_on.getContext().writeToLog("enter " + state.toString() + " state");
         }
         this.currentState= state;
     }
@@ -154,6 +154,11 @@ public class WatchRegion implements State {
 
     @Override
     public double getFreeSpace() {
+        return 0;
+    }
+
+    @Override
+    public int getDownloadStatus() {
         return 0;
     }
 

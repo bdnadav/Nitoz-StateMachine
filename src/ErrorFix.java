@@ -149,6 +149,11 @@ public class ErrorFix implements State, DownloadState {
     }
 
     @Override
+    public int getDownloadStatus() {
+        return 0;
+    }
+
+    @Override
     public void updateDownload(double speed) {
 
     }

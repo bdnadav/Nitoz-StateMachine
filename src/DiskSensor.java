@@ -29,6 +29,10 @@ public class DiskSensor implements State {
         return 0;
     }
 
+    @Override
+    public int getDownloadStatus() {
+        return 0;
+    }
 
 
     @Override

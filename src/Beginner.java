@@ -4,7 +4,7 @@ public class Beginner implements State {
     private double speed;
 
     public Beginner(UserRegion userRegion) {
-        this.speed= 1;
+        this.speed = 1;
         this.userRegion = userRegion;
     }
 
@@ -12,6 +12,14 @@ public class Beginner implements State {
     public void turnOn() {
         // no implementation
     }
+
+    @Override
+    public void download() {
+        if (userRegion.getContext_on().points >= 4){
+            userRegion.getContext_on().upRank();
+        }
+    }
+
 
     @Override
     public void turnOff() {
@@ -25,10 +33,8 @@ public class Beginner implements State {
     }
 
     public void upRank(){
-        if(userRegion.getPoints()>=4){
+        if(userRegion.getContext_on().points >= 4){
             userRegion.setCurrentState(userRegion.getProgressive());
-            System.out.println("enter Progressive state");
-            System.out.println("exit Beginner state");
         }
     }
 
@@ -93,10 +99,6 @@ public class Beginner implements State {
     }
 
 
-    @Override
-    public void download() {
-
-    }
 
     @Override
     public State getState() {
@@ -137,6 +139,12 @@ public class Beginner implements State {
     public double getFreeSpace() {
         return 0;
     }
+
+    @Override
+    public int getDownloadStatus() {
+        return 0;
+    }
+
     public String toString() {
         return "Beginner";
     }
