@@ -24,9 +24,10 @@ public class FilesQueueRegion implements State, Runnable {
     }
 
     @Override
-    public void checkSpeed() {
-
+    public double checkSpeed() {
+        return 0;
     }
+
 
     @Override
     public void upRank() {

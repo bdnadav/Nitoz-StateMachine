@@ -26,8 +26,8 @@ public class DiskRegion implements State, Runnable {
     }
 
     @Override
-    public void checkSpeed() {
-
+    public double checkSpeed() {
+        return 0;
     }
 
     @Override

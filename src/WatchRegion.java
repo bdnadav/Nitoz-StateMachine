@@ -62,8 +62,8 @@ public class WatchRegion implements State, Runnable {
     }
 
     @Override
-    public void checkSpeed() {
-
+    public double checkSpeed() {
+        return 0;
     }
 
     @Override
