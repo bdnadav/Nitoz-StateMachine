@@ -4,6 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         DownloadSystem sys = new DownloadSystem(100) ;
+        int fileSize = 100 ;
         Thread mainRun = new Thread(sys);
 
         while(true) {
@@ -29,7 +30,6 @@ public class Main {
             String input = "";
             if (userInput.hasNext())
                 input = userInput.nextLine();
-
             switch(input) {
                 case "1":
                     mainRun.start();
@@ -44,7 +44,7 @@ public class Main {
                     sys.internetOff();
                     break;
                 case "5":
-                    sys.fileRequest();
+                    sys.fileRequest(fileSize);
                     break;
                 case "6":
                     sys.downloadAborted();

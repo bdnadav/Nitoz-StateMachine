@@ -93,7 +93,7 @@ public class Beginner implements State {
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(double fileSize) {
 
     }
 

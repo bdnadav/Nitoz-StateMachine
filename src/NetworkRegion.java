@@ -1,17 +1,30 @@
-public class NetworkRegion implements State, Runnable {
+public class NetworkRegion implements State {
 
+    protected NetworkRegion networkRegion;
+    private State currentState;
     private On context_on;
-    private  State currentState;
 
-    private  State Connected;
+
+    private State Connected;
     private State offline;
 
     public NetworkRegion(On on) {
-        context_on = on;
-        Connected= new Connected(this);
-        offline= new Offline(this);
+        this.context_on = on;
+        Connected = new Connected(this);
+        offline = new Offline(this);
         currentState = offline;
     }
+
+    @Override
+    public void internetOn() {
+        currentState.internetOn();
+    }
+
+    @Override
+    public void internetOff() {
+        currentState.internetOff();
+    }
+
 
     @Override
     public void movieOff() {
@@ -35,7 +48,7 @@ public class NetworkRegion implements State, Runnable {
 
     @Override
     public double checkSpeed() {
-        return 0;
+        return 0.0;
     }
 
     @Override
@@ -53,15 +66,6 @@ public class NetworkRegion implements State, Runnable {
 
     }
 
-    @Override
-    public void internetOn() {
-        currentState.internetOn();
-    }
-
-    @Override
-    public void internetOff() {
-        currentState.internetOff();
-    }
 
     @Override
     public void finished() {
@@ -84,7 +88,7 @@ public class NetworkRegion implements State, Runnable {
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(double fileSize) {
 
     }
 
@@ -108,14 +112,6 @@ public class NetworkRegion implements State, Runnable {
 
     }
 
-
-
-
-    @Override
-    public void run() {
-
-    }
-
     @Override
     public void turnOn() {
         //no implementation
@@ -123,7 +119,7 @@ public class NetworkRegion implements State, Runnable {
 
     @Override
     public void turnOff() {
-        context_on.turnOff();
+        networkRegion.turnOff();
     }
 
     public State getCurrentState() {

@@ -1,9 +1,16 @@
-public class WaitingToConnect implements State  {
+import com.sun.corba.se.spi.orbutil.fsm.FSM;
+
+public class WaitingToConnect implements DownloadState {
 
     DownloadRegion downloadRegion;
 
     public WaitingToConnect(DownloadRegion downloadRegion){
         this.downloadRegion= downloadRegion;
+    }
+
+    @Override
+    public void internetOn() {
+        downloadRegion.setCurDownloadState(downloadRegion.getDownloading());
     }
 
     @Override
@@ -27,8 +34,8 @@ public class WaitingToConnect implements State  {
     }
 
     @Override
-    public double checkSpeed() {
-        return 0;
+    public double checkSpeed() {return 0.0;
+
     }
 
     @Override
@@ -46,10 +53,7 @@ public class WaitingToConnect implements State  {
 
     }
 
-    @Override
-    public void internetOn() {
-        downloadRegion.setCurDownloadState(downloadRegion.getDownloading());
-    }
+
 
     @Override
     public void internetOff() {
@@ -77,7 +81,7 @@ public class WaitingToConnect implements State  {
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(double fileSize) {
 
     }
 
@@ -113,6 +117,23 @@ public class WaitingToConnect implements State  {
 
     @Override
     public void turnOff() {
+
+    }
+
+
+
+    @Override
+    public void updateDownload(double speed) {
+
+    }
+
+    @Override
+    public void errorNotFixed() {
+
+    }
+
+    @Override
+    public void cancelReq() {
 
     }
 }

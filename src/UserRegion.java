@@ -104,7 +104,7 @@ public class UserRegion implements State {
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(double fileSize) {
 
     }
 
@@ -170,5 +170,9 @@ public class UserRegion implements State {
 
     public State getCurrentState() {
         return currentState;
+    }
+
+    public double getSpeed() {
+        return currentState.getState().checkSpeed();
     }
 }

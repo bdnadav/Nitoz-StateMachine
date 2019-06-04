@@ -1,6 +1,5 @@
-import java.util.Scanner;
 
-public class DownloadSystem implements State, Runnable {
+public class DownloadSystem implements State,Runnable {
     State currentState;
     State onState;
     State offState;
@@ -22,11 +21,6 @@ public class DownloadSystem implements State, Runnable {
 
     public State getOffState() {
         return offState;
-    }
-
-    @Override
-    public void run() {
-        turnOn();
     }
 
     @Override
@@ -110,8 +104,8 @@ public class DownloadSystem implements State, Runnable {
     }
 
     @Override
-    public void fileRequest() {
-        currentState.fileRequest();
+    public void fileRequest(double fileSize) {
+        currentState.fileRequest(fileSize);
     }
 
     @Override
@@ -133,7 +127,22 @@ public class DownloadSystem implements State, Runnable {
     public void restartMovie() {
         currentState.restartMovie();
     }
+    public State getOnState() {
+        return onState;
+    }
 
+    public void setOnState(State onState) {
+        this.onState = onState;
+    }
+
+    public void setOffState(State offState) {
+        this.offState = offState;
+    }
+
+    @Override
+    public void run() {
+        turnOn();
+    }
 
 //End of main
 }

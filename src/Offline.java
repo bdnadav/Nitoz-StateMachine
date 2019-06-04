@@ -77,7 +77,7 @@ public class Offline implements State {
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(double fileSize) {
 
     }
 

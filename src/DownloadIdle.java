@@ -1,4 +1,4 @@
-public class DownloadIdle extends DownloadRegion {
+public class DownloadIdle implements DownloadState {
 
     private DownloadRegion downloadRegion;
 
@@ -9,18 +9,137 @@ public class DownloadIdle extends DownloadRegion {
 
     @Override
     public void download() {
-        if (downloadRegion.State.getNetworkRegiState() instanceof Connected && downloadRegion.State.filesQueueRegion.getNumOfFiles() > 0) {
-            downloadRegion.download_thread_running = false;
-            downloadRegion.download_region_thread = new Thread(downloadRegion.downloadingState);
-            downloadRegion.State.freeSpace -= downloadRegion.State.filesQueueRegion.popFile();
-            downloadRegion.moveState();
+        if (downloadRegion.context_on.getNetworkRegiState() instanceof Connected && downloadRegion.State.filesQueueRegion.getNumOfFiles() > 0) {
+            downloadRegion.context_on.freeSpace -= downloadRegion.getFileSize();
+            downloadRegion.setCurDownloadState(downloadRegion.getDownloading());
+        }
+    }
+
+    @Override
+    public void fileRequest(double fileSize) {
+        if (fileSize > downloadRegion.context_on.freeSpace){
+            downloadRegion.setCurDownloadState(downloadRegion.getNoSpace());
         }
     }
 
 
-    public void run() {
-        while (!downloadRegion.download_thread_running) {
-        }
+
+
+    @Override
+    public void turnOn() {
+
+    }
+
+    @Override
+    public void turnOff() {
+
+    }
+
+    @Override
+    public void movieOff() {
+
+    }
+
+    @Override
+    public void downloadAborted() {
+
+    }
+
+    @Override
+    public void movieOn() {
+
+    }
+
+    @Override
+    public void holdMovie() {
+
+    }
+
+    @Override
+    public double checkSpeed() {return 0.0;
+
+    }
+
+    @Override
+    public void upRank() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void downRank() {
+
+    }
+
+    @Override
+    public void internetOn() {
+
+    }
+
+    @Override
+    public void internetOff() {
+
+    }
+
+    @Override
+    public void finished() {
+
+    }
+
+    @Override
+    public void hold() {
+
+    }
+
+    @Override
+    public void errorFixed() {
+
+    }
+
+    @Override
+    public void downloadError() {
+
+    }
+
+    @Override
+    public void addFile() {
+
+    }
+
+
+    @Override
+    public State getState() {
+        return null;
+    }
+
+    @Override
+    public void restartMovie() {
+
+    }
+
+    @Override
+    public void setCurrentState(State state) {
+
+    }
+
+
+    @Override
+    public void updateDownload(double speed) {
+
+    }
+
+    @Override
+    public void errorNotFixed() {
+
+    }
+
+    @Override
+    public void cancelReq() {
+
     }
 }
 

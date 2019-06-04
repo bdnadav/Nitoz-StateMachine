@@ -8,7 +8,9 @@ public class Off implements State {
 
     @Override
     public void turnOn() {
-        context.setCurrentState(context.getState());
+
+        context.setCurrentState(context.getOnState());
+        context.getCurrentState().turnOn();
     }
 
     @Override
@@ -37,10 +39,9 @@ public class Off implements State {
     }
 
     @Override
-    public double checkSpeed() {
-        return 0;
-    }
+    public double checkSpeed() {return 0.0;
 
+    }
 
     @Override
     public void upRank() {
@@ -88,7 +89,7 @@ public class Off implements State {
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(double fileSize) {
 
     }
 

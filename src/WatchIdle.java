@@ -32,10 +32,9 @@ public class WatchIdle implements State{
     }
 
     @Override
-    public double checkSpeed() {
-        return 0;
-    }
+    public double checkSpeed() {return 0.0;
 
+    }
 
     @Override
     public void upRank() {
@@ -83,7 +82,7 @@ public class WatchIdle implements State{
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(double fileSize) {
 
     }
 

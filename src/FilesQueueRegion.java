@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 
-public class FilesQueueRegion implements State, Runnable {
+public class FilesQueueRegion implements State {
     LinkedList<Integer> files = new LinkedList<>();
 
     @Override
@@ -24,10 +24,9 @@ public class FilesQueueRegion implements State, Runnable {
     }
 
     @Override
-    public double checkSpeed() {
-        return 0;
-    }
+    public double checkSpeed() {return 0.0;
 
+    }
 
     @Override
     public void upRank() {
@@ -75,7 +74,7 @@ public class FilesQueueRegion implements State, Runnable {
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(double fileSize) {
 
     }
 
@@ -114,10 +113,6 @@ public class FilesQueueRegion implements State, Runnable {
 
     }
 
-    @Override
-    public void run() {
-
-    }
 
     public int getNumOfFiles() {
         return files.size();

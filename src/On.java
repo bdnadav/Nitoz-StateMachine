@@ -1,7 +1,7 @@
 public class On implements State {
     public int freeSpace;
-
     public int status;
+    public int points;
 
 
     private DownloadSystem context;
@@ -41,7 +41,7 @@ public class On implements State {
     public State getDiskRegiState(){
         return diskRegion.getState();
     }
-    public State getWatchRegiState(){
+    public DownloadState getWatchRegiState(){
         return watchRegion.getState();
     }
 
@@ -49,10 +49,21 @@ public class On implements State {
     @Override
     public void turnOn() {
         while(true){
-
-            if ( System.currentTimeMillis() - lastTimeDownload >=1000){
-                downloadRegion.download();
+                long currTime = System.currentTimeMillis();
+            if ( currTime - lastTimeDownload >=1000){
+                downloadRegion.getState().updateDownload(userRegion.getSpeed());
+                lastTimeDownload = currTime ;
             }
+            if ( currTime - lastTimeError >= 3000){
+                        downloadRegion.getState().errorNotFixed() ;
+                        lastTimeError = currTime ;
+            }
+            if ( currTime - lastTimeSpace >= 4000){
+                    downloadRegion.getState().cancelReq() ;
+
+            }
+
+
 
 
         }
@@ -154,7 +165,7 @@ public class On implements State {
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(double fileSize) {
 
     }
 
