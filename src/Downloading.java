@@ -23,7 +23,7 @@ public class Downloading implements DownloadState {
 
     @Override
     public void turnOff() {
-        downloadRegion.context_on.getContext().setCurrentState(downloadRegion.context_on.getContext().offState);
+        System.out.println("Exit from " + this.toString() + " state");
     }
 
 
