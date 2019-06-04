@@ -92,10 +92,6 @@ public class DownloadRegion implements State {
 
     }
 
-    @Override
-    public void hold() {
-
-    }
 
     @Override
     public void downloadAborted() {

@@ -81,12 +81,6 @@ public class ErrorFix implements State, DownloadState {
 
     }
 
-    @Override
-    public void hold() {
-
-    }
-
-
 
     @Override
     public void downloadError() {

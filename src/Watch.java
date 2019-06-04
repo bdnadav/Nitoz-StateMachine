@@ -1,4 +1,5 @@
 public class Watch implements State {
+
     WatchRegion context;
     boolean play;
 
@@ -49,7 +50,6 @@ public class Watch implements State {
     }
 
 
-
     @Override
     public double checkSpeed() {
         if(play)
@@ -77,23 +77,16 @@ public class Watch implements State {
 
     }
 
-
-
     @Override
     public void finished() {
 
     }
 
-    @Override
-    public void hold() {
-
-    }
 
     @Override
     public void errorFixed() {
 
     }
-
 
 
     @Override

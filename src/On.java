@@ -2,7 +2,6 @@ public class On implements State {
     public int status;
     public int points;
 
-
     private DownloadSystem context;
 
     public WatchRegion watchRegion;
@@ -58,8 +57,11 @@ public class On implements State {
             }
             if ( currTime - lastTimeSpace >= 4000){
                     downloadRegion.getState().cancelReq() ;
+                    lastTimeSpace = currTime ;
 
             }
+
+
 
 
 
@@ -147,10 +149,6 @@ public class On implements State {
 
     }
 
-    @Override
-    public void hold() {
-
-    }
 
     @Override
     public void errorFixed() {

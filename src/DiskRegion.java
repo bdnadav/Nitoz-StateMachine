@@ -70,10 +70,6 @@ public class DiskRegion implements State {
 
     }
 
-    @Override
-    public void hold() {
-
-    }
 
     @Override
     public void errorFixed() {

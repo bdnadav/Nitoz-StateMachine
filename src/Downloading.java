@@ -138,10 +138,6 @@ public class Downloading implements DownloadState {
 
 
 
-    @Override
-    public void hold() {
-
-    }
 
 
 

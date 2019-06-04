@@ -1,10 +1,26 @@
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
-        DownloadSystem sys = new DownloadSystem(100) ;
-        int fileSize = 100 ;
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
+        System.out.println(" enter disk size or enter 0 for default size" +
+                "(default size is 100)\n");
+
+        Scanner inputDisk = new Scanner(System.in);
+        double DSize= inputDisk.nextDouble();
+
+        if(DSize==0)
+            DSize=100;
+
+        PrintWriter writer = new PrintWriter("readMe.txt", "UTF-8");
+        writer.println("Download System Event Log : ");
+        writer.flush();
+
+
+        DownloadSystem sys = new DownloadSystem(DSize , writer) ;
         Thread mainRun = new Thread(sys);
 
         while(true) {
@@ -22,7 +38,7 @@ public class Main {
                     "11. holdMovie\n"+
                     "12. movieOff\n"+
                     "13. resume\n");
-
+            System.out.println("Enter your choice :" ) ;
             Scanner userInput = new Scanner(System.in);
 
             while(!userInput.hasNext());
@@ -32,42 +48,58 @@ public class Main {
                 input = userInput.nextLine();
             switch(input) {
                 case "1":
+                    writer.println("turnOn");
                     mainRun.start();
                     break;
                 case "2":
+                    writer.println("turnOff");
                     sys.turnOff();
                     break;
                 case "3":
+                    writer.println("internetOn");
                     sys.internetOn();
                     break;
                 case "4":
+                    writer.println("internetOff");
                     sys.internetOff();
                     break;
                 case "5":
-                    sys.fileRequest(fileSize);
+                    writer.println("fileRequest");
+                    System.out.println("enter file size");
+                    Scanner inputFile = new Scanner(System.in);
+                    double FSize= inputFile.nextDouble();
+                    sys.fileRequest(FSize);
                     break;
                 case "6":
+                    writer.println("downloadAborted");
                     sys.downloadAborted();
                     break;
                 case "7":
+                    writer.println("downloadError");
                     sys.downloadError();
                     break;
                 case "8":
+                    writer.println("errorFixed");
                     sys.errorFixed();
                     break;
                 case "9":
+                    writer.println("movieOn");
                     sys.movieOn();
                     break;
                 case "10":
+                    writer.println("restartMovie");
                     sys.restartMovie();
                     break;
                 case "11":
+                    writer.println("holdMovie");
                     sys.holdMovie();
                     break;
                 case "12":
-                    sys.movieOn();
+                    writer.println("movieOff");
+                    sys.movieOff();
                     break;
                 case "13":
+                    writer.println("resume");
                     sys.resume();
                     break;
             }
@@ -75,9 +107,10 @@ public class Main {
             if (!input.equals("")) {
                 //main code
             }
-            userInput.close();
             //Thread.sleep(1000);
+            writer.flush();
         }
+        //writer.close();
 
     }
 }

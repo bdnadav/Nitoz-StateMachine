@@ -6,7 +6,6 @@ public class Progressive implements State{
     public Progressive(UserRegion userRegion) {
         this.speed= 1.2;
         this.userRegion = userRegion;
-        System.out.println("Enter Progressive state");
     }
 
     @Override
@@ -85,10 +84,7 @@ public class Progressive implements State{
 
     }
 
-    @Override
-    public void hold() {
 
-    }
 
     @Override
     public void errorFixed() {

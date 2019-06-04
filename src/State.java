@@ -14,7 +14,6 @@ public interface State {
     void internetOn();
     void internetOff();
     void finished();
-    void hold();
     void errorFixed();
     void downloadError();
     void fileRequest(double fileSize);
