@@ -12,19 +12,25 @@ public class DownloadIdle implements DownloadState {
         if (downloadRegion.context_on.getNetworkRegiState() instanceof Connected && downloadRegion.isFileReq()) {
             downloadRegion.context_on.getDiskRegiState().reduceFreeSpace(downloadRegion.getFileSize());
             downloadRegion.setCurDownloadState(downloadRegion.getDownloading());
+            downloadRegion.context_on.points++;
         }
     }
 
     @Override
     public void fileRequest(double fileSize) {
-        if (fileSize > downloadRegion.context_on.diskRegion.getFreeSpace()){ // --> noSpace
+        //downloadRegion.context_on.getNetworkRegiState() instanceof Connected
+        if (downloadRegion.context_on.getNetworkRegiState() instanceof Connected && fileSize > downloadRegion.context_on.diskRegion.getFreeSpace()){ // --> noSpace
             downloadRegion.setCurDownloadState(downloadRegion.getNoSpace());
         }
-        else if (downloadRegion.isFileReq()){ // File is already on system
+        else if (downloadRegion.isFileReq()){ // there is already a file on system
         }
-        else{
+        else{ // legal file size && connected
             downloadRegion.setFileReq(true);
             downloadRegion.setFileSize(fileSize);
+            downloadRegion.setCurDownloadState(downloadRegion.downloading); // ??
+            downloadRegion.context_on.download();
+//            downloadRegion.setFileSize(fileSize);
+//            downloadRegion.setCurDownloadState(downloadRegion.downloading); // ??
         }
     }
 
@@ -150,6 +156,11 @@ public class DownloadIdle implements DownloadState {
 
     @Override
     public double getFreeSpace() {
+        return 0;
+    }
+
+    @Override
+    public int getDownloadStatus() {
         return 0;
     }
 

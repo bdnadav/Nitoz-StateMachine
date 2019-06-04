@@ -25,19 +25,15 @@ public class Progressive implements State{
     }
 
     public void upRank(){
-        if(userRegion.getPoints()>=7){
+        if(userRegion.getContext_on().points>=7){
             userRegion.setCurrentState(userRegion.getPro());
-            System.out.println("enter Professional state");
-            System.out.println("exit Progressive state");
         }
     }
 
     @Override
     public void downRank() {
-        if(userRegion.getPoints()<7){
+        if(userRegion.getContext_on().points<7){
             userRegion.setCurrentState(userRegion.getBeginner());
-            System.out.println("enter Beginner state");
-            System.out.println("exit Progressive state");
         }
     }
 
@@ -55,6 +51,9 @@ public class Progressive implements State{
 
     @Override
     public void downloadAborted() {
+        if (userRegion.getContext_on().points < 4){
+            userRegion.getContext_on().downRank();
+        }
 
     }
 
@@ -104,7 +103,9 @@ public class Progressive implements State{
 
     @Override
     public void download() {
-
+        if (userRegion.getContext_on().points >= 7){
+            userRegion.getContext_on().upRank();
+        }
     }
 
     @Override
@@ -144,6 +145,11 @@ public class Progressive implements State{
 
     @Override
     public double getFreeSpace() {
+        return 0;
+    }
+
+    @Override
+    public int getDownloadStatus() {
         return 0;
     }
 

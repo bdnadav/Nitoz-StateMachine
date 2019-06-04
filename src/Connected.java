@@ -127,6 +127,11 @@ public class Connected implements State{
     }
 
     @Override
+    public int getDownloadStatus() {
+        return 0;
+    }
+
+    @Override
     public void turnOn() {
 
     }

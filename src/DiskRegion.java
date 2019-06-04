@@ -131,8 +131,18 @@ public class DiskRegion implements State {
 
     @Override
     public double getFreeSpace() {
+        return freeSpace;
+    }
+
+    @Override
+    public int getDownloadStatus() {
         return 0;
     }
+
+    public State getCurrentState(){
+        return currentState;
+    }
+
 
 
     @Override

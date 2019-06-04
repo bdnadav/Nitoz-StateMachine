@@ -33,7 +33,7 @@ public class DownloadRegion implements State {
         errorFix= new ErrorFix(this);
         noSpace= new NoSpace(this);
         context_on = on;
-        curDownloadState = waitingToConnect;
+        curDownloadState = downloadIdle;
 
 
     }
@@ -44,7 +44,7 @@ public class DownloadRegion implements State {
         fileReq = false ;
         fileSize = 0 ;
         status = 0 ;
-        curDownloadState = downloadIdle ;
+        setCurDownloadState(downloadIdle);
     }
 
     @Override
@@ -55,10 +55,10 @@ public class DownloadRegion implements State {
 
     public void setCurDownloadState(DownloadState curDownloadState) {
         if (curDownloadState != this.curDownloadState) {
+            System.out.println("exit " + this.curDownloadState.toString() + " state");
             System.out.println("enter " + curDownloadState.toString() + " state");
-            System.out.println("exit " + curDownloadState.toString() + " state");
+            context_on.getContext().writeToLog("exit " + this.curDownloadState.toString() + " state");
             context_on.getContext().writeToLog("enter " + curDownloadState.toString() + " state");
-            context_on.getContext().writeToLog("exit " + curDownloadState.toString() + " state");
         }
         this.curDownloadState= (DownloadState) curDownloadState;
     }
@@ -66,12 +66,23 @@ public class DownloadRegion implements State {
     @Override
     public void setCurrentState(State state) {
         if (state != this.curDownloadState) {
+            System.out.println("exit " + this.curDownloadState.toString() + " state");
             System.out.println("enter " + curDownloadState.toString() + " state");
-            System.out.println("exit " + state.toString() + " state");
+            context_on.getContext().writeToLog("exit " + this.curDownloadState.toString() + " state");
             context_on.getContext().writeToLog("enter " + curDownloadState.toString() + " state");
-            context_on.getContext().writeToLog("exit " + state.toString() + " state");
         }
         this.curDownloadState= (DownloadState) state;
+    }
+
+    @Override
+    public int getDownloadStatus() {
+        return status;
+    }
+
+
+    @Override
+    public void downloadAborted() {
+        curDownloadState.downloadAborted();
     }
 
 
@@ -85,6 +96,17 @@ public class DownloadRegion implements State {
     public String toString() {
         return "DownloadRegion";
     }
+
+    @Override
+    public void internetOff() {
+        curDownloadState.internetOff();
+    }
+
+    @Override
+    public void finished() {
+        curDownloadState.finished();
+    }
+
 
     @Override
     public void movieOff() {
@@ -124,37 +146,25 @@ public class DownloadRegion implements State {
 
 
 
-    @Override
-    public void internetOff() {
-
-    }
-
-    @Override
-    public void finished() {
-
-    }
 
 
-    @Override
-    public void downloadAborted() {
 
-    }
 
     @Override
     public void errorFixed() {
-
+        curDownloadState.errorFixed();
     }
 
     @Override
     public void downloadError() {
-
+        curDownloadState.errorFixed();
     }
 
 
 
     @Override
     public void download() {
-
+        curDownloadState.download();
     }
 
     public void addFile(double size) {
@@ -164,8 +174,8 @@ public class DownloadRegion implements State {
 
 
     public void updateDownload(double size) {
-        downSize+=size ;
-        status = (int)((downSize / fileSize) * 100) ;
+        downSize+=size;
+        status = (int)((downSize / fileSize) * 100);
 
         //curDownloadState.download();
     }
@@ -198,6 +208,7 @@ public class DownloadRegion implements State {
     public double getFreeSpace() {
         return 0;
     }
+
 
     @Override
     public void turnOn() {

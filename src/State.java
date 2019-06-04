@@ -26,6 +26,6 @@ public interface State {
     void freeSpace(double fileSize);
     void reduceFreeSpace(double fileSize);
     String toString() ;
-
     double getFreeSpace();
+    int getDownloadStatus();
 }

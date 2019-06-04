@@ -32,8 +32,6 @@ public class Pro implements State {
     public void downRank() {
         if(userRegion.getPoints()<7){
             userRegion.setCurrentState(userRegion.getProgressive());
-            System.out.println("enter Progressive state");
-            System.out.println("exit Professional state");
         }
     }
 
@@ -44,7 +42,9 @@ public class Pro implements State {
 
     @Override
     public void downloadAborted() {
-
+        if (userRegion.getContext_on().points < 7){
+            userRegion.getContext_on().downRank();
+        }
     }
 
     @Override
@@ -139,6 +139,11 @@ public class Pro implements State {
 
     @Override
     public double getFreeSpace() {
+        return 0;
+    }
+
+    @Override
+    public int getDownloadStatus() {
         return 0;
     }
 

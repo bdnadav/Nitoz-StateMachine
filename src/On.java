@@ -1,5 +1,4 @@
 public class On implements State {
-    public int status;
     public int points;
 
     private DownloadSystem context;
@@ -26,18 +25,18 @@ public class On implements State {
 
 
     public State getDownloadRegiState(){
-        return downloadRegion.getState();
+        return downloadRegion.getCurDownloadState();
     }
     public State getNetworkRegiState(){
-        return networkRegion.getState();
+        return networkRegion.getCurrentState();
     }
     public State getUserRegiState(){
-        return userRegion.getState();
+        return userRegion.getCurrentState();
     }
     public State getDiskRegiState(){
-        return diskRegion.getState();
+        return diskRegion.getCurrentState();
     }
-    public DownloadState getWatchRegiState(){
+    public State getWatchRegiState(){
         return watchRegion.getState();
     }
 
@@ -49,7 +48,7 @@ public class On implements State {
          networkRegion.turnOn();
             diskRegion.turnOn();
         downloadRegion.turnOn();
-        while(true){
+        while(!(context.getCurrentState() instanceof Off)){ // Add playMove() (time++) operation?
                 long currTime = System.currentTimeMillis();
             if ( currTime - lastTimeDownload >=1000){
                 downloadRegion.getState().updateDownload(userRegion.getSpeed());
@@ -125,17 +124,17 @@ public class On implements State {
 
     @Override
     public void upRank() {
-
+        userRegion.upRank();
     }
 
     @Override
     public void resume() {
-
+        watchRegion.resume();
     }
 
     @Override
     public void downRank() {
-
+        userRegion.downRank();
     }
 
     @Override
@@ -182,7 +181,7 @@ public class On implements State {
     @Override
     public void download() {
         downloadRegion.download();
-
+        userRegion.download();
     }
 
     @Override
@@ -226,7 +225,12 @@ public class On implements State {
 
     @Override
     public double getFreeSpace() {
-        return 0;
+        return diskRegion.getFreeSpace();
+    }
+
+    @Override
+    public int getDownloadStatus() {
+        return downloadRegion.getDownloadStatus();
     }
 
     @Override

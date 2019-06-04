@@ -21,7 +21,8 @@ public class DownloadSystem implements State,Runnable {
     }
 
     public void setCurrentState(State state) {
-        System.out.println("enter"+ state.toString() +"state");
+        System.out.println("exit "+ currentState.toString() +" state");
+        System.out.println("enter "+ state.toString() +" state");
 
         this.currentState = state;
     }
@@ -44,6 +45,11 @@ public class DownloadSystem implements State,Runnable {
     @Override
     public double getFreeSpace() {
         return 0;
+    }
+
+    @Override
+    public int getDownloadStatus() {
+        return currentState.getDownloadStatus();
     }
 
 

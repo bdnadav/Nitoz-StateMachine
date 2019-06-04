@@ -127,6 +127,11 @@ public class Pause implements State {
     }
 
     @Override
+    public int getDownloadStatus() {
+        return 0;
+    }
+
+    @Override
     public void turnOn() {
         //no imple.
     }

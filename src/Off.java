@@ -136,6 +136,11 @@ public class Off implements State {
     }
 
     @Override
+    public int getDownloadStatus() {
+        return 0;
+    }
+
+    @Override
     public String toString() {
         return "Off";
     }
