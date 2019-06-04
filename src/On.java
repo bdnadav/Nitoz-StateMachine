@@ -96,6 +96,7 @@ public class On implements State {
     @Override
     public void movieOn() {
         watchRegion.movieOn();
+
     }
 
     public DownloadSystem getContext() {
@@ -213,5 +214,10 @@ public class On implements State {
     @Override
     public double getFreeSpace() {
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return " On ";
     }
 }
