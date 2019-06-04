@@ -27,7 +27,7 @@ public class DownloadIdle implements DownloadState {
         else{ // legal file size && connected
             downloadRegion.setFileReq(true);
             downloadRegion.setFileSize(fileSize);
-            downloadRegion.setCurDownloadState(downloadRegion.downloading); // ??
+//            downloadRegion.setCurDownloadState(downloadRegion.downloading); // ??
             downloadRegion.context_on.download();
 //            downloadRegion.setFileSize(fileSize);
 //            downloadRegion.setCurDownloadState(downloadRegion.downloading); // ??
