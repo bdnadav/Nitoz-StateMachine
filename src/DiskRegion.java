@@ -1,8 +1,11 @@
 public class DiskRegion implements State {
-    public int _diskSize ;
-    public DiskRegion(int diskSize) {
-        _diskSize = diskSize ;
 
+    public double diskSize ;
+    public double freeSpace;
+
+
+    public DiskRegion(double diskSize, On context_on) {
+        diskSize = diskSize ;
     }
 
     @Override
@@ -60,10 +63,6 @@ public class DiskRegion implements State {
 
     }
 
-    @Override
-    public void hold() {
-
-    }
 
     @Override
     public void errorFixed() {

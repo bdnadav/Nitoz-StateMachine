@@ -65,10 +65,6 @@ public class WaitingToConnect implements DownloadState {
 
     }
 
-    @Override
-    public void hold() {
-
-    }
 
     @Override
     public void errorFixed() {

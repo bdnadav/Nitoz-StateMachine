@@ -6,7 +6,7 @@ public class DownloadSystem implements State,Runnable {
     State offState;
     PrintWriter _writer ;
 
-    public DownloadSystem(int diskSize, PrintWriter writer) {
+    public DownloadSystem(double dSize, PrintWriter writer) {
         _writer = writer ;
         offState = new Off(this);
         onState = new On(this);
@@ -96,10 +96,7 @@ public class DownloadSystem implements State,Runnable {
         currentState.finished();
     }
 
-    @Override
-    public void hold() {
-        currentState.hold();
-    }
+
 
     @Override
     public void errorFixed() {

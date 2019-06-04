@@ -6,7 +6,6 @@ public class Pro implements State {
     public Pro(UserRegion userRegion) {
         this.speed= 1.5;
         this.userRegion = userRegion;
-        System.out.println("Enter Professional state");
 
     }
 
@@ -79,11 +78,6 @@ public class Pro implements State {
 
     @Override
     public void finished() {
-
-    }
-
-    @Override
-    public void hold() {
 
     }
 

@@ -14,7 +14,6 @@ public class WatchIdle implements State{
 
     }
 
-
     // No need to implement all the next methods.
     @Override
     public void movieOff() {
@@ -66,10 +65,6 @@ public class WatchIdle implements State{
 
     }
 
-    @Override
-    public void hold() {
-
-    }
 
     @Override
     public void errorFixed() {

@@ -72,10 +72,7 @@ public class NetworkRegion implements State {
 
     }
 
-    @Override
-    public void hold() {
 
-    }
 
     @Override
     public void errorFixed() {

@@ -62,10 +62,7 @@ public class Connected implements State{
 
     }
 
-    @Override
-    public void hold() {
 
-    }
 
     @Override
     public void errorFixed() {

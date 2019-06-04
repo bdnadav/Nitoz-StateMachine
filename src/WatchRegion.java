@@ -15,16 +15,8 @@ public class WatchRegion implements State {
         return idle_state;
     }
 
-    public State getWatch_state() {
-        return watch_state;
-    }
-
     public State getPause_state() {
         return pause_state;
-    }
-
-    public On getContext_on() {
-        return context_on;
     }
 
     public int getTime() {
@@ -38,7 +30,6 @@ public class WatchRegion implements State {
         pause_state= new Pause(this);
         this.currentState = idle_state;
     }
-
 
     @Override
     public void movieOff() {
@@ -93,11 +84,6 @@ public class WatchRegion implements State {
 
     @Override
     public void finished() {
-
-    }
-
-    @Override
-    public void hold() {
 
     }
 

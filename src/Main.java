@@ -6,13 +6,21 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
+        System.out.println(" enter disk size or enter 0 for default size" +
+                "(default size is 100)\n");
+
+        Scanner inputDisk = new Scanner(System.in);
+        double DSize= inputDisk.nextDouble();
+
+        if(DSize==0)
+            DSize=100;
+
         PrintWriter writer = new PrintWriter("readMe.txt", "UTF-8");
         writer.println("Download System Event Log : ");
         writer.flush();
 
 
-        DownloadSystem sys = new DownloadSystem(100 , writer) ;
-        int fileSize = 100 ;
+        DownloadSystem sys = new DownloadSystem(DSize , writer) ;
         Thread mainRun = new Thread(sys);
 
         while(true) {
@@ -57,7 +65,10 @@ public class Main {
                     break;
                 case "5":
                     writer.println("fileRequest");
-                    sys.fileRequest(fileSize);
+                    System.out.println("enter file size");
+                    Scanner inputFile = new Scanner(System.in);
+                    double FSize= inputFile.nextDouble();
+                    sys.fileRequest(FSize);
                     break;
                 case "6":
                     writer.println("downloadAborted");
@@ -96,7 +107,6 @@ public class Main {
             if (!input.equals("")) {
                 //main code
             }
-            userInput.close();
             //Thread.sleep(1000);
             writer.flush();
         }

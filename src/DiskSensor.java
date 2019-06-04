@@ -1,93 +1,102 @@
-public class DiskSensor extends DiskRegion {
+public class DiskSensor implements State {
+
+    private DiskRegion diskRegion;
 
 
     public DiskSensor(int diskSize) {
-        super(diskSize);
     }
 
     @Override
     public void movieOff() {
-        super.movieOff();
     }
 
     @Override
     public void downloadAborted() {
-        super.downloadAborted();
     }
 
     @Override
     public void movieOn() {
-        super.movieOn();
     }
 
     @Override
     public void holdMovie() {
-        super.holdMovie();
     }
 
     @Override
     public double checkSpeed() {
-        return super.checkSpeed();
+        return 0;
     }
 
     @Override
     public void upRank() {
-        super.upRank();
     }
 
     @Override
     public void resume() {
-        super.resume();
     }
 
     @Override
     public void downRank() {
-        super.downRank();
     }
 
     @Override
     public void internetOn() {
-        super.internetOn();
     }
 
     @Override
     public void internetOff() {
-        super.internetOff();
     }
 
     @Override
     public void finished() {
-        super.finished();
     }
 
-    @Override
-    public void hold() {
-        super.hold();
-    }
 
     @Override
     public void errorFixed() {
-        super.errorFixed();
     }
 
     @Override
     public void downloadError() {
-        super.downloadError();
     }
 
     @Override
     public void fileRequest(double fileSize) {
-        super.fileRequest(fileSize);
+    }
+
+    @Override
+    public void addFile() {
+
+    }
+
+    @Override
+    public void download() {
+
+    }
+
+    @Override
+    public State getState() {
+        return null;
+    }
+
+    @Override
+    public void restartMovie() {
+
+    }
+
+    @Override
+    public void setCurrentState(State state) {
+
     }
 
     @Override
     public void turnOn() {
-        super.turnOn();
+
     }
 
     @Override
     public void turnOff() {
-        super.turnOff();
+
     }
 
     @Override

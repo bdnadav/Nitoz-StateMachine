@@ -83,10 +83,6 @@ public class UserRegion implements State {
 
     }
 
-    @Override
-    public void hold() {
-
-    }
 
     @Override
     public void downloadAborted() {

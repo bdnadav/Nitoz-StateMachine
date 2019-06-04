@@ -3,7 +3,6 @@ public class On implements State {
     public int status;
     public int points;
 
-
     private DownloadSystem context;
 
     public WatchRegion watchRegion;
@@ -21,7 +20,7 @@ public class On implements State {
     public On(DownloadSystem context) {
         this.context = context;
         watchRegion = new WatchRegion(this);
-        diskRegion = new DiskRegion(100);
+        diskRegion = new DiskRegion(100, this);
         userRegion = new UserRegion(this);
         networkRegion = new NetworkRegion(this);
         downloadRegion = new DownloadRegion(this);
@@ -152,10 +151,6 @@ public class On implements State {
 
     }
 
-    @Override
-    public void hold() {
-
-    }
 
     @Override
     public void errorFixed() {

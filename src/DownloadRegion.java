@@ -4,9 +4,6 @@ public class DownloadRegion implements State {
     protected int status ;
     private double fileSize = 0 ;
     private boolean fileReq ; // tells if there is a file reqested in the system
-    //protected Thread download_region_thread;
-    //protected boolean download_thread_running = true;
-
 
     protected DownloadState curDownloadState;
     protected DownloadState downloadIdle;
@@ -87,10 +84,6 @@ public class DownloadRegion implements State {
 
     }
 
-    @Override
-    public void hold() {
-
-    }
 
     @Override
     public void downloadAborted() {

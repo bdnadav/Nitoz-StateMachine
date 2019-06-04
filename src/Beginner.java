@@ -6,7 +6,6 @@ public class Beginner implements State {
     public Beginner(UserRegion userRegion) {
         this.speed= 1;
         this.userRegion = userRegion;
-        System.out.println("Enter Beginner state");
     }
 
     @Override
@@ -77,10 +76,6 @@ public class Beginner implements State {
 
     }
 
-    @Override
-    public void hold() {
-
-    }
 
     @Override
     public void errorFixed() {
