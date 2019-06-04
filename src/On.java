@@ -63,11 +63,6 @@ public class On implements State {
 
             }
 
-
-
-
-
-
         }
 
         //handle status change if needed !!!
@@ -95,15 +90,15 @@ public class On implements State {
     public void movieOn() {
         watchRegion.movieOn();
 
-//        while(){
-//            watchRegion.movieOn();
-//
-//
-//
-//
-//        }
     }
 
+    public DownloadSystem getContext() {
+        return context;
+    }
+
+    public void setContext(DownloadSystem context) {
+        this.context = context;
+    }
     @Override
     public void holdMovie() {
 

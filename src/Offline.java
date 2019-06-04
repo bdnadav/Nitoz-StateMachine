@@ -3,7 +3,7 @@ public class Offline implements State {
     NetworkRegion networkRegion;
 
     public Offline(NetworkRegion networkRegion){
-        networkRegion= networkRegion;
+        this.networkRegion= networkRegion;
     }
 
     @Override

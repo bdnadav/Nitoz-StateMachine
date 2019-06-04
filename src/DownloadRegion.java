@@ -68,10 +68,6 @@ public class DownloadRegion implements State {
     public void internetOn() {
         curDownloadState.internetOn();// cur= down
 
-        while(curDownloadState instanceof Downloading){
-           // curDownloadState.do();
-        }
-
     }
 
     @Override
