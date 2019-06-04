@@ -1,10 +1,7 @@
-public class Connected implements State{
+import java.util.LinkedList;
 
-    NetworkRegion networkRegion;
-
-    public Connected(NetworkRegion networkRegion){
-        this.networkRegion = networkRegion;
-    }
+public class FilesQueueRegion implements State {
+    LinkedList<Integer> files = new LinkedList<>();
 
     @Override
     public void movieOff() {
@@ -27,8 +24,8 @@ public class Connected implements State{
     }
 
     @Override
-    public double checkSpeed() {
-        return 0;
+    public double checkSpeed() {return 0.0;
+
     }
 
     @Override
@@ -48,12 +45,11 @@ public class Connected implements State{
 
     @Override
     public void internetOn() {
-        // empty method
+
     }
 
     @Override
     public void internetOff() {
-        networkRegion.setCurrentState(networkRegion.getOffline());
 
     }
 
@@ -61,7 +57,6 @@ public class Connected implements State{
     public void finished() {
 
     }
-
 
 
     @Override
@@ -79,6 +74,10 @@ public class Connected implements State{
 
     }
 
+    @Override
+    public void addFile() {
+
+    }
 
     @Override
     public void download() {
@@ -96,7 +95,7 @@ public class Connected implements State{
     }
 
     @Override
-    public void setCurrentState(State state) {
+    public void setCurrentState(State State) {
 
     }
 
@@ -127,5 +126,15 @@ public class Connected implements State{
 
     @Override
     public void turnOff() {
+
+    }
+
+
+    public int getNumOfFiles() {
+        return files.size();
+    }
+
+    public int popFile() {
+        return files.poll();
     }
 }

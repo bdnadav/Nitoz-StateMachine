@@ -1,6 +1,5 @@
 
 public class Downloading implements DownloadState {
-
     private DownloadRegion downloadRegion;
 
     public Downloading(DownloadRegion downloadRegion) {
@@ -19,15 +18,18 @@ public class Downloading implements DownloadState {
             downloadRegion.setFileSize(0);
             downloadRegion.setCurDownloadState(downloadRegion.downloadIdle);
         }
-
     }
+
+    @Override
+    public void turnOff() {
+    }
+
 
     public void downloadError(){
         downloadRegion.setCurDownloadState(downloadRegion.getErrorFix());
     }
 
     public void internetOff(){
-
         downloadRegion.setCurDownloadState(downloadRegion.getWaitingToConnect());
     }
 
@@ -35,8 +37,6 @@ public class Downloading implements DownloadState {
     public void errorFixed() {
         downloadRegion.setCurDownloadState(downloadRegion.errorFix);
     }
-
-
 
 
     public void update() {
@@ -47,6 +47,10 @@ public class Downloading implements DownloadState {
 
     }
 
+    @Override
+    public String toString() {
+        return "Downloading";
+    }
 
 
 
@@ -145,11 +149,6 @@ public class Downloading implements DownloadState {
 
     @Override
     public void turnOn() {
-
-    }
-
-    @Override
-    public void turnOff() {
 
     }
 

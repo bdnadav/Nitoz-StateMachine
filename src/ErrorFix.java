@@ -20,14 +20,25 @@ public class ErrorFix implements State, DownloadState {
     }
 
     @Override
+    public void turnOff() {
+    }
+
+    @Override
+    public void errorNotFixed() {
+        downloadAborted();
+    }
+
+    @Override
+    public String toString() {
+        return "errorFixed";
+    }
+
+
+    @Override
     public void turnOn() {
 
     }
 
-    @Override
-    public void turnOff() {
-
-    }
 
     @Override
     public void movieOff() {
@@ -139,11 +150,6 @@ public class ErrorFix implements State, DownloadState {
 
     @Override
     public void updateDownload(double speed) {
-
-    }
-
-    @Override
-    public void errorNotFixed() {
 
     }
 

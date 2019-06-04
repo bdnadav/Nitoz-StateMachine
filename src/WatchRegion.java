@@ -1,5 +1,4 @@
 public class WatchRegion implements State {
-
     private State currentState;
     private State idle_state;
     private State watch_state;

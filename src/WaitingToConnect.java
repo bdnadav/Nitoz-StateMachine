@@ -15,8 +15,13 @@ public class WaitingToConnect implements DownloadState {
 
     @Override
     public void movieOff() {
-
     }
+
+    @Override
+    public String toString() {
+        return "DownloadIdle";
+    }
+
 
     @Override
     public void downloadAborted() {
