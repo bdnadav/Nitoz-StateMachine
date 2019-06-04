@@ -9,7 +9,7 @@ public class DownloadIdle implements DownloadState {
 
     @Override
     public void download() {
-        if (downloadRegion.context_on.getNetworkRegiState() instanceof Connected && downloadRegion.State.filesQueueRegion.getNumOfFiles() > 0 && downloadRegion.isFileReq()) {
+        if (downloadRegion.context_on.getNetworkRegiState() instanceof Connected && downloadRegion.getFileSize() > 0 && downloadRegion.isFileReq()) {
             downloadRegion.context_on.getDiskRegiState().reduceFreeSpace(downloadRegion.getFileSize());
             downloadRegion.setCurDownloadState(downloadRegion.getDownloading());
         }

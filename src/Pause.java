@@ -127,11 +127,16 @@ public class Pause implements State {
 
     @Override
     public void turnOn() {
-
+        //no imple.
     }
 
     @Override
     public void turnOff() {
+        //
+    }
 
+    @Override
+    public String toString() {
+        return " Pause ";
     }
 }
