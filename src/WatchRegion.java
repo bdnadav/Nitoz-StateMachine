@@ -1,4 +1,5 @@
 public class WatchRegion implements State {
+
     private State currentState;
     private State idle_state;
     private State watch_state;
@@ -127,10 +128,33 @@ public class WatchRegion implements State {
 
     @Override
     public void setCurrentState(State state) {
-        System.out.println("enter"+ currentState.toString() +"state");
-        System.out.println("exit"+ state.toString() +"state");
-        context_on.getContext().writeToLog("enter"+ currentState.toString() +"state");
-        context_on.getContext().writeToLog("exit"+ state.toString() +"state");
+        if (state != this.currentState) {
+            System.out.println("enter" + currentState.toString() + "state");
+            System.out.println("exit" + state.toString() + "state");
+            context_on.getContext().writeToLog("enter" + currentState.toString() + "state");
+            context_on.getContext().writeToLog("exit" + state.toString() + "state");
+        }
+        this.currentState= state;
+    }
+
+    @Override
+    public void checkSpace() {
+
+    }
+
+    @Override
+    public void freeSpace(double fileSize) {
+
+    }
+
+    @Override
+    public void reduceFreeSpace(double fileSize) {
+
+    }
+
+    @Override
+    public double getFreeSpace() {
+        return 0;
     }
 
 
@@ -140,7 +164,7 @@ public class WatchRegion implements State {
 
     @Override
     public void turnOff() {
-        context_on.turnOff();
+        System.out.println("exit"+ currentState.toString() +"state");
     }
 
     public State getWatchState() {

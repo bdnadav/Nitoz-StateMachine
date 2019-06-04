@@ -144,4 +144,9 @@ public class Watch implements State {
     public void turnOff() {
 
     }
+
+    @Override
+    public String toString() {
+        return "Watch";
+    }
 }
