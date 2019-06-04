@@ -134,4 +134,8 @@ public class Connected implements State{
     @Override
     public void turnOff() {
     }
+
+    public String toString() {
+        return "Connected";
+    }
 }

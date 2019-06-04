@@ -138,4 +138,8 @@ public class DiskSensor implements State {
 
     }
 
+    public String toString() {
+        return "DiskSensor";
+    }
+
 }

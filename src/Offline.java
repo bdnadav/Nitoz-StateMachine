@@ -133,5 +133,10 @@ public class Offline implements State {
     public void turnOff() {
 
     }
+
+    @Override
+    public String toString() {
+        return "Offline";
+    }
 }
 

@@ -19,9 +19,8 @@ public class WaitingToConnect implements DownloadState {
 
     @Override
     public String toString() {
-        return "DownloadIdle";
+        return "WaitingToConnect";
     }
-
 
     @Override
     public void downloadAborted() {
@@ -55,14 +54,11 @@ public class WaitingToConnect implements DownloadState {
 
     @Override
     public void downRank() {
-
     }
-
 
 
     @Override
     public void internetOff() {
-
     }
 
     @Override

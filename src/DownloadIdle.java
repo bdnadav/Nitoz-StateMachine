@@ -168,5 +168,7 @@ public class DownloadIdle implements DownloadState {
     public void cancelReq() {
 
     }
+
+
 }
 
