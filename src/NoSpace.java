@@ -24,6 +24,11 @@ class NoSpace implements DownloadState{
     //    downloadRegion.setCurDownloadState(downloadRegion.getDownloadIdle());
     // }
 
+    @Override
+    public String toString() {
+        return "NoSpace";
+    }
+
 
     @Override
     public void downloadAborted() {

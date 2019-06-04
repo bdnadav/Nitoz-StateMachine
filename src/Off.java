@@ -133,4 +133,9 @@ public class Off implements State {
     public double getFreeSpace() {
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return " Off ";
+    }
 }

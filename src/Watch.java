@@ -43,7 +43,6 @@ public class Watch implements State {
         context.time++;
     }
 
-
     @Override
     public void movieOn() {
         playMovie();
@@ -147,6 +146,6 @@ public class Watch implements State {
 
     @Override
     public String toString() {
-        return "Watch";
+        return " Watch ";
     }
 }

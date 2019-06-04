@@ -29,6 +29,11 @@ public class ErrorFix implements State, DownloadState {
         downloadAborted();
     }
 
+    @Override
+    public String toString() {
+        return "errorFixed";
+    }
+
 
     @Override
     public void turnOn() {

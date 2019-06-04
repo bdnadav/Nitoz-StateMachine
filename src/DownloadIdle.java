@@ -2,11 +2,6 @@ public class DownloadIdle implements DownloadState {
 
     private DownloadRegion downloadRegion;
 
-    @Override
-    public String toString() {
-        return "DownloadIdle";
-    }
-
     public DownloadIdle(DownloadRegion downloadRegion) {
         super();
         this.downloadRegion = downloadRegion;
@@ -36,6 +31,11 @@ public class DownloadIdle implements DownloadState {
     @Override
     public void turnOff() {
         System.out.println("Exit from " + this.toString() + " state");
+    }
+
+    @Override
+    public String toString() {
+        return "DownloadIdle";
     }
 
 

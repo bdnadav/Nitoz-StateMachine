@@ -76,13 +76,21 @@ public class On implements State {
 
     @Override
     public void movieOff() {
-        downloadRegion.movieOff();
+        watchRegion.movieOff();
         diskRegion.movieOff();
+        userRegion.movieOff();
+        networkRegion.movieOff();
+        downloadRegion.movieOff();
+
     }
 
     @Override
     public void downloadAborted() {
-
+        watchRegion.downloadAborted();
+        diskRegion.downloadAborted();
+        userRegion.downloadAborted();
+        networkRegion.downloadAborted();
+        downloadRegion.downloadAborted();
     }
 
     @Override
@@ -100,6 +108,7 @@ public class On implements State {
     }
     @Override
     public void holdMovie() {
+        watchRegion.holdMovie();
 
     }
 
@@ -142,7 +151,8 @@ public class On implements State {
 
     @Override
     public void finished() {
-
+        watchRegion.finished();
+        downloadRegion.internetOn();
     }
 
 
@@ -158,7 +168,7 @@ public class On implements State {
 
     @Override
     public void fileRequest(double fileSize) {
-
+        downloadRegion.fileRequest(fileSize);
     }
 
     @Override
@@ -204,5 +214,10 @@ public class On implements State {
     @Override
     public double getFreeSpace() {
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return " On ";
     }
 }

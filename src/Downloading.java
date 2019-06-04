@@ -1,5 +1,9 @@
 
 public class Downloading implements DownloadState {
+    @Override
+    public String toString() {
+        return "Downloading";
+    }
 
     private DownloadRegion downloadRegion;
 

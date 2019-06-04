@@ -19,6 +19,12 @@ public class WaitingToConnect implements DownloadState {
     }
 
     @Override
+    public String toString() {
+        return "DownloadIdle";
+    }
+
+
+    @Override
     public void downloadAborted() {
 
     }

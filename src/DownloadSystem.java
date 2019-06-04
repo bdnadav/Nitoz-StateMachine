@@ -23,6 +23,8 @@ public class DownloadSystem implements State,Runnable {
     }
 
     public void setCurrentState(State state) {
+        System.out.println("enter"+ state.toString() +"state");
+
         this.currentState = state;
     }
 
