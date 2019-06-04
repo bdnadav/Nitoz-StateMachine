@@ -9,7 +9,7 @@ public class DownloadIdle implements DownloadState {
 
     @Override
     public void download() {
-        if (downloadRegion.context_on.getNetworkRegiState() instanceof Connected && downloadRegion.getFileSize() > 0 && downloadRegion.isFileReq()) {
+        if (downloadRegion.context_on.getNetworkRegiState() instanceof Connected && downloadRegion.isFileReq()) {
             downloadRegion.context_on.getDiskRegiState().reduceFreeSpace(downloadRegion.getFileSize());
             downloadRegion.setCurDownloadState(downloadRegion.getDownloading());
         }
@@ -28,6 +28,15 @@ public class DownloadIdle implements DownloadState {
         }
     }
 
+    @Override
+    public void turnOff() {
+    }
+
+    @Override
+    public String toString() {
+        return "DownloadIdle";
+    }
+
 
 
 
@@ -36,10 +45,6 @@ public class DownloadIdle implements DownloadState {
 
     }
 
-    @Override
-    public void turnOff() {
-
-    }
 
     @Override
     public void movieOff() {
@@ -107,15 +112,15 @@ public class DownloadIdle implements DownloadState {
 
     }
 
-    @Override
-    public void addFile() {
-
-    }
-
 
     @Override
     public State getState() {
         return null;
+    }
+
+    @Override
+    public void addFile(double size) {
+
     }
 
     @Override

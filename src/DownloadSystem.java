@@ -21,6 +21,8 @@ public class DownloadSystem implements State,Runnable {
     }
 
     public void setCurrentState(State state) {
+        System.out.println("enter"+ state.toString() +"state");
+
         this.currentState = state;
     }
 
@@ -131,10 +133,6 @@ public class DownloadSystem implements State,Runnable {
         currentState.fileRequest(fileSize);
     }
 
-    @Override
-    public void addFile() {
-        currentState.addFile();
-    }
 
     @Override
     public void download() {
@@ -144,6 +142,11 @@ public class DownloadSystem implements State,Runnable {
     @Override
     public State getState() {
         return currentState;
+    }
+
+    @Override
+    public void addFile(double size) {
+
     }
 
     @Override

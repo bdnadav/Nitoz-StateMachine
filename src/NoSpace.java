@@ -8,6 +8,10 @@ class NoSpace implements DownloadState{
         this.downloadRegion = downloadRegion;
     }
 
+    @Override
+    public void turnOff() {
+    }
+
 
     @Override
     public void movieOff() {
@@ -18,6 +22,11 @@ class NoSpace implements DownloadState{
     // sleep(4000);
     //    downloadRegion.setCurDownloadState(downloadRegion.getDownloadIdle());
     // }
+
+    @Override
+    public String toString() {
+        return "NoSpace";
+    }
 
 
     @Override
@@ -36,8 +45,8 @@ class NoSpace implements DownloadState{
     }
 
     @Override
-    public double checkSpeed() {return 0.0;
-
+    public double checkSpeed() {
+        return 0.0;
     }
 
     @Override
@@ -86,10 +95,6 @@ class NoSpace implements DownloadState{
 
     }
 
-    @Override
-    public void addFile() {
-
-    }
 
     @Override
     public void download() {
@@ -99,6 +104,11 @@ class NoSpace implements DownloadState{
     @Override
     public State getState() {
         return null;
+    }
+
+    @Override
+    public void addFile(double size) {
+
     }
 
     @Override
@@ -136,10 +146,7 @@ class NoSpace implements DownloadState{
 
     }
 
-    @Override
-    public void turnOff() {
 
-    }
 
     @Override
     public void updateDownload(double speed) {

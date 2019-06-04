@@ -96,10 +96,6 @@ public class Pro implements State {
 
     }
 
-    @Override
-    public void addFile() {
-
-    }
 
     @Override
     public void download() {
@@ -109,6 +105,11 @@ public class Pro implements State {
     @Override
     public State getState() {
         return this;
+    }
+
+    @Override
+    public void addFile(double size) {
+
     }
 
     @Override

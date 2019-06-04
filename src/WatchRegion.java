@@ -1,5 +1,4 @@
 public class WatchRegion implements State {
-
     private State currentState;
     private State idle_state;
     private State watch_state;
@@ -30,7 +29,6 @@ public class WatchRegion implements State {
         watch_state = new Watch(this);
         pause_state = new Pause(this);
         this.currentState = idle_state;
-        //System.out.println("enter "+ currentState.toString() +" state");
     }
 
     @Override
@@ -171,6 +169,7 @@ public class WatchRegion implements State {
 
     @Override
     public void turnOff() {
+        context_on.getContext().writeToLog("exit"+ currentState.toString() +"state");
         System.out.println("exit "+ currentState.toString() +" state");
     }
 

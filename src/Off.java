@@ -89,10 +89,6 @@ public class Off implements State {
 
     }
 
-    @Override
-    public void addFile() {
-
-    }
 
     @Override
     public void download() {
@@ -102,6 +98,11 @@ public class Off implements State {
     @Override
     public State getState() {
         return null;
+    }
+
+    @Override
+    public void addFile(double size) {
+
     }
 
     @Override
@@ -132,5 +133,10 @@ public class Off implements State {
     @Override
     public double getFreeSpace() {
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return " Off ";
     }
 }

@@ -3,7 +3,7 @@ public class Connected implements State{
     NetworkRegion networkRegion;
 
     public Connected(NetworkRegion networkRegion){
-        this.networkRegion= networkRegion;
+        this.networkRegion = networkRegion;
     }
 
     @Override
@@ -80,10 +80,6 @@ public class Connected implements State{
 
     }
 
-    @Override
-    public void addFile() {
-
-    }
 
     @Override
     public void download() {

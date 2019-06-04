@@ -34,7 +34,53 @@ public class DownloadRegion implements State {
         noSpace= new NoSpace(this);
         context_on = on;
         curDownloadState = waitingToConnect;
+
+
     }
+    public void cancelReq() {
+        //delete file and retrun to Idle
+        //reset all
+        downSize = 0 ;
+        fileReq = false ;
+        fileSize = 0 ;
+        status = 0 ;
+        curDownloadState = downloadIdle ;
+    }
+
+    @Override
+    public void internetOn() {
+        curDownloadState.internetOn();// cur= down
+
+    }
+
+    public void setCurDownloadState(DownloadState curDownloadState) {
+        if (curDownloadState != this.curDownloadState) {
+            System.out.println("enter" + curDownloadState.toString() + "state");
+            System.out.println("exit" + curDownloadState.toString() + "state");
+            context_on.getContext().writeToLog("enter" + curDownloadState.toString() + "state");
+            context_on.getContext().writeToLog("exit" + curDownloadState.toString() + "state");
+        }
+        this.curDownloadState= (DownloadState) curDownloadState;
+    }
+
+    @Override
+    public void setCurrentState(State state) {
+        if (state != this.curDownloadState) {
+            System.out.println("enter" + curDownloadState.toString() + "state");
+            System.out.println("exit" + state.toString() + "state");
+            context_on.getContext().writeToLog("enter" + curDownloadState.toString() + "state");
+            context_on.getContext().writeToLog("exit" + state.toString() + "state");
+        }
+        this.curDownloadState= (DownloadState) state;
+    }
+
+
+    @Override
+    public void fileRequest(double fileSize) {
+        curDownloadState.fileRequest(fileSize);// cur= noSpace
+
+    }
+
 
     @Override
     public void movieOff() {
@@ -72,11 +118,7 @@ public class DownloadRegion implements State {
 
     }
 
-    @Override
-    public void internetOn() {
-        curDownloadState.internetOn();// cur= down
 
-    }
 
     @Override
     public void internetOff() {
@@ -104,16 +146,7 @@ public class DownloadRegion implements State {
 
     }
 
-    @Override
-    public void fileRequest(double fileSize) {
-        curDownloadState.fileRequest(fileSize);// cur= noSpace
 
-    }
-
-    @Override
-    public void addFile() {
-
-    }
 
     @Override
     public void download() {
@@ -140,16 +173,7 @@ public class DownloadRegion implements State {
 
     }
 
-    @Override
-    public void setCurrentState(State state) {
-        if (state != this.curDownloadState) {
-            System.out.println("enter " + curDownloadState.toString() + " state");
-            System.out.println("exit " + state.toString() + " state");
-            context_on.getContext().writeToLog("enter " + curDownloadState.toString() + " state");
-            context_on.getContext().writeToLog("exit " + state.toString() + " state");
-        }
-        this.curDownloadState= (DownloadState) state;
-    }
+
 
     @Override
     public void checkSpace() {
@@ -181,17 +205,15 @@ public class DownloadRegion implements State {
 
     @Override
     public void turnOff() {
-        System.out.println("exit "+ curDownloadState.toString() +" state");
-    }
+        System.out.println("Exit from " + this.toString() + " state");
+        context_on.getContext().writeToLog("Exit from " + this.toString() + " state");    }
 
     public State getCurDownloadState() {
         return curDownloadState;
     }
 
 
-    public void setCurDownloadState(DownloadState curDownloadState) {
-        this.curDownloadState = curDownloadState;
-    }
+
 
 
     public static int getDownSize() {
@@ -229,15 +251,6 @@ public class DownloadRegion implements State {
     protected void moveState() {
     }
 
-    public void cancelReq() {
-        //delete file and retrun to Idle
-        //reset all
-        downSize = 0 ;
-        fileReq = false ;
-        fileSize = 0 ;
-        status = 0 ;
-        curDownloadState = downloadIdle ;
-    }
 
     public double getFileSize() {
         return fileSize;
