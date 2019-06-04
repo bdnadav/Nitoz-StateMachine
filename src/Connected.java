@@ -92,6 +92,11 @@ public class Connected implements State{
     }
 
     @Override
+    public void addFile(double size) {
+
+    }
+
+    @Override
     public void restartMovie() {
 
     }

@@ -98,6 +98,11 @@ public class WaitingToConnect implements DownloadState {
     }
 
     @Override
+    public void addFile(double size) {
+
+    }
+
+    @Override
     public void restartMovie() {
 
     }
