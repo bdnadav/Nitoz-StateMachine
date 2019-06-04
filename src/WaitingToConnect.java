@@ -55,14 +55,11 @@ public class WaitingToConnect implements DownloadState {
 
     @Override
     public void downRank() {
-
     }
-
 
 
     @Override
     public void internetOff() {
-
     }
 
     @Override
@@ -95,6 +92,11 @@ public class WaitingToConnect implements DownloadState {
     @Override
     public State getState() {
         return null;
+    }
+
+    @Override
+    public void addFile(double size) {
+
     }
 
     @Override
