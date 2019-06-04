@@ -55,10 +55,10 @@ public class DownloadRegion implements State {
 
     public void setCurDownloadState(DownloadState curDownloadState) {
         if (curDownloadState != this.curDownloadState) {
-            System.out.println("enter" + curDownloadState.toString() + "state");
-            System.out.println("exit" + curDownloadState.toString() + "state");
-            context_on.getContext().writeToLog("enter" + curDownloadState.toString() + "state");
-            context_on.getContext().writeToLog("exit" + curDownloadState.toString() + "state");
+            System.out.println("enter " + curDownloadState.toString() + " state");
+            System.out.println("exit " + curDownloadState.toString() + " state");
+            context_on.getContext().writeToLog("enter " + curDownloadState.toString() + " state");
+            context_on.getContext().writeToLog("exit " + curDownloadState.toString() + " state");
         }
         this.curDownloadState= (DownloadState) curDownloadState;
     }
@@ -66,10 +66,10 @@ public class DownloadRegion implements State {
     @Override
     public void setCurrentState(State state) {
         if (state != this.curDownloadState) {
-            System.out.println("enter" + curDownloadState.toString() + "state");
-            System.out.println("exit" + state.toString() + "state");
-            context_on.getContext().writeToLog("enter" + curDownloadState.toString() + "state");
-            context_on.getContext().writeToLog("exit" + state.toString() + "state");
+            System.out.println("enter " + curDownloadState.toString() + " state");
+            System.out.println("exit " + state.toString() + " state");
+            context_on.getContext().writeToLog("enter " + curDownloadState.toString() + " state");
+            context_on.getContext().writeToLog("exit " + state.toString() + " state");
         }
         this.curDownloadState= (DownloadState) state;
     }
