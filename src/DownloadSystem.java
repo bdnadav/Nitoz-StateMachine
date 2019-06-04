@@ -6,7 +6,7 @@ public class DownloadSystem implements State,Runnable {
     State offState;
     PrintWriter _writer ;
 
-    public DownloadSystem(double dSize, PrintWriter writer) {
+    public DownloadSystem(PrintWriter writer, double diskSize) {
         _writer = writer ;
         offState = new Off(this);
         onState = new On(this, diskSize);

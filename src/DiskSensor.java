@@ -1,4 +1,5 @@
 public class DiskSensor implements State {
+
     private DiskRegion diskRegion;
 
 
@@ -94,11 +95,6 @@ public class DiskSensor implements State {
 
     @Override
     public void finished() {
-
-    }
-
-    @Override
-    public void hold() {
 
     }
 
