@@ -7,11 +7,10 @@ public class WatchIdle implements State{
 
     @Override
     public void movieOn() {
-        if (context_watch_region.context_on.downloadRegion.getDownloadStatus() > 20){
+        if (context_watch_region.context_on.downloadRegion.getDownloadStatus() > 20 && context_watch_region.context_on.getNetworkRegiState() instanceof Connected){
             context_watch_region.setCurrentState(context_watch_region.getWatchState());
             context_watch_region.getCurrentState().movieOn();
         }
-
     }
 
     // No need to implement all the next methods.

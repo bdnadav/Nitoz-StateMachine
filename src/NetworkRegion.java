@@ -114,9 +114,9 @@ public class NetworkRegion implements State {
 
     @Override
     public void turnOn() {
-//        Connected = new Connected(this);
-////        offline = new Offline(this);
-////        currentState = offline;
+        Connected = new Connected(this);
+        offline = new Offline(this);
+        currentState = offline;
         System.out.println("enter "+ currentState.toString() +" state");
         context_on.getContext().writeToLog("enter "+ currentState.toString() +" state");
         //no implementation

@@ -168,14 +168,9 @@ public class Downloading implements DownloadState {
 
     }
 
-
-
-
-
-
     @Override
     public void turnOn() {
-
+        downloadRegion.setCurrentState(downloadRegion.waitingToConnect);
     }
 
     @Override

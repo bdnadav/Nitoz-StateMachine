@@ -30,7 +30,7 @@ public class Pause implements State {
 
     @Override
     public void movieOff() {
-
+        context.setCurrentState(context.getIdle_state());
     }
 
 

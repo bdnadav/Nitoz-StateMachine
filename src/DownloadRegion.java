@@ -215,10 +215,9 @@ public class DownloadRegion implements State {
 
     @Override
     public void turnOn() {
-
+        curDownloadState.turnOn();
         System.out.println("enter "+ curDownloadState.toString() +" state");
         context_on.getContext().writeToLog("enter "+ curDownloadState.toString() +" state");
-
     }
 
     @Override
