@@ -1,11 +1,18 @@
 public class DiskRegion implements State {
-
-    public double diskSize ;
+    public double diskSize;
     public double freeSpace;
+    protected On context_on;
+    private State currentState;
+    private State diskSensor;
 
 
-    public DiskRegion(double diskSize, On context_on) {
-        diskSize = diskSize ;
+
+    public DiskRegion(On on, double diskSize) {
+        context_on = on;
+        this.diskSize = diskSize;
+        freeSpace = diskSize;
+        diskSensor = new DiskSensor(this);
+        currentState = diskSensor;
     }
 
     @Override
@@ -102,6 +109,26 @@ public class DiskRegion implements State {
     @Override
     public void setCurrentState(State state) {
 
+    }
+
+    @Override
+    public void checkSpace() {
+
+    }
+
+    @Override
+    public void freeSpace(double fileSize) {
+        freeSpace += fileSize;
+    }
+
+    @Override
+    public void reduceFreeSpace(double fileSize) {
+
+    }
+
+    @Override
+    public double getFreeSpace() {
+        return 0;
     }
 
 

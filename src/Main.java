@@ -20,7 +20,7 @@ public class Main {
         writer.flush();
 
 
-        DownloadSystem sys = new DownloadSystem(DSize , writer) ;
+        DownloadSystem sys = new DownloadSystem(writer, DSize) ;
         Thread mainRun = new Thread(sys);
 
         while(true) {

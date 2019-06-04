@@ -22,6 +22,9 @@ public interface State {
     State getState();
     void restartMovie();
     void setCurrentState(State state);
+    void checkSpace();
+    void freeSpace(double fileSize);
+    void reduceFreeSpace(double fileSize);
 
-
+    double getFreeSpace();
 }

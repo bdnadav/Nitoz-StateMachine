@@ -6,10 +6,10 @@ public class DownloadSystem implements State,Runnable {
     State offState;
     PrintWriter _writer ;
 
-    public DownloadSystem(double dSize, PrintWriter writer) {
+    public DownloadSystem(PrintWriter writer, double diskSize) {
         _writer = writer ;
         offState = new Off(this);
-        onState = new On(this);
+        onState = new On(this, diskSize);
         this.currentState = offState;
     }
 
@@ -24,6 +24,26 @@ public class DownloadSystem implements State,Runnable {
 
     public void setCurrentState(State state) {
         this.currentState = state;
+    }
+
+    @Override
+    public void checkSpace() {
+
+    }
+
+    @Override
+    public void freeSpace(double fileSize) {
+
+    }
+
+    @Override
+    public void reduceFreeSpace(double fileSize) {
+
+    }
+
+    @Override
+    public double getFreeSpace() {
+        return 0;
     }
 
 

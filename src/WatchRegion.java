@@ -133,6 +133,7 @@ public class WatchRegion implements State {
         context_on.getContext().writeToLog("exit"+ state.toString() +"state");
     }
 
+
     @Override
     public void turnOn() {
     }
