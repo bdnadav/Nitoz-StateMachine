@@ -1,5 +1,5 @@
 public class DownloadRegion implements State {
-
+    int counter ;
     protected static double downSize;
     protected int status ;
     private double fileSize = 0 ;
@@ -27,6 +27,7 @@ public class DownloadRegion implements State {
         downSize = 0 ;
         fileSize = 0 ;
         status = 0 ;
+        counter = 0 ;
         waitingToConnect= new WaitingToConnect(this);
         downloading= new Downloading(this);
         downloadIdle= new DownloadIdle(this);
@@ -44,6 +45,7 @@ public class DownloadRegion implements State {
         fileReq = false ;
         fileSize = 0 ;
         status = 0 ;
+        counter = 0 ;
         setCurDownloadState(downloadIdle);
     }
 
@@ -175,11 +177,13 @@ public class DownloadRegion implements State {
 
 
     public void updateDownload(double size) {
+        counter++ ;
         downSize+=size;
         status = (int)((downSize / fileSize) * 100);
-        if (downSize != downSize+ size && status <=100)
-        System.out.println("File Downloaded :" + status + " %");
-
+        if (downSize != downSize+ size && status <=100 && counter>=5) {
+            System.out.println("File Downloaded :" + status + " %");
+            counter = 0 ;
+        }
 
         //curDownloadState.download();
     }
@@ -288,5 +292,6 @@ public class DownloadRegion implements State {
 
     public void resetDownSize() {
         downSize = 0;
+        counter = 0  ;
     }
 }

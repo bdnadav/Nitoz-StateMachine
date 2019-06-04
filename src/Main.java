@@ -106,6 +106,18 @@ public class Main {
                     writer.println("resume");
                     sys.resume();
                     break;
+                case "14":
+                    writer.println("change curr Speed(not permanent)");
+                    sys.resume();
+                    break;
+                case "15":
+                    writer.println("change curr free Space ");
+                    sys.resume();
+                    break;
+                case "16":
+                    writer.println("change user's points ");
+                    sys.resume();
+                    break;
             }
 
             if (!input.equals("")) {
