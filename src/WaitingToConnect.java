@@ -15,7 +15,7 @@ public class WaitingToConnect implements DownloadState {
 
     @Override
     public void movieOff() {
-
+        downloadRegion.context_on.getContext().setCurrentState(downloadRegion.context_on.getContext().offState);
     }
 
     @Override

@@ -13,6 +13,8 @@ public class DiskRegion implements State {
         freeSpace = diskSize;
         diskSensor = new DiskSensor(this);
         currentState = diskSensor;
+        System.out.println("enter"+ currentState.toString() +"state");
+
     }
 
     @Override
@@ -139,6 +141,7 @@ public class DiskRegion implements State {
 
     @Override
     public void turnOff() {
+        System.out.println("exit"+ currentState.toString() +"state");
 
     }
 }

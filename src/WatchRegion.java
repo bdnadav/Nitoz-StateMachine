@@ -26,19 +26,20 @@ public class WatchRegion implements State {
     public WatchRegion(On on) {
         context_on = on;
         idle_state = new WatchIdle(this);
-        watch_state= new Watch(this);
-        pause_state= new Pause(this);
+        watch_state = new Watch(this);
+        pause_state = new Pause(this);
         this.currentState = idle_state;
+        System.out.println("enter"+ currentState.toString() +"state");
     }
 
     @Override
     public void movieOff() {
-
+        currentState.movieOff();
     }
 
     @Override
     public void downloadAborted() {
-
+        currentState.downloadAborted();
     }
 
     @Override
@@ -49,7 +50,7 @@ public class WatchRegion implements State {
 
     @Override
     public void holdMovie() {
-
+        currentState.holdMovie();
     }
 
     @Override
@@ -64,6 +65,7 @@ public class WatchRegion implements State {
 
     @Override
     public void resume() {
+        currentState.resume();
 
     }
 
@@ -79,18 +81,18 @@ public class WatchRegion implements State {
 
     @Override
     public void internetOff() {
-
+        currentState.internetOff();
     }
 
     @Override
     public void finished() {
-
+        currentState.movieOn();
     }
 
 
     @Override
     public void errorFixed() {
-
+        currentState.errorFixed();
     }
 
     @Override
@@ -120,13 +122,18 @@ public class WatchRegion implements State {
 
     @Override
     public void restartMovie() {
-
+        currentState.restartMovie();
     }
 
     @Override
-    public void setCurrentState(State State) {
-
-
+    public void setCurrentState(State state) {
+        if (state != this.currentState) {
+            System.out.println("enter" + currentState.toString() + "state");
+            System.out.println("exit" + state.toString() + "state");
+            context_on.getContext().writeToLog("enter" + currentState.toString() + "state");
+            context_on.getContext().writeToLog("exit" + state.toString() + "state");
+        }
+        this.currentState= state;
     }
 
     @Override
@@ -152,12 +159,11 @@ public class WatchRegion implements State {
 
     @Override
     public void turnOn() {
-
     }
 
     @Override
     public void turnOff() {
-
+        System.out.println("exit"+ currentState.toString() +"state");
     }
 
     public State getWatchState() {

@@ -9,7 +9,6 @@ public class On implements State {
     public UserRegion userRegion;
     public NetworkRegion networkRegion;
     public DownloadRegion downloadRegion;
-    public FilesQueueRegion filesQueueRegion;
     private long lastTimeDownload; //last time download updated
     private long lastTimeError; //
     private long lastTimeSpace; //
@@ -58,24 +57,21 @@ public class On implements State {
             if ( currTime - lastTimeSpace >= 4000){
                     downloadRegion.getState().cancelReq() ;
                     lastTimeSpace = currTime ;
-
             }
-
-
-
-
-
-
         }
-
         //handle status change if needed !!!
-
     }
 
 
     @Override
     public void turnOff() {
         context.setCurrentState(context.getOffState());
+        watchRegion.turnOff();
+        diskRegion.turnOff();
+        userRegion.turnOff();
+        networkRegion.turnOff();
+        downloadRegion.turnOff();
+
     }
 
     @Override
@@ -93,15 +89,15 @@ public class On implements State {
     public void movieOn() {
         watchRegion.movieOn();
 
-//        while(){
-//            watchRegion.movieOn();
-//
-//
-//
-//
-//        }
     }
 
+    public DownloadSystem getContext() {
+        return context;
+    }
+
+    public void setContext(DownloadSystem context) {
+        this.context = context;
+    }
     @Override
     public void holdMovie() {
 

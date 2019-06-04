@@ -8,6 +8,11 @@ class NoSpace implements DownloadState{
         this.downloadRegion = downloadRegion;
     }
 
+    @Override
+    public void turnOff() {
+        downloadRegion.context_on.getContext().setCurrentState(downloadRegion.context_on.getContext().offState);
+    }
+
 
     @Override
     public void movieOff() {
@@ -136,10 +141,7 @@ class NoSpace implements DownloadState{
 
     }
 
-    @Override
-    public void turnOff() {
 
-    }
 
     @Override
     public void updateDownload(double speed) {

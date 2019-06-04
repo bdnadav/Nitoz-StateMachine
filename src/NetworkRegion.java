@@ -1,9 +1,9 @@
 public class NetworkRegion implements State {
 
     protected NetworkRegion networkRegion;
+
     private State currentState;
     private On context_on;
-
 
     private State Connected;
     private State offline;
@@ -13,6 +13,8 @@ public class NetworkRegion implements State {
         Connected = new Connected(this);
         offline = new Offline(this);
         currentState = offline;
+        System.out.println("enter"+ currentState.toString() +"state");
+
     }
 
     @Override
@@ -116,15 +118,22 @@ public class NetworkRegion implements State {
 
     @Override
     public void turnOff() {
-        networkRegion.turnOff();
+        System.out.println("exit"+ currentState.toString() +"state");
     }
 
     public State getCurrentState() {
         return currentState;
     }
 
-    public void setCurrentState(State currentState) {
-        this.currentState = currentState;
+    public void setCurrentState(State state) {
+        if (state != this.currentState) {
+            System.out.println("enter" + currentState.toString() + "state");
+            System.out.println("exit" + state.toString() + "state");
+            context_on.getContext().writeToLog("enter" + currentState.toString() + "state");
+            context_on.getContext().writeToLog("exit" + state.toString() + "state");
+        }
+        this.currentState= state;
+
     }
 
     @Override

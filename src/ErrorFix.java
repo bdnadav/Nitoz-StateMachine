@@ -20,14 +20,21 @@ public class ErrorFix implements State, DownloadState {
     }
 
     @Override
+    public void turnOff() {
+        downloadRegion.context_on.getContext().setCurrentState(downloadRegion.context_on.getContext().offState);
+    }
+
+    @Override
+    public void errorNotFixed() {
+        downloadAborted();
+    }
+
+
+    @Override
     public void turnOn() {
 
     }
 
-    @Override
-    public void turnOff() {
-
-    }
 
     @Override
     public void movieOff() {
@@ -139,11 +146,6 @@ public class ErrorFix implements State, DownloadState {
 
     @Override
     public void updateDownload(double speed) {
-
-    }
-
-    @Override
-    public void errorNotFixed() {
 
     }
 
