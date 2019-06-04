@@ -55,10 +55,7 @@ public class Downloading implements DownloadState {
 
     }
 
-    @Override
-    public void addFile() {
 
-    }
 
     @Override
     public void download() {
@@ -68,6 +65,11 @@ public class Downloading implements DownloadState {
     @Override
     public State getState() {
         return null;
+    }
+
+    @Override
+    public void addFile(double size) {
+
     }
 
     @Override

@@ -107,15 +107,15 @@ public class DownloadIdle implements DownloadState {
 
     }
 
-    @Override
-    public void addFile() {
-
-    }
-
 
     @Override
     public State getState() {
         return null;
+    }
+
+    @Override
+    public void addFile(double size) {
+
     }
 
     @Override

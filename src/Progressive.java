@@ -101,10 +101,6 @@ public class Progressive implements State{
 
     }
 
-    @Override
-    public void addFile() {
-
-    }
 
     @Override
     public void download() {
@@ -114,6 +110,11 @@ public class Progressive implements State{
     @Override
     public State getState() {
         return this;
+    }
+
+    @Override
+    public void addFile(double size) {
+
     }
 
     @Override

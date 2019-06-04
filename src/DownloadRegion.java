@@ -111,10 +111,6 @@ public class DownloadRegion implements State {
 
     }
 
-    @Override
-    public void addFile() {
-
-    }
 
     @Override
     public void download() {

@@ -81,10 +81,6 @@ public class WaitingToConnect implements DownloadState {
 
     }
 
-    @Override
-    public void addFile() {
-
-    }
 
     @Override
     public void download() {

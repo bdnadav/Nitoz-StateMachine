@@ -88,10 +88,6 @@ public class DiskRegion implements State {
 
     }
 
-    @Override
-    public void addFile() {
-
-    }
 
     @Override
     public void download() {
@@ -101,6 +97,11 @@ public class DiskRegion implements State {
     @Override
     public State getState() {
         return null;
+    }
+
+    @Override
+    public void addFile(double size) {
+
     }
 
     @Override

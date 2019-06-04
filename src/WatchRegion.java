@@ -106,10 +106,6 @@ public class WatchRegion implements State {
 
     }
 
-    @Override
-    public void addFile() {
-
-    }
 
     @Override
     public void download() {
@@ -119,6 +115,11 @@ public class WatchRegion implements State {
     @Override
     public DownloadState getState() {
         return null;
+    }
+
+    @Override
+    public void addFile(double size) {
+
     }
 
     @Override
@@ -165,6 +166,7 @@ public class WatchRegion implements State {
     @Override
     public void turnOff() {
         System.out.println("exit"+ currentState.toString() +"state");
+        context_on.getContext().writeToLog("exit"+ currentState.toString() +"state");
     }
 
     public State getWatchState() {

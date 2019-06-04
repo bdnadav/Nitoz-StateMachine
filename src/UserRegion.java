@@ -106,10 +106,6 @@ public class UserRegion implements State {
 
     }
 
-    @Override
-    public void addFile() {
-
-    }
 
     @Override
     public void download() {
@@ -119,6 +115,11 @@ public class UserRegion implements State {
     @Override
     public State getState() {
         return currentState;
+    }
+
+    @Override
+    public void addFile(double size) {
+
     }
 
     @Override

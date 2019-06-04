@@ -79,10 +79,6 @@ public class Connected implements State{
 
     }
 
-    @Override
-    public void addFile() {
-
-    }
 
     @Override
     public void download() {

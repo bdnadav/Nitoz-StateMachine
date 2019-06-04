@@ -129,6 +129,7 @@ public class On implements State {
 
     @Override
     public void downRank() {
+
     }
 
     @Override
@@ -155,15 +156,15 @@ public class On implements State {
         downloadRegion.internetOn();
     }
 
-
     @Override
     public void errorFixed() {
-
+        watchRegion.errorFixed();
+        downloadRegion.errorFixed();
     }
 
     @Override
     public void downloadError() {
-
+        downloadRegion.downloadError();
     }
 
     @Override
@@ -171,13 +172,10 @@ public class On implements State {
         downloadRegion.fileRequest(fileSize);
     }
 
-    @Override
-    public void addFile() {
-
-    }
 
     @Override
     public void download() {
+        downloadRegion.download();
 
     }
 
@@ -187,8 +185,14 @@ public class On implements State {
     }
 
     @Override
-    public void restartMovie() {
+    public void addFile(double size) {
+        downloadRegion.addFile(size);
 
+    }
+
+    @Override
+    public void restartMovie() {
+        watchRegion.restartMovie();
     }
 
     @Override
@@ -198,17 +202,20 @@ public class On implements State {
 
     @Override
     public void checkSpace() {
-
+        diskRegion.checkSpace();
+        downloadRegion.checkSpace();
     }
 
     @Override
     public void freeSpace(double fileSize) {
-
+        diskRegion.freeSpace(fileSize);
+        downloadRegion.freeSpace(fileSize);
     }
 
     @Override
     public void reduceFreeSpace(double fileSize) {
-
+        diskRegion.reduceFreeSpace(fileSize);
+        downloadRegion.reduceFreeSpace(fileSize);
     }
 
     @Override

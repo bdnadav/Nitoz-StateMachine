@@ -135,10 +135,6 @@ public class DownloadSystem implements State,Runnable {
         currentState.fileRequest(fileSize);
     }
 
-    @Override
-    public void addFile() {
-        currentState.addFile();
-    }
 
     @Override
     public void download() {
@@ -148,6 +144,11 @@ public class DownloadSystem implements State,Runnable {
     @Override
     public State getState() {
         return currentState;
+    }
+
+    @Override
+    public void addFile(double size) {
+
     }
 
     @Override

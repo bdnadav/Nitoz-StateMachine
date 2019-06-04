@@ -93,11 +93,6 @@ public class ErrorFix implements State, DownloadState {
     }
 
     @Override
-    public void addFile() {
-
-    }
-
-    @Override
     public void download() {
 
     }
@@ -105,6 +100,11 @@ public class ErrorFix implements State, DownloadState {
     @Override
     public State getState() {
         return null;
+    }
+
+    @Override
+    public void addFile(double size) {
+
     }
 
     @Override

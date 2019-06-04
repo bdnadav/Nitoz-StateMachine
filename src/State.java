@@ -17,9 +17,9 @@ public interface State {
     void errorFixed();
     void downloadError();
     void fileRequest(double fileSize);
-    void addFile();
     void download();
     State getState();
+    void addFile(double size);
     void restartMovie();
     void setCurrentState(State state);
     void checkSpace();
