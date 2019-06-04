@@ -2,6 +2,11 @@ public class DownloadIdle implements DownloadState {
 
     private DownloadRegion downloadRegion;
 
+    @Override
+    public String toString() {
+        return "DownloadIdle";
+    }
+
     public DownloadIdle(DownloadRegion downloadRegion) {
         super();
         this.downloadRegion = downloadRegion;

@@ -36,8 +36,8 @@ class NoSpace implements DownloadState{
     }
 
     @Override
-    public double checkSpeed() {return 0.0;
-
+    public double checkSpeed() {
+        return 0.0;
     }
 
     @Override

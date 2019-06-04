@@ -34,6 +34,8 @@ public class DownloadRegion implements State {
         noSpace= new NoSpace(this);
         context_on = on;
         curDownloadState = waitingToConnect;
+        System.out.println("enter"+ curDownloadState.toString() +"state");
+
     }
 
     @Override
@@ -180,7 +182,11 @@ public class DownloadRegion implements State {
 
 
     public void setCurDownloadState(DownloadState curDownloadState) {
-        this.curDownloadState = curDownloadState;
+        if (this.curDownloadState != curDownloadState){
+            System.out.println("Exit from state: " + curDownloadState.toString());
+            this.curDownloadState = curDownloadState;
+        }
+
     }
 
 
