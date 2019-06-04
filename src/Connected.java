@@ -55,6 +55,7 @@ public class Connected implements State{
     public void internetOff() {
         networkRegion.setCurrentState(networkRegion.getOffline());
 
+
     }
 
     @Override
@@ -88,6 +89,11 @@ public class Connected implements State{
     @Override
     public State getState() {
         return null;
+    }
+
+    @Override
+    public void addFile(double size) {
+
     }
 
     @Override

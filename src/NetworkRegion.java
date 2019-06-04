@@ -13,7 +13,7 @@ public class NetworkRegion implements State {
         Connected = new Connected(this);
         offline = new Offline(this);
         currentState = offline;
-        System.out.println("enter"+ currentState.toString() +"state");
+        //System.out.println("enter "+ currentState.toString() +" state");
 
     }
 
@@ -114,12 +114,17 @@ public class NetworkRegion implements State {
 
     @Override
     public void turnOn() {
+        Connected = new Connected(this);
+        offline = new Offline(this);
+        currentState = offline;
+        System.out.println("enter "+ currentState.toString() +" state");
+        context_on.getContext().writeToLog("enter "+ currentState.toString() +" state");
         //no implementation
     }
 
     @Override
     public void turnOff() {
-        System.out.println("exit"+ currentState.toString() +"state");
+        System.out.println("exit "+ currentState.toString() +" state");
     }
 
     public State getCurrentState() {
@@ -128,10 +133,10 @@ public class NetworkRegion implements State {
 
     public void setCurrentState(State state) {
         if (state != this.currentState) {
-            System.out.println("enter" + currentState.toString() + "state");
-            System.out.println("exit" + state.toString() + "state");
-            context_on.getContext().writeToLog("enter" + currentState.toString() + "state");
-            context_on.getContext().writeToLog("exit" + state.toString() + "state");
+            System.out.println("enter " + currentState.toString() + " state");
+            System.out.println("exit " + state.toString() + " state");
+            context_on.getContext().writeToLog("enter " + currentState.toString() + " state");
+            context_on.getContext().writeToLog("exit " + state.toString() + " state");
         }
         this.currentState= state;
 

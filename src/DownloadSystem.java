@@ -17,9 +17,7 @@ public class DownloadSystem implements State,Runnable {
         return currentState;
     }
      public synchronized void  writeToLog(String event){
-
         _writer.println(event);
-
     }
 
     public void setCurrentState(State state) {

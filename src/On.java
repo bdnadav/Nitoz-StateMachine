@@ -44,6 +44,11 @@ public class On implements State {
 
     @Override
     public void turnOn() {
+           watchRegion.turnOn();
+            userRegion.turnOn();
+         networkRegion.turnOn();
+            diskRegion.turnOn();
+        downloadRegion.turnOn();
         while(true){
                 long currTime = System.currentTimeMillis();
             if ( currTime - lastTimeDownload >=1000){
@@ -58,6 +63,7 @@ public class On implements State {
                     downloadRegion.getState().cancelReq() ;
                     lastTimeSpace = currTime ;
             }
+
         }
         //handle status change if needed !!!
     }

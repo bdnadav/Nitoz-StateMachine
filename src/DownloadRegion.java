@@ -5,6 +5,13 @@ public class DownloadRegion implements State {
     private double fileSize = 0 ;
     private boolean fileReq ; // tells if there is a file reqested in the system
 
+    public boolean isFileReq() {
+        return fileReq;
+    }
+
+    public void setFileReq(boolean fileReq) {
+        this.fileReq = fileReq;
+    }
 
     protected DownloadState curDownloadState;
     protected DownloadState downloadIdle;
@@ -14,17 +21,6 @@ public class DownloadRegion implements State {
     protected DownloadState noSpace;
     protected On context_on;
     protected On State;
-
-
-
-    public boolean isFileReq() {
-        return fileReq;
-    }
-
-    public void setFileReq(boolean fileReq) {
-        this.fileReq = fileReq;
-    }
-
 
     public DownloadRegion(On on) {
         fileReq = false ;
@@ -38,7 +34,7 @@ public class DownloadRegion implements State {
         noSpace= new NoSpace(this);
         context_on = on;
         curDownloadState = waitingToConnect;
-        System.out.println("enter"+ curDownloadState.toString() +"state");
+
 
     }
     public void cancelReq() {
@@ -178,6 +174,7 @@ public class DownloadRegion implements State {
     }
 
 
+
     @Override
     public void checkSpace() {
 
@@ -200,6 +197,9 @@ public class DownloadRegion implements State {
 
     @Override
     public void turnOn() {
+
+        System.out.println("enter "+ curDownloadState.toString() +" state");
+        context_on.getContext().writeToLog("enter "+ curDownloadState.toString() +" state");
 
     }
 

@@ -139,6 +139,6 @@ public class WatchIdle implements State{
 
     @Override
     public String toString() {
-        return " WatchIdle ";
+        return "WatchIdle";
     }
 }

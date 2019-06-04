@@ -24,6 +24,7 @@ public class Main {
         Thread mainRun = new Thread(sys);
 
         while(true) {
+
             System.out.println("Tell the system what to do :\n" +
                     "1. turnOn\n"+
                     "2. turnOff\n"+
@@ -107,6 +108,7 @@ public class Main {
             if (!input.equals("")) {
                 //main code
             }
+            //userInput.close();
             //Thread.sleep(1000);
             writer.flush();
         }

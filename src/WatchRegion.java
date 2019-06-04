@@ -29,7 +29,6 @@ public class WatchRegion implements State {
         watch_state = new Watch(this);
         pause_state = new Pause(this);
         this.currentState = idle_state;
-        System.out.println("enter"+ currentState.toString() +"state");
     }
 
     @Override
@@ -106,6 +105,7 @@ public class WatchRegion implements State {
     }
 
 
+
     @Override
     public void download() {
 
@@ -129,10 +129,10 @@ public class WatchRegion implements State {
     @Override
     public void setCurrentState(State state) {
         if (state != this.currentState) {
-            System.out.println("enter" + currentState.toString() + "state");
-            System.out.println("exit" + state.toString() + "state");
-            context_on.getContext().writeToLog("enter" + currentState.toString() + "state");
-            context_on.getContext().writeToLog("exit" + state.toString() + "state");
+            System.out.println("enter " + currentState.toString() + " state");
+            System.out.println("exit " + state.toString() + " state");
+            context_on.getContext().writeToLog("enter " + currentState.toString() + " state");
+            context_on.getContext().writeToLog("exit " + state.toString() + " state");
         }
         this.currentState= state;
     }
@@ -160,12 +160,19 @@ public class WatchRegion implements State {
 
     @Override
     public void turnOn() {
+
+        idle_state = new WatchIdle(this);
+        watch_state = new Watch(this);
+        pause_state = new Pause(this);
+        this.currentState = idle_state;
+        System.out.println("enter "+ currentState.toString() +" state");
+        context_on.getContext().writeToLog("enter "+ currentState.toString() +" state");
     }
 
     @Override
     public void turnOff() {
-        System.out.println("exit"+ currentState.toString() +"state");
         context_on.getContext().writeToLog("exit"+ currentState.toString() +"state");
+        System.out.println("exit "+ currentState.toString() +" state");
     }
 
     public State getWatchState() {
