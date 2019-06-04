@@ -72,19 +72,23 @@ public class Main {
                     sys.errorFixed();
                     break;
                 case "9":
-
+                    writer.println("movieOn");
                     sys.movieOn();
                     break;
                 case "10":
+                    writer.println("restartMovie");
                     sys.restartMovie();
                     break;
                 case "11":
+                    writer.println("holdMovie");
                     sys.holdMovie();
                     break;
                 case "12":
-                    sys.movieOn();
+                    writer.println("movieOff");
+                    sys.movieOff();
                     break;
                 case "13":
+                    writer.println("resume");
                     sys.resume();
                     break;
             }
