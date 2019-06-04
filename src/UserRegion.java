@@ -15,7 +15,7 @@ public class UserRegion implements State {
         progressive = new Progressive(this);
         pro = new Pro(this);
         this.currentState = beginner;
-        System.out.println("enter"+ currentState.toString() +"state");
+        //System.out.println("enter "+ currentState.toString() +" state");
 
     }
 
@@ -129,10 +129,10 @@ public class UserRegion implements State {
     @Override
     public void setCurrentState(State state) {
         if (state != this.currentState) {
-            System.out.println("enter" + currentState.toString() + "state");
-            System.out.println("exit" + state.toString() + "state");
-            context_on.getContext().writeToLog("enter" + currentState.toString() + "state");
-            context_on.getContext().writeToLog("exit" + state.toString() + "state");
+            System.out.println("enter " + currentState.toString() + " state");
+            System.out.println("exit " + state.toString() + " state");
+            context_on.getContext().writeToLog("enter " + currentState.toString() + " state");
+            context_on.getContext().writeToLog("exit " + state.toString() + " state");
         }
         this.currentState= state;
     }
@@ -160,12 +160,18 @@ public class UserRegion implements State {
 
     @Override
     public void turnOn() {
+        beginner = new Beginner(this);
+        progressive = new Progressive(this);
+        pro = new Pro(this);
+        this.currentState = beginner;
+        System.out.println("enter "+ currentState.toString() +" state");
+        context_on.getContext().writeToLog("enter "+ currentState.toString() +" state");
         // no implementation
     }
 
     @Override
     public void turnOff() {
-        System.out.println("exit"+ currentState.toString() +"state");
+        System.out.println("exit "+ currentState.toString() +" state");
     }
 
     public State getBeginner() {

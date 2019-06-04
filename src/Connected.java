@@ -55,6 +55,7 @@ public class Connected implements State{
     public void internetOff() {
         networkRegion.setCurrentState(networkRegion.getOffline());
 
+
     }
 
     @Override

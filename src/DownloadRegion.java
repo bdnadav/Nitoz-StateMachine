@@ -34,7 +34,6 @@ public class DownloadRegion implements State {
         noSpace= new NoSpace(this);
         context_on = on;
         curDownloadState = waitingToConnect;
-        System.out.println("enter"+ curDownloadState.toString() +"state");
     }
 
     @Override
@@ -144,10 +143,10 @@ public class DownloadRegion implements State {
     @Override
     public void setCurrentState(State state) {
         if (state != this.curDownloadState) {
-            System.out.println("enter" + curDownloadState.toString() + "state");
-            System.out.println("exit" + state.toString() + "state");
-            context_on.getContext().writeToLog("enter" + curDownloadState.toString() + "state");
-            context_on.getContext().writeToLog("exit" + state.toString() + "state");
+            System.out.println("enter " + curDownloadState.toString() + " state");
+            System.out.println("exit " + state.toString() + " state");
+            context_on.getContext().writeToLog("enter " + curDownloadState.toString() + " state");
+            context_on.getContext().writeToLog("exit " + state.toString() + " state");
         }
         this.curDownloadState= (DownloadState) state;
     }
@@ -175,11 +174,14 @@ public class DownloadRegion implements State {
     @Override
     public void turnOn() {
 
+        System.out.println("enter "+ curDownloadState.toString() +" state");
+        context_on.getContext().writeToLog("enter "+ curDownloadState.toString() +" state");
+
     }
 
     @Override
     public void turnOff() {
-        System.out.println("exit"+ curDownloadState.toString() +"state");
+        System.out.println("exit "+ curDownloadState.toString() +" state");
     }
 
     public State getCurDownloadState() {

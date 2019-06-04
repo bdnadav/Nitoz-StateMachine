@@ -25,6 +25,7 @@ public interface State {
     void checkSpace();
     void freeSpace(double fileSize);
     void reduceFreeSpace(double fileSize);
+    String toString() ;
 
     double getFreeSpace();
 }

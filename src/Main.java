@@ -107,6 +107,7 @@ public class Main {
             if (!input.equals("")) {
                 //main code
             }
+            //userInput.close();
             //Thread.sleep(1000);
             writer.flush();
         }

@@ -136,5 +136,8 @@ public class Beginner implements State {
     public double getFreeSpace() {
         return 0;
     }
+    public String toString() {
+        return "Beginner";
+    }
 
 }
