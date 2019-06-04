@@ -147,6 +147,9 @@ public class DiskRegion implements State {
     @Override
     public void turnOff() {
         System.out.println("exit "+ currentState.toString() +" state");
+    }
 
+    public String toString() {
+        return "DiskRegion";
     }
 }

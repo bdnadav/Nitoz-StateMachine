@@ -146,6 +146,6 @@ public class Watch implements State {
 
     @Override
     public String toString() {
-        return " Watch ";
+        return "Watch";
     }
 }

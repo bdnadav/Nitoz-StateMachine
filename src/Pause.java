@@ -138,6 +138,6 @@ public class Pause implements State {
 
     @Override
     public String toString() {
-        return " Pause ";
+        return "Pause";
     }
 }

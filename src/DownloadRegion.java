@@ -81,6 +81,10 @@ public class DownloadRegion implements State {
 
     }
 
+    @Override
+    public String toString() {
+        return "DownloadRegion";
+    }
 
     @Override
     public void movieOff() {

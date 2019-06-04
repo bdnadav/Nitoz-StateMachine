@@ -137,6 +137,6 @@ public class Off implements State {
 
     @Override
     public String toString() {
-        return " Off ";
+        return "Off";
     }
 }

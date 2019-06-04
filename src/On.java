@@ -231,6 +231,6 @@ public class On implements State {
 
     @Override
     public String toString() {
-        return " On ";
+        return "On";
     }
 }
